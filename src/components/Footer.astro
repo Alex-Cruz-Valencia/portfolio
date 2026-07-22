@@ -1,0 +1,49 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container footer-inner">
+    <a href="/" class="footer-name">[Your Name]</a>
+    <p class="footer-copy">© {year} · Built with Astro</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 0;
+    margin-top: 6rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    transition: color 0.15s;
+  }
+
+  .footer-name:hover {
+    color: var(--color-accent);
+  }
+
+  .footer-copy {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 480px) {
+    .footer-inner {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+</style>

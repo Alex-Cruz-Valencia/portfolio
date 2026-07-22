@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('caseStudies');
+  return studies.map(study => ({
+    params: { slug: study.id },
+    props: study,
+  }));
+}
+
+const study = Astro.props;
+const { Content } = await render(study);
+---
+
+<Layout title={study.data.title} description={study.data.excerpt}>
+  <article>
+
+    <!-- Header -->
+    <header class="case-header">
+      <div class="content-width">
+        <a href="/" class="btn btn-outline back-btn">← Back</a>
+        <div class="case-meta">
+          <span>{study.data.date}</span>
+          {study.data.readTime && <span>{study.data.readTime}</span>}
+        </div>
+        <h1>{study.data.title}</h1>
+        <p class="case-excerpt">{study.data.excerpt}</p>
+        {study.data.tags && study.data.tags.length > 0 && (
+          <div class="case-tags">
+            {study.data.tags.map(t => <span class="tag">{t}</span>)}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <hr />
+
+    <!-- Body -->
+    <div class="case-body content-width">
+      <Content />
+    </div>
+
+  </article>
+</Layout>
+
+<style>
+  /* ── Header ── */
+  .case-header {
+    padding: 4rem 0 3.5rem;
+  }
+
+  .back-btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 1.125rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .case-meta {
+    display: flex;
+    gap: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    margin-bottom: 1.125rem;
+  }
+
+  .case-meta span + span::before {
+    content: '·';
+    margin: 0 0.75rem;
+  }
+
+  .case-header h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.25rem;
+    line-height: 1.1;
+  }
+
+  .case-excerpt {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    max-width: 580px;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── Prose ── */
+  .case-body {
+    padding: 4rem 0 5rem;
+  }
+
+  .case-body :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.625rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin: 3.5rem 0 1.125rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    line-height: 1.2;
+  }
+
+  .case-body :global(h2:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .case-body :global(p) {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .case-body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .case-body :global(strong) {
+    font-weight: 600;
+  }
+
+  .case-body :global(em) {
+    font-style: italic;
+    color: var(--color-text-secondary);
+  }
+
+  .case-body :global(ul),
+  .case-body :global(ol) {
+    padding-left: 1.375rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-body :global(li) {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+  }
+
+  /* Pull quote */
+  .case-body :global(blockquote) {
+    margin: 2.5rem 0;
+    padding: 1.25rem 1.75rem;
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-accent-light);
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
+  .case-body :global(blockquote p) {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--color-accent);
+    line-height: 1.5;
+  }
+
+  .case-body :global(hr) {
+    margin: 3rem 0;
+    border-color: var(--color-border);
+  }
+
+  .case-body :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .case-body :global(a:hover) {
+    color: var(--color-accent-hover);
+  }
+
+  @media (max-width: 600px) {
+    .case-header {
+      padding: 2.5rem 0 2.5rem;
+    }
+  }
+</style>
