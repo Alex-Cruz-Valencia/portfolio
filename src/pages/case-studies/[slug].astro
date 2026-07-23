@@ -12,15 +12,24 @@ export async function getStaticPaths() {
 
 const study = Astro.props;
 const { Content } = await render(study);
+
+const allStudies = await getCollection('caseStudies');
+const currentIndex = allStudies.findIndex(s => s.id === study.id);
+const nextStudy = allStudies[currentIndex + 1] ?? null;
+const prevStudy = allStudies[currentIndex - 1] ?? null;
 ---
 
 <Layout title={study.data.title} description={study.data.excerpt}>
+
+  <!-- Reading progress bar -->
+  <div id="reading-progress" aria-hidden="true"></div>
+
   <article>
 
     <!-- Header -->
     <header class="case-header">
       <div class="content-width">
-        <a href="/" class="btn btn-outline back-btn">← Back</a>
+        <a href="/#work" class="btn btn-outline back-btn" aria-label="Back to all work">← All work</a>
         <div class="case-meta">
           <span>{study.data.date}</span>
           {study.data.readTime && <span>{study.data.readTime}</span>}
@@ -28,7 +37,7 @@ const { Content } = await render(study);
         <h1>{study.data.title}</h1>
         <p class="case-excerpt">{study.data.excerpt}</p>
         {study.data.tags && study.data.tags.length > 0 && (
-          <div class="case-tags">
+          <div class="case-tags" aria-label="Tags">
             {study.data.tags.map(t => <span class="tag">{t}</span>)}
           </div>
         )}
@@ -42,10 +51,53 @@ const { Content } = await render(study);
       <Content />
     </div>
 
+    <!-- End of article navigation -->
+    <div class="case-end">
+      <hr />
+      <div class="content-width case-end-inner">
+        <div class="case-end-nav">
+          {prevStudy && (
+            <a href={`/case-studies/${prevStudy.id}`} class="case-nav-link case-nav-prev">
+              <span class="case-nav-label">← Previous</span>
+              <span class="case-nav-title">{prevStudy.data.title}</span>
+            </a>
+          )}
+          {nextStudy && (
+            <a href={`/case-studies/${nextStudy.id}`} class="case-nav-link case-nav-next">
+              <span class="case-nav-label">Next →</span>
+              <span class="case-nav-title">{nextStudy.data.title}</span>
+            </a>
+          )}
+        </div>
+        <div class="case-end-cta">
+          <p>Want to talk about this work?</p>
+          <div class="case-end-actions">
+            <a href="/contact" class="btn">Get in touch →</a>
+            <a href="/#work" class="btn btn-outline">All case studies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </article>
 </Layout>
 
 <style>
+  /* ── Reading Progress ── */
+  #reading-progress {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: 99;
+    will-change: transform;
+    pointer-events: none;
+  }
+
   /* ── Header ── */
   .case-header {
     padding: 4rem 0 3.5rem;
@@ -59,7 +111,6 @@ const { Content } = await render(study);
 
   .case-meta {
     display: flex;
-    gap: 0;
     font-size: 0.8125rem;
     color: var(--color-text-secondary);
     font-weight: 500;
@@ -103,8 +154,8 @@ const { Content } = await render(study);
     font-size: 1.625rem;
     font-weight: 700;
     letter-spacing: -0.015em;
-    margin: 3.5rem 0 1.125rem;
-    padding-top: 2rem;
+    margin: 3.5rem 0 1.25rem;
+    padding-top: 2.5rem;
     border-top: 1px solid var(--color-border);
     line-height: 1.2;
   }
@@ -117,7 +168,7 @@ const { Content } = await render(study);
 
   .case-body :global(p) {
     margin-bottom: 1.5rem;
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.8;
   }
 
@@ -142,7 +193,8 @@ const { Content } = await render(study);
 
   .case-body :global(li) {
     margin-bottom: 0.5rem;
-    line-height: 1.7;
+    line-height: 1.75;
+    font-size: 1.0625rem;
   }
 
   /* Pull quote */
@@ -165,7 +217,6 @@ const { Content } = await render(study);
 
   .case-body :global(hr) {
     margin: 3rem 0;
-    border-color: var(--color-border);
   }
 
   .case-body :global(a) {
@@ -173,15 +224,132 @@ const { Content } = await render(study);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
+    transition: color 0.15s;
   }
 
   .case-body :global(a:hover) {
     color: var(--color-accent-hover);
   }
 
+  /* ── End Navigation ── */
+  .case-end {
+    margin-top: 2rem;
+  }
+
+  .case-end-inner {
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .case-end-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .case-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    max-width: 320px;
+    transition: color 0.15s;
+  }
+
+  .case-nav-link:hover .case-nav-title {
+    color: var(--color-accent);
+  }
+
+  .case-nav-next {
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .case-nav-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .case-nav-title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.3;
+    transition: color 0.15s;
+  }
+
+  .case-end-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem 2.5rem;
+    background: var(--color-surface);
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+  }
+
+  .case-end-cta p {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .case-end-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
   @media (max-width: 600px) {
     .case-header {
       padding: 2.5rem 0 2.5rem;
     }
+
+    .case-end-nav {
+      flex-direction: column;
+    }
+
+    .case-nav-next {
+      text-align: left;
+      margin-left: 0;
+    }
+
+    .case-end-cta {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem;
+    }
+
+    .case-end-actions {
+      flex-wrap: wrap;
+    }
   }
 </style>
+
+<script>
+  function initProgress() {
+    const bar = document.getElementById('reading-progress');
+    if (!bar) return;
+
+    function update() {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const progress = scrollTop / (scrollHeight - clientHeight);
+      bar.style.transform = `scaleX(${Math.min(progress, 1)})`;
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+  initProgress();
+  document.addEventListener('astro:page-load', initProgress);
+</script>

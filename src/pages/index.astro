@@ -18,8 +18,8 @@ const studies = await getCollection('caseStudies');
         making prioritization calls under constraint, and measuring what changed.
       </p>
       {studies.length > 0 && (
-        <a href={`/case-studies/${studies[0].id}`} class="btn">
-          Read my work →
+        <a href="#work" class="btn">
+          See my work →
         </a>
       )}
     </div>
@@ -28,24 +28,29 @@ const studies = await getCollection('caseStudies');
   <hr />
 
   <!-- Case Studies -->
-  <section class="work">
+  <section class="work" id="work" aria-label="Case studies">
     <div class="content-width">
       <p class="eyebrow section-eyebrow">Work</p>
-      <div class="study-list">
+      <div class="study-list" role="list">
         {studies.map(study => (
-          <a href={`/case-studies/${study.id}`} class="study-link">
-            <div class="study-meta">
+          <a
+            href={`/case-studies/${study.id}`}
+            class="study-link"
+            role="listitem"
+            aria-label={`Read case study: ${study.data.title}`}
+          >
+            <div class="study-meta" aria-hidden="true">
               <span>{study.data.date}</span>
               {study.data.readTime && <span>{study.data.readTime}</span>}
             </div>
             <h2 class="study-title">{study.data.title}</h2>
             <p class="study-excerpt">{study.data.excerpt}</p>
             {study.data.tags && study.data.tags.length > 0 && (
-              <div class="study-tags">
+              <div class="study-tags" aria-hidden="true">
                 {study.data.tags.map(t => <span class="tag">{t}</span>)}
               </div>
             )}
-            <span class="study-cta">Read case study →</span>
+            <span class="study-cta" aria-hidden="true">Read case study →</span>
           </a>
         ))}
       </div>
@@ -83,6 +88,7 @@ const studies = await getCollection('caseStudies');
   /* ── Work Section ── */
   .work {
     padding: 4.5rem 0 2rem;
+    scroll-margin-top: var(--nav-height);
   }
 
   .section-eyebrow {
@@ -99,11 +105,30 @@ const studies = await getCollection('caseStudies');
     padding: 2.75rem 0;
     border-bottom: 1px solid var(--color-border);
     color: inherit;
-    transition: background 0.15s;
+    position: relative;
+    transition: padding-left 0.2s var(--ease-out);
   }
 
   .study-link:first-of-type {
     border-top: 1px solid var(--color-border);
+  }
+
+  .study-link::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-accent);
+    border-radius: 0 2px 2px 0;
+    transform: scaleY(0);
+    transition: transform 0.2s var(--ease-out);
+    transform-origin: center;
+  }
+
+  .study-link:hover::before {
+    transform: scaleY(1);
   }
 
   .study-link:hover .study-title {
@@ -111,12 +136,12 @@ const studies = await getCollection('caseStudies');
   }
 
   .study-link:hover .study-cta {
-    gap: 0.6em;
+    letter-spacing: 0.03em;
   }
 
   .study-meta {
     display: flex;
-    gap: 1.25rem;
+    gap: 0;
     font-size: 0.8125rem;
     color: var(--color-text-secondary);
     font-weight: 500;
@@ -126,7 +151,7 @@ const studies = await getCollection('caseStudies');
 
   .study-meta span + span::before {
     content: '·';
-    margin-right: 1.25rem;
+    margin: 0 0.75rem;
   }
 
   .study-title {
@@ -159,7 +184,7 @@ const studies = await getCollection('caseStudies');
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-accent);
-    transition: gap 0.15s;
+    transition: letter-spacing 0.2s var(--ease-out);
   }
 
   .empty-state {
@@ -170,6 +195,10 @@ const studies = await getCollection('caseStudies');
   @media (max-width: 600px) {
     .hero {
       padding: 4.5rem 0 4rem;
+    }
+
+    .study-link::before {
+      left: -1.25rem;
     }
   }
 </style>
