@@ -14,40 +14,49 @@ import Layout from '../layouts/Layout.astro';
   <div class="about-body content-width">
     <div class="bio">
       <p>
-        I'm [Your Name], a rising junior at [University] studying Computer Science
-        and Human-Centered Design. I'm targeting APM programs at large tech companies
-        for summer 2027.
+        I'm Alex Cruz-Valencia, a Computer Science major and Human-Centered Design minor
+        at Dartmouth, Class of 2028. I grew up in Salinas, California, and I'm looking
+        for an APM or PM internship for summer 2027.
       </p>
       <p>
-        My background sits at the intersection of building and understanding — I can read
-        a database schema and I can conduct a user interview, and I think both skills
-        belong in the same room when a product decision gets made.
+        My work sits between building and understanding — I can read a schema and I can
+        run a user interview, and I think both belong in the room when a product decision
+        gets made. Most of my experience is in wellness and behavioral-health tools: I led
+        a 6-person design team on <a href="https://evergreen.dartmouth.edu" target="_blank" rel="noopener noreferrer">Evergreen</a>,
+        Dartmouth's student-built generative-AI flourishing platform, and I've been Product
+        Director at <a href="https://youphoriaapp.com" target="_blank" rel="noopener noreferrer">Youphoria</a>,
+        a live social-wellness app.
       </p>
       <p>
-        What drives me is the full loop: listening carefully enough to locate the real
-        user pain (which is rarely the one described in the first conversation), designing
-        for the experience rather than just the feature, making prioritization calls under
-        real constraints, and actually measuring whether anything changed.
+        The through-line is a pull toward products that help people live a little better —
+        and a habit of testing my own assumptions before I trust them. On Evergreen I
+        recommended cutting a permissions ask by two-thirds based on student research;
+        when leadership disagreed, I negotiated a commitment to A/B test it rather than
+        let the question quietly disappear.
       </p>
       <p>
-        Outside of product work, [add one or two honest personal details — a hobby,
-        something you're curious about, something that makes you a person and not a resume].
+        Outside product work, I box, play poker, sew and tailor my own clothes, and build
+        custom keyboards.
       </p>
     </div>
 
     <div class="about-aside">
       <div class="aside-block">
         <p class="aside-label">Currently</p>
-        <p>[University], Class of [Year]</p>
-        <p>Studying CS + Human-Centered Design</p>
+        <p>Dartmouth College, Class of 2028</p>
+        <p>B.A. Computer Science, minor in Human-Centered Design</p>
       </div>
       <div class="aside-block">
         <p class="aside-label">Seeking</p>
-        <p>APM Internships — Summer 2027</p>
+        <p>APM / PM Internships — Summer 2027</p>
       </div>
       <div class="aside-block">
         <p class="aside-label">Interested in</p>
-        <p>[2–3 product domains or problem areas you care about]</p>
+        <p>Behavioral-health &amp; wellness technology · Language access and education equity · Consumer products that build durable habits</p>
+      </div>
+      <div class="aside-block">
+        <p class="aside-label">Based in</p>
+        <p>Salinas, CA · Hanover, NH</p>
       </div>
     </div>
 
@@ -95,6 +104,18 @@ import Layout from '../layouts/Layout.astro';
   .bio p {
     font-size: 1.0625rem;
     line-height: 1.75;
+  }
+
+  .bio a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.15s;
+  }
+
+  .bio a:hover {
+    color: var(--color-accent-hover);
   }
 
   .about-aside {

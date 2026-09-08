@@ -2,20 +2,31 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const studies = await getCollection('caseStudies');
+const studies = (await getCollection('caseStudies')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
+const projects = (await getCollection('projects')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
 ---
 
-<Layout title="Home" description="Product management portfolio — case studies in user research, prioritization, and design.">
+<Layout
+  title="Home"
+  description="Alex Cruz-Valencia — CS + Human-Centered Design at Dartmouth. Product management case studies in user research, prioritization, and design leadership."
+>
 
   <!-- Hero -->
   <section class="hero">
     <div class="content-width">
-      <p class="eyebrow">Product Management</p>
-      <h1>I build things<br />people actually want.</h1>
+      <p class="eyebrow">Product Management · Dartmouth</p>
+      <h1>Product decisions,<br />made from both sides.</h1>
       <p class="hero-sub">
-        Product-sense-led PM with a background in CS and human-centered design.
-        I work the full loop: locating user pain, designing the experience,
-        making prioritization calls under constraint, and measuring what changed.
+        I'm Alex — a Computer Science major and Human-Centered Design minor at Dartmouth.
+        I've led a 6-person design team on an AI wellness app tested by ~200 students,
+        run research across 15 residential communities, and made prioritization calls
+        inside a product team at EchoStar. I care about the whole loop: finding the real
+        user pain, shaping the experience, choosing what to build under real constraints,
+        and checking whether it worked.
       </p>
       {studies.length > 0 && (
         <a href="#work" class="btn">
@@ -30,7 +41,7 @@ const studies = await getCollection('caseStudies');
   <!-- Case Studies -->
   <section class="work" id="work" aria-label="Case studies">
     <div class="content-width">
-      <p class="eyebrow section-eyebrow">Work</p>
+      <p class="eyebrow section-eyebrow">Case Studies</p>
       <div class="study-list" role="list">
         {studies.map(study => (
           <a
@@ -61,6 +72,39 @@ const studies = await getCollection('caseStudies');
     </div>
   </section>
 
+  <!-- Projects -->
+  {projects.length > 0 && (
+    <section class="projects" id="projects" aria-label="More work">
+      <div class="content-width">
+        <p class="eyebrow section-eyebrow">More Work</p>
+        <ul class="project-list" role="list">
+          {projects.map(p => (
+            <li class="project-item">
+              <div class="project-head">
+                <h3 class="project-title">{p.data.title}</h3>
+                {p.data.status && <span class="project-status">{p.data.status}</span>}
+              </div>
+              <p class="project-role">
+                {p.data.role}{p.data.org ? ` · ${p.data.org}` : ''} · {p.data.timeframe}
+              </p>
+              <p class="project-blurb">{p.data.blurb}</p>
+              {p.data.link && (
+                <a
+                  class="project-link"
+                  href={p.data.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {p.data.linkLabel ?? p.data.link} ↗
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
 </Layout>
 
 <style>
@@ -80,7 +124,7 @@ const studies = await getCollection('caseStudies');
   .hero-sub {
     color: var(--color-text-secondary);
     font-size: 1.0625rem;
-    max-width: 520px;
+    max-width: 560px;
     line-height: 1.7;
     margin-bottom: 2.5rem;
   }
@@ -190,6 +234,81 @@ const studies = await getCollection('caseStudies');
   .empty-state {
     color: var(--color-text-secondary);
     padding: 3rem 0;
+  }
+
+  /* ── Projects Section ── */
+  .projects {
+    padding: 4rem 0 2rem;
+    scroll-margin-top: var(--nav-height);
+  }
+
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  .project-item {
+    padding: 2.25rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .project-item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .project-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.875rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.35rem;
+  }
+
+  .project-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .project-status {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    padding: 0.2em 0.7em;
+    border-radius: 9999px;
+  }
+
+  .project-role {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.875rem;
+  }
+
+  .project-blurb {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    max-width: 580px;
+    margin-bottom: 1rem;
+  }
+
+  .project-link {
+    display: inline-flex;
+    gap: 0.35em;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
   }
 
   @media (max-width: 600px) {
