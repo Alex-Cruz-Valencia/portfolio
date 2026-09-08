@@ -122,10 +122,19 @@ export default defineConfig({
 
 This enables correct canonical URLs and Open Graph links.
 
+## Content
+
+- **Case studies** (`src/content/case-studies/`) — 4 long-form studies (EchoStar, Evergreen, Design Corps LLC research, Digital NEST), ordered by the `order` frontmatter field.
+- **Projects** (`src/content/projects/`) — shorter cards in the home-page "More Work" section (Youphoria, BiteBuddy, Football Initiative, Puente). Schema: `title`, `role`, `org?`, `timeframe`, `blurb`, `link?`, `linkLabel?`, `status?`, `order?`.
+
+## Still Open
+
+- `public/resume.pdf` — export from the Word resume and drop it in; the contact-page link 404s until then.
+- `astro.config.mjs` `site:` — set to the real production URL (currently a Vercel-guess placeholder).
+
 ## What's Not Built Yet (intentional)
 
-Per the original brief, these are deferred until there's content to support them:
+Deferred until there's content to support them:
 - Blog
 - Testimonials section
 - Metrics dashboard
-- Card grid of projects (add once there are 3+ case studies)
