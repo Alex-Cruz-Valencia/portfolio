@@ -1,7 +1,7 @@
 ---
 title: "Leading design on a product students weren't sure they trusted"
 date: "2026"
-excerpt: "As PM on Evergreen, Dartmouth's student-built AI wellness platform, I led a 6-person design team toward first testing with ~200 students — with no formal authority over the leadership or partners I most needed to move. The recurring problem: winning the argument with evidence instead of position."
+excerpt: "As PM on Evergreen, Dartmouth's student-built AI wellness platform, I led a 6-person design team toward first testing — with no formal authority over the leadership or partners I most needed to move. The recurring problem: winning the argument with evidence instead of position."
 tags: ["Design Leadership", "User Research", "Stakeholder Management", "0-to-1"]
 readTime: "8 min read"
 order: 2
@@ -11,7 +11,7 @@ order: 2
 
 Before Evergreen had been tested with a single student, our own research told us students were uneasy about it. Evergreen is a generative-AI wellness platform built at Dartmouth — hundreds of student builders, grounded in the university's behavioral-health research, with a conversational tool at the center. A campus survey and student interviews kept surfacing the same discomfort: an AI in the wellness space, asking for personal data, felt like a lot to trust.
 
-I was the product manager taking design from that starting point toward a first real testing build with roughly 200 Dartmouth students. I led a 6-person design team. I had no authority at all over the two groups whose decisions mattered most: project leadership and our faculty and staff partners.
+I was the product manager taking design from that starting point toward a first real testing build with Dartmouth students. I led a 6-person design team. I had no authority at all over the two groups whose decisions mattered most: project leadership and our faculty and staff partners.
 
 Almost every hard moment that followed came down to the same thing — I needed to change someone's mind, and "because I think so" was never going to be enough.
 
@@ -56,7 +56,9 @@ Two more, briefly, both about protecting a crunch:
 
 ## The outcome
 
-Evergreen went into its first testing phase with about 200 Dartmouth students. The onboarding flow was rebuilt from the partner spec after testing showed polish alone couldn't fix a flow that was too long and hard to move through. The real-photo decision held. The permissions A/B commitment was locked in — though as of my last work on it, the test hadn't run yet, so I can't tell you what it found.
+Evergreen went into its first testing phase with a group of about 15 Dartmouth students. The onboarding flow was rebuilt from the partner spec after testing showed polish alone couldn't fix a flow that was too long and hard to move through. The real-photo decision held. The permissions A/B commitment was locked in — though as of my last work on it, the test hadn't run yet, so I can't tell you what it found.
+
+*Where this stands now: since this phase, I've taken on leadership of both the design and development teams, and the testing group has continued to grow past this initial round. I'll keep this case study updated as that happens.*
 
 ## What this revealed about how I think
 

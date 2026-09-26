@@ -15,7 +15,7 @@ That's why the research was my idea, not an assignment. I proposed investigating
 
 ## The approach
 
-I built a journey map of how members experience joining Digital NEST and progressing through it, then pressure-tested it with nine interviews — youth members and staff. Being a former member and instructor made access easy: people I already knew, a journey I'd personally walked.
+I built a journey map of how members experience joining Digital NEST and progressing through it, then pressure-tested it with five interviews — youth members and staff. Being a former member and instructor made access easy: people I already knew, a journey I'd personally walked.
 
 I organized findings into three stages: **Entry**, **Engagement**, **Progression**.
 
