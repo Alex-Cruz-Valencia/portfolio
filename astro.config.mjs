@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  // Used for canonical + Open Graph URLs.
-  site: 'https://personal-dashboard-6yd64bw9z-alexcruzvn-2935.vercel.app',
+  // Used for canonical + Open Graph URLs. Override with the SITE_URL env var
+  // (e.g. once a custom domain is live) without touching this file.
+  site: process.env.SITE_URL || 'https://alexcruz-valenciaportfolio.vercel.app',
 });

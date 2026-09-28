@@ -40,10 +40,19 @@ public/
 ## Commands
 
 ```bash
-npm run dev        # Start dev server at http://localhost:4321
-npm run build      # Build to ./dist/ (run before deploying manually)
-npm run preview    # Preview the production build locally
+npm run dev          # Start dev server at http://localhost:4321
+npm run build        # Build to ./dist/ (run before deploying manually)
+npm run preview      # Preview the production build locally
+npm run generate:og  # Regenerate public/og.png (the social preview image)
 ```
+
+### Environment variables
+
+| Var | Purpose | Default |
+|---|---|---|
+| `SITE_URL` | Production URL used for canonical + Open Graph tags (`astro.config.mjs`) | current Vercel preview domain |
+
+Set `SITE_URL` in Vercel's project settings once Alex moves to a stable or custom domain — no code change needed after that.
 
 ## Adding a Case Study
 
@@ -129,7 +138,7 @@ This enables correct canonical URLs and Open Graph links.
 
 ## Still Open
 
-- `public/resume.pdf` — export from the Word resume and drop it in; the contact-page link 404s until then.
+- `public/resume.pdf` — export from the Word resume and drop it in; the contact-page and nav Resume links 404 until then. `npm run build` warns when it's missing.
 - `astro.config.mjs` `site:` — set to the real production URL (currently a Vercel-guess placeholder).
 
 ## What's Not Built Yet (intentional)

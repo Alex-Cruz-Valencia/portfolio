@@ -54,17 +54,17 @@ Editorial serif (Playfair Display) + Monday.com-inspired layout: white backgroun
 | Route | File | Notes |
 |---|---|---|
 | `/` | `src/pages/index.astro` | Hero + case study list. Hero CTA scrolls to `#work`. |
-| `/about` | `src/pages/about.astro` | Two-column: bio left, sidebar right. Still has placeholder copy. |
+| `/about` | `src/pages/about.astro` | Two-column: bio left, sidebar right. Real bio copy. |
 | `/contact` | `src/pages/contact.astro` | Real email/LinkedIn/GitHub wired up. Resume link needs `public/resume.pdf`. |
-| `/case-studies/[slug]` | `src/pages/case-studies/[slug].astro` | Reads from content collection. Has reading progress bar + end-of-article nav. |
+| `/case-studies/[slug]` | `src/pages/case-studies/[slug].astro` | Reads from the `caseStudies` content collection. Has reading progress bar + end-of-article nav. |
 | `/404` | `src/pages/404.astro` | Custom branded 404. |
 
 ## Still Placeholder (needs Alex to fill in)
 
-- About page bio copy (`src/pages/about.astro`) — university name, graduation year, personal details, "Interested in" domains
-- `public/resume.pdf` — not yet uploaded; contact page Resume link 404s until added
-- `astro.config.mjs` `site:` field — set to real Vercel URL once known
-- Case study content — `redesigning-onboarding.md` is a placeholder; replace with real work
+- `public/resume.pdf` — not yet uploaded; Resume links 404 until added. `npm run build` prints a warning (via the `prebuild` script) when it's missing.
+- `SITE_URL` env var — falls back to the current Vercel preview domain in `astro.config.mjs`; set it once a stable/custom domain exists.
+- About page "Interested in" line — draft domains in place, marked `TODO(Alex): confirm these domains`.
+- Various `TODO(Alex): ...` markers left across case studies and new sections — see the PR description for the full list.
 
 ## Accessibility & SEO
 

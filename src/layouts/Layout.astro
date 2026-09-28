@@ -6,10 +6,17 @@ import { ClientRouter } from 'astro:transitions';
 interface Props {
   title: string;
   description?: string;
+  /** Overrides the default /og.png social preview image for this page. */
+  image?: string;
 }
 
-const { title, description = 'Product management portfolio — case studies in user research, prioritization, and design.' } = Astro.props;
+const {
+  title,
+  description = 'Product management portfolio — case studies in user research, prioritization, and design.',
+  image = '/og.png',
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(image, Astro.site);
 const fullTitle = `${title} — Alex Cruz-Valencia`;
 ---
 
@@ -27,9 +34,14 @@ const fullTitle = `${title} — Alex Cruz-Valencia`;
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${fullTitle} — social preview`} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
