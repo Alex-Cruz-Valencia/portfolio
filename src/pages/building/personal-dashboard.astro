@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaseSummary from '../../components/CaseSummary.astro';
+
+// Unlisted stub: not linked from the homepage Building section, and
+// excluded from the sitemap in astro.config.mjs (see the sitemap filter,
+// which keys off this same "/building/personal-dashboard" path). Flip this
+// once the three sections below are filled in.
+export const draft = true;
+
+const sections = [
+  { heading: 'Why I built it', todo: 'TODO(Alex): why this, why now' },
+  {
+    heading: 'How I split the work across AI tools',
+    todo: 'TODO(Alex): Claude Code vs. Cursor vs. Codex — what each one actually did',
+  },
+  { heading: 'What I decided not to build', todo: 'TODO(Alex): scope cuts and why' },
+];
+---
+
+<Layout
+  title="Personal Dashboard"
+  description="A full-stack app built end to end with Claude Code, Cursor and Codex."
+>
+  <article>
+    <header class="stub-header">
+      <div class="content-width">
+        <a href="/#building" class="btn btn-outline back-btn" aria-label="Back to Building">← Building</a>
+        <p class="eyebrow">Draft — not yet public</p>
+        <h1>Personal Dashboard</h1>
+        <p class="stub-excerpt">
+          A full-stack app I built end to end with Claude Code, Cursor and Codex. It pulls
+          Gmail, Google Calendar and Todoist into one view where I can read and edit tasks,
+          events and email, plus weather.
+        </p>
+      </div>
+    </header>
+
+    <hr />
+
+    <div class="content-width case-summary-wrap">
+      <CaseSummary
+        role="Solo builder"
+        timeline="2026 – present"
+        outcome="TODO(Alex): what's actually working today"
+      />
+    </div>
+
+    <div class="stub-body content-width">
+      {sections.map(s => (
+        <section class="stub-section">
+          <h2>{s.heading}</h2>
+          <p class="stub-todo">[{s.todo}]</p>
+        </section>
+      ))}
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .stub-header {
+    padding: 4rem 0 3.5rem;
+  }
+
+  .back-btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 1.125rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .stub-header h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 1rem 0 1.25rem;
+    line-height: 1.1;
+  }
+
+  .stub-excerpt {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    max-width: 580px;
+  }
+
+  .case-summary-wrap {
+    margin-top: 3rem;
+  }
+
+  .stub-body {
+    padding: 3rem 0 5rem;
+  }
+
+  .stub-section {
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .stub-section:first-child {
+    margin-top: 0;
+  }
+
+  .stub-section h2 {
+    font-size: 1.625rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 1rem;
+  }
+
+  .stub-todo {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .stub-header {
+      padding: 2.5rem 0 2.5rem;
+    }
+  }
+</style>

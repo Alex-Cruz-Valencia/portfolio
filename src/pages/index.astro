@@ -8,6 +8,16 @@ const studies = (await getCollection('caseStudies')).sort(
 const projects = (await getCollection('projects')).sort(
   (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
 );
+const building = (await getCollection('building')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
+
+// Convention: a demo video at /demo/x.mp4 picks up /demo/x.vtt (captions)
+// and /demo/x.jpg (poster) alongside it, if present.
+function demoAssets(demoPath: string) {
+  const base = demoPath.replace(/\.[^/.]+$/, '');
+  return { captions: `${base}.vtt`, poster: `${base}.jpg` };
+}
 ---
 
 <Layout
@@ -19,20 +29,31 @@ const projects = (await getCollection('projects')).sort(
   <section class="hero">
     <div class="content-width">
       <p class="eyebrow">Product Management · Dartmouth</p>
-      <h1>Product decisions,<br />made from both sides.</h1>
+      <!-- Alternate headline, kept for Alex to A/B: "Product decisions, made from both sides." -->
+      <h1>I can read the schema<br />and run the interview.</h1>
+      <ul class="proof-row" aria-label="Highlights">
+        <li>$5M-funded AI wellness app — PM</li>
+        <li>Research that informed a ~$500M campus initiative</li>
+        <li>Shipped a feature on a live App Store app</li>
+      </ul>
       <p class="hero-sub">
         I'm Alex — a Computer Science major and Human-Centered Design minor at Dartmouth.
         I lead design and development for Evergreen, an AI wellness app now in student
-        testing, run research across 15 residential communities, and made prioritization
-        calls inside a product team at EchoStar. I care about the whole loop: finding the
-        real user pain, shaping the experience, choosing what to build under real
-        constraints, and checking whether it worked.
+        testing, led research across 15 of Dartmouth's 17 residential communities, and made
+        prioritization calls inside a product team at EchoStar. I care about the whole loop:
+        finding the real user pain, shaping the experience, choosing what to build under
+        real constraints, and checking whether it worked.
       </p>
-      {studies.length > 0 && (
-        <a href="#work" class="btn">
-          See my work →
+      <div class="hero-ctas">
+        {studies.length > 0 && (
+          <a href="#work" class="btn">
+            See my work →
+          </a>
+        )}
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          Resume ↗
         </a>
-      )}
+      </div>
     </div>
   </section>
 
@@ -72,6 +93,55 @@ const projects = (await getCollection('projects')).sort(
     </div>
   </section>
 
+  <!-- Building -->
+  {building.length > 0 && (
+    <section class="projects" id="building" aria-label="Building">
+      <div class="content-width">
+        <p class="eyebrow section-eyebrow">AI-native builds</p>
+        <p class="section-heading">Building</p>
+        <ul class="project-list" role="list">
+          {building.map(b => (
+            <li class="project-item">
+              <div class="project-head">
+                <h3 class="project-title">{b.data.title}</h3>
+                {b.data.status && <span class="project-status">{b.data.status}</span>}
+              </div>
+              <p class="project-role">
+                {b.data.role}{b.data.org ? ` · ${b.data.org}` : ''} · {b.data.timeframe}
+              </p>
+              <p class="project-blurb">{b.data.blurb}</p>
+              {b.data.stack && b.data.stack.length > 0 && (
+                <div class="study-tags" aria-label="Stack">
+                  {b.data.stack.map(s => <span class="tag">{s}</span>)}
+                </div>
+              )}
+              {b.data.demo ? (
+                <video
+                  class="project-demo"
+                  src={b.data.demo}
+                  poster={demoAssets(b.data.demo).poster}
+                  controls
+                  muted
+                  loop
+                  playsinline
+                  aria-label={`${b.data.title} demo`}
+                >
+                  <track kind="captions" src={demoAssets(b.data.demo).captions} label="English captions" />
+                </video>
+              ) : (
+                b.data.repo && (
+                  <a class="project-link" href={b.data.repo} target="_blank" rel="noopener noreferrer">
+                    {b.data.linkLabel ?? 'View repo'} ↗
+                  </a>
+                )
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
   <!-- Projects -->
   {projects.length > 0 && (
     <section class="projects" id="projects" aria-label="More work">
@@ -89,14 +159,15 @@ const projects = (await getCollection('projects')).sort(
               </p>
               <p class="project-blurb">{p.data.blurb}</p>
               {p.data.link && (
-                <a
-                  class="project-link"
-                  href={p.data.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {p.data.linkLabel ?? p.data.link} ↗
-                </a>
+                p.data.link.startsWith('http') ? (
+                  <a class="project-link" href={p.data.link} target="_blank" rel="noopener noreferrer">
+                    {p.data.linkLabel ?? p.data.link} ↗
+                  </a>
+                ) : (
+                  <a class="project-link" href={p.data.link}>
+                    {p.data.linkLabel ?? p.data.link} →
+                  </a>
+                )
               )}
             </li>
           ))}
@@ -121,12 +192,36 @@ const projects = (await getCollection('projects')).sort(
     line-height: 1.08;
   }
 
+  .proof-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .proof-row li {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    border-radius: 9999px;
+    padding: 0.45em 1em;
+    letter-spacing: 0.01em;
+  }
+
   .hero-sub {
     color: var(--color-text-secondary);
     font-size: 1.0625rem;
     max-width: 560px;
     line-height: 1.7;
     margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 0.875rem;
+    flex-wrap: wrap;
   }
 
   /* ── Work Section ── */
@@ -242,6 +337,14 @@ const projects = (await getCollection('projects')).sort(
     scroll-margin-top: var(--nav-height);
   }
 
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin: 0.5rem 0 2rem;
+  }
+
   .project-list {
     display: flex;
     flex-direction: column;
@@ -309,6 +412,15 @@ const projects = (await getCollection('projects')).sort(
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
+  }
+
+  .project-demo {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
   }
 
   @media (max-width: 600px) {

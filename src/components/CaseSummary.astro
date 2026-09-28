@@ -1,0 +1,115 @@
+---
+interface Props {
+  role?: string;
+  team?: string;
+  timeline?: string;
+  outcome?: string;
+  keyDecisions?: string[];
+}
+
+const { role, team, timeline, outcome, keyDecisions } = Astro.props;
+
+const facts = [
+  { label: 'Role', value: role },
+  { label: 'Team', value: team },
+  { label: 'Timeline', value: timeline },
+  { label: 'Outcome', value: outcome },
+].filter(f => f.value);
+
+const hasContent = facts.length > 0 || (keyDecisions && keyDecisions.length > 0);
+---
+
+{hasContent && (
+  <aside class="case-summary" aria-label="Case study summary">
+    {facts.length > 0 && (
+      <dl class="summary-grid">
+        {facts.map(f => (
+          <div class="summary-fact">
+            <dt>{f.label}</dt>
+            <dd>{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+
+    {keyDecisions && keyDecisions.length > 0 && (
+      <div class="summary-decisions">
+        <p class="summary-decisions-label">Key decisions</p>
+        <ul>
+          {keyDecisions.map(d => <li>{d}</li>)}
+        </ul>
+      </div>
+    )}
+  </aside>
+)}
+
+<style>
+  .case-summary {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.75rem 2rem;
+    margin: 0 0 1rem;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+  }
+
+  .summary-decisions {
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .summary-fact dt {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .summary-fact dd {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .summary-decisions-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .summary-decisions ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding-left: 1.125rem;
+  }
+
+  .summary-decisions li {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 600px) {
+    .case-summary {
+      padding: 1.5rem;
+    }
+
+    .summary-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+</style>

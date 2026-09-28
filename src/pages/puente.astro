@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const puente = await getEntry('projects', 'puente');
+const entries = (await getCollection('puenteLog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const assumptions = [
+  {
+    id: 'tool-vs-barrier' as const,
+    label: 'The barrier is a missing tool',
+    detail: "It might actually be time, cost, childcare, embarrassment, or motivation — not the absence of an app.",
+  },
+  {
+    id: 'kids-want-role' as const,
+    label: 'Kids want the teaching role',
+    detail: 'This inverts a family authority dynamic. A teenager correcting a parent nightly is a real ask.',
+  },
+  {
+    id: 'nonprofit-commitment' as const,
+    label: 'Nonprofits will engage',
+    detail: 'Encouragement is free. A concrete commitment — an intro, a room, a pilot — is the actual signal.',
+  },
+];
+
+function statusFor(id: string) {
+  const hasEntries = entries.some(e => e.data.assumption === id);
+  return hasEntries ? 'In progress' : 'Untested';
+}
+---
+
+<Layout
+  title="Puente"
+  description="Validating Puente's load-bearing assumptions against real conversations, in the open."
+>
+  <section class="puente-hero content-width">
+    <p class="eyebrow">Independent Project</p>
+    <h1>Puente</h1>
+    {puente && <p class="puente-blurb">{puente.data.blurb}</p>}
+  </section>
+
+  <hr />
+
+  <section class="assumptions content-width" aria-label="Load-bearing assumptions">
+    <p class="eyebrow section-eyebrow">The three assumptions</p>
+    <div class="assumption-grid">
+      {assumptions.map(a => (
+        <div class="assumption-card">
+          <div class="assumption-head">
+            <h2>{a.label}</h2>
+            <span class={`status-pill ${statusFor(a.id) === 'Untested' ? 'untested' : 'in-progress'}`}>
+              {statusFor(a.id)}
+            </span>
+          </div>
+          <p>{a.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <hr />
+
+  <section class="log content-width" aria-label="Validation log">
+    <p class="eyebrow section-eyebrow">Validation Log</p>
+
+    {entries.length === 0 ? (
+      <p class="log-empty">First conversations are underway — updates land here.</p>
+    ) : (
+      <ul class="log-list" role="list">
+        {entries.map(e => (
+          <li class="log-item">
+            <div class="log-meta">
+              <span>{e.data.date}</span>
+              <span>{assumptions.find(a => a.id === e.data.assumption)?.label ?? e.data.assumption}</span>
+            </div>
+            <h3>{e.data.title}</h3>
+            <p class="log-finding">{e.data.finding}</p>
+            <p class="log-changed"><strong>What changed:</strong> {e.data.changed}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Layout>
+
+<style>
+  .puente-hero {
+    padding: 5.5rem 0 3rem;
+  }
+
+  .puente-hero h1 {
+    font-size: clamp(2.75rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0.75rem 0 1.5rem;
+  }
+
+  .puente-blurb {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    max-width: 640px;
+  }
+
+  .assumptions {
+    padding: 3.5rem 0;
+  }
+
+  .section-eyebrow {
+    margin-bottom: 2rem;
+  }
+
+  .assumption-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .assumption-card {
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    background: var(--color-surface);
+  }
+
+  .assumption-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .assumption-head h2 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .status-pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25em 0.75em;
+    border-radius: 9999px;
+  }
+
+  .status-pill.untested {
+    color: var(--color-text-secondary);
+    background: var(--color-border);
+  }
+
+  .status-pill.in-progress {
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+  }
+
+  .assumption-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+
+  .log {
+    padding: 3.5rem 0 5rem;
+  }
+
+  .log-empty {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    padding: 1rem 0 2rem;
+  }
+
+  .log-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  .log-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .log-item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .log-meta {
+    display: flex;
+    gap: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    margin-bottom: 0.625rem;
+  }
+
+  .log-meta span + span::before {
+    content: '·';
+    margin: 0 0.75rem;
+  }
+
+  .log-item h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.625rem;
+  }
+
+  .log-finding {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .log-changed {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 700px) {
+    .assumption-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,33 @@
+---
+// Dev-only marker for where a real visual (screenshot, diagram, photo)
+// should go. Renders nothing in production — never ships a placeholder box.
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+{import.meta.env.DEV && (
+  <div class="visual-placeholder" role="note">
+    <p>{label}</p>
+  </div>
+)}
+
+<style>
+  .visual-placeholder {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    border: 1.5px dashed var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    text-align: center;
+  }
+
+  .visual-placeholder p {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+  }
+</style>

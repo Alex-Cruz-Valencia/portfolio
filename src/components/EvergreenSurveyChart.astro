@@ -1,0 +1,109 @@
+---
+// Accessible bar chart for the Evergreen real-photo-vs-AI-image survey.
+// Real data: n=50 Dartmouth students, 48 preferred real photos, 2 preferred
+// the AI-generated version. See the Evergreen case study body for context.
+const data = [
+  { label: 'Real photos', value: 48 },
+  { label: 'AI-generated', value: 2 },
+];
+const total = 50;
+const maxBarWidth = 100;
+---
+
+<figure class="survey-chart" role="group" aria-label="Survey results: real photos vs. AI-generated images (n=50 Dartmouth students)">
+  <figcaption class="chart-title">Which did you prefer? <span>n = 50 Dartmouth students</span></figcaption>
+
+  <div class="chart-body">
+    {data.map(d => (
+      <div class="chart-row">
+        <span class="chart-label">{d.label}</span>
+        <div class="chart-track">
+          <div
+            class="chart-bar"
+            style={`width: ${(d.value / total) * maxBarWidth}%`}
+          ></div>
+        </div>
+        <span class="chart-value">{d.value}</span>
+      </div>
+    ))}
+  </div>
+
+  <p class="chart-alt">
+    Text alternative: of 50 Dartmouth students surveyed, 48 preferred real
+    student photos and 2 preferred the AI-generated version.
+  </p>
+</figure>
+
+<style>
+  .survey-chart {
+    margin: 2.5rem 0;
+    padding: 1.75rem 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+  }
+
+  .chart-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+
+  .chart-title span {
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    margin-left: 0.5em;
+  }
+
+  .chart-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .chart-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 2.5rem;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .chart-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .chart-track {
+    height: 14px;
+    background: var(--color-border);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .chart-bar {
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 9999px;
+  }
+
+  .chart-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: right;
+  }
+
+  .chart-alt {
+    margin-top: 1.25rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    .chart-row {
+      grid-template-columns: 90px 1fr 2rem;
+    }
+  }
+</style>
