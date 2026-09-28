@@ -2,6 +2,7 @@
 const { pathname } = Astro.url;
 
 const links = [
+  { href: '/#work', label: 'Work' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -14,7 +15,19 @@ function isActive(href: string) {
 <nav aria-label="Main navigation">
   <div class="container nav-inner">
     <a href="/" class="nav-logo">Alex Cruz-Valencia</a>
-    <ul class="nav-links" role="list">
+
+    <button
+      class="nav-toggle"
+      id="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span class="visually-hidden">Menu</span>
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links" role="list">
       {links.map(link => (
         <li>
           <a
@@ -26,6 +39,21 @@ function isActive(href: string) {
           </a>
         </li>
       ))}
+      <li>
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+          Resume <span class="visually-hidden">(PDF)</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/alex-cruz-valencia"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-external"
+        >
+          LinkedIn <span aria-hidden="true">↗</span>
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -48,6 +76,7 @@ function isActive(href: string) {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
   }
 
   .nav-logo {
@@ -66,12 +95,15 @@ function isActive(href: string) {
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.75rem;
     list-style: none;
   }
 
   .nav-links a {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
     font-size: 0.9375rem;
     font-weight: 500;
     color: var(--color-text-secondary);
@@ -90,6 +122,7 @@ function isActive(href: string) {
     border-radius: 1px;
     transform: scaleX(0);
     transition: transform 0.2s var(--ease-out);
+    transform-origin: center;
   }
 
   .nav-links a:hover {
@@ -103,4 +136,143 @@ function isActive(href: string) {
   .nav-links a.active::after {
     transform: scaleX(1);
   }
+
+  .nav-links .nav-external {
+    color: var(--color-accent);
+  }
+
+  /* ── Mobile toggle ── */
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin: -0.5rem;
+  }
+
+  .nav-toggle-bars,
+  .nav-toggle-bars::before,
+  .nav-toggle-bars::after {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 1px;
+    transition: transform 0.2s var(--ease-out), opacity 0.2s var(--ease-out);
+  }
+
+  .nav-toggle-bars {
+    position: relative;
+  }
+
+  .nav-toggle-bars::before,
+  .nav-toggle-bars::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  .nav-toggle-bars::before {
+    top: -6px;
+  }
+
+  .nav-toggle-bars::after {
+    top: 6px;
+  }
+
+  .nav-toggle[aria-expanded='true'] .nav-toggle-bars {
+    background: transparent;
+  }
+
+  .nav-toggle[aria-expanded='true'] .nav-toggle-bars::before {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded='true'] .nav-toggle-bars::after {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  @media (max-width: 640px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: calc(var(--nav-height) - 0.5rem);
+      left: -1.25rem;
+      right: -1.25rem;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12);
+      padding: 0.5rem 1.25rem 1rem;
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-links li {
+      width: 100%;
+    }
+
+    .nav-links a {
+      width: 100%;
+      min-height: 44px;
+      padding: 0.5rem 0;
+      justify-content: flex-start;
+    }
+
+    .nav-links a::after {
+      display: none;
+    }
+  }
 </style>
+
+<script>
+  function initNavToggle() {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('nav-links');
+    // astro:page-load fires on the initial load too, so guard against
+    // attaching a second click listener to the same button (which would
+    // cancel every click out — open() then immediately close()).
+    if (!toggle || !menu || toggle.dataset.navInit === 'true') return;
+    toggle.dataset.navInit = 'true';
+
+    function close() {
+      toggle?.setAttribute('aria-expanded', 'false');
+      menu?.classList.remove('open');
+    }
+
+    function open() {
+      toggle?.setAttribute('aria-expanded', 'true');
+      menu?.classList.add('open');
+    }
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      isOpen ? close() : open();
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') close();
+    });
+
+    close();
+  }
+
+  initNavToggle();
+  document.addEventListener('astro:page-load', initNavToggle);
+</script>

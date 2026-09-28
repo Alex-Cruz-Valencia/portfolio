@@ -19,20 +19,31 @@ const projects = (await getCollection('projects')).sort(
   <section class="hero">
     <div class="content-width">
       <p class="eyebrow">Product Management · Dartmouth</p>
-      <h1>Product decisions,<br />made from both sides.</h1>
+      <!-- Alternate headline, kept for Alex to A/B: "Product decisions, made from both sides." -->
+      <h1>I can read the schema<br />and run the interview.</h1>
+      <ul class="proof-row" aria-label="Highlights">
+        <li>$5M-funded AI wellness app — PM</li>
+        <li>Research that informed a ~$500M campus initiative</li>
+        <li>Shipped a feature on a live App Store app</li>
+      </ul>
       <p class="hero-sub">
         I'm Alex — a Computer Science major and Human-Centered Design minor at Dartmouth.
         I lead design and development for Evergreen, an AI wellness app now in student
-        testing, run research across 15 residential communities, and made prioritization
-        calls inside a product team at EchoStar. I care about the whole loop: finding the
-        real user pain, shaping the experience, choosing what to build under real
-        constraints, and checking whether it worked.
+        testing, led research across 15 of Dartmouth's 17 residential communities, and made
+        prioritization calls inside a product team at EchoStar. I care about the whole loop:
+        finding the real user pain, shaping the experience, choosing what to build under
+        real constraints, and checking whether it worked.
       </p>
-      {studies.length > 0 && (
-        <a href="#work" class="btn">
-          See my work →
+      <div class="hero-ctas">
+        {studies.length > 0 && (
+          <a href="#work" class="btn">
+            See my work →
+          </a>
+        )}
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          Resume ↗
         </a>
-      )}
+      </div>
     </div>
   </section>
 
@@ -121,12 +132,36 @@ const projects = (await getCollection('projects')).sort(
     line-height: 1.08;
   }
 
+  .proof-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .proof-row li {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    border-radius: 9999px;
+    padding: 0.45em 1em;
+    letter-spacing: 0.01em;
+  }
+
   .hero-sub {
     color: var(--color-text-secondary);
     font-size: 1.0625rem;
     max-width: 560px;
     line-height: 1.7;
     margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 0.875rem;
+    flex-wrap: wrap;
   }
 
   /* ── Work Section ── */

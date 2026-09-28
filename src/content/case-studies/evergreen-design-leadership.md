@@ -4,7 +4,7 @@ date: "2026"
 excerpt: "As PM on Evergreen, Dartmouth's student-built AI wellness platform, I led a 6-person design team toward first testing — with no formal authority over the leadership or partners I most needed to move. The recurring problem: winning the argument with evidence instead of position."
 tags: ["Design Leadership", "User Research", "Stakeholder Management", "0-to-1"]
 readTime: "8 min read"
-order: 2
+order: 1
 ---
 
 ## It all started when...
