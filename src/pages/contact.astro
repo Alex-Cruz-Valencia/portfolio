@@ -1,19 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const referralBlurb = `Alex Cruz-Valencia is a Dartmouth CS + Human-Centered Design student ('28) looking for a Summer 2027 PM internship. He's the PM on Evergreen, a $5M-funded AI wellness app; co-led research that informed a ~$500M campus initiative; and built a self-serve analytics dashboard at EchoStar. Portfolio: ${Astro.site}`;
 ---
 
 <Layout title="Contact" description="Get in touch with Alex Cruz-Valencia.">
 
   <section class="contact-hero content-width">
     <p class="eyebrow">Contact</p>
-    <h1>Let's talk.</h1>
+    <h1>Looking for a Summer 2027 PM internship.</h1>
+    <!-- TODO(Alex): approve final wording -->
     <p class="contact-sub">
-      Whether it's an APM opportunity, a project collaboration, or just a good
-      product conversation — I'm easy to reach.
+      I'm looking for APM/PM internships on teams where user research actually shapes
+      what gets built — consumer, wellness, and AI-assisted products especially. If
+      you're on a team like that, or know someone who is, I'd love 20 minutes to hear
+      how you work.
     </p>
   </section>
 
   <hr />
+
+  <section class="referral-box content-width" aria-label="Referral blurb">
+    <p class="referral-title">Passing this along?</p>
+    <!-- TODO(Alex): approve final wording -->
+    <p class="referral-text" id="referral-text">{referralBlurb}</p>
+    <button type="button" class="btn btn-outline copy-btn" data-copy-target="referral-text">
+      Copy
+    </button>
+  </section>
 
   <div class="contact-links content-width">
     <a href="mailto:alexcruzvn@gmail.com" class="contact-row">
@@ -141,4 +155,71 @@ import Layout from '../layouts/Layout.astro';
     transition: color 0.15s, transform 0.15s;
     flex-shrink: 0;
   }
+
+  /* ── Referral box ── */
+  .referral-box {
+    padding: 0 2rem 5rem;
+    max-width: var(--max-content);
+  }
+
+  .referral-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .referral-text {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    user-select: all;
+  }
+
+  .copy-btn {
+    font-size: 0.875rem;
+    padding: 0.625rem 1.5rem;
+  }
+
+  .copy-btn.copied {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
 </style>
+
+<script>
+  function initCopyButtons() {
+    document.querySelectorAll<HTMLButtonElement>('[data-copy-target]').forEach(btn => {
+      if (btn.dataset.copyInit === 'true') return;
+      btn.dataset.copyInit = 'true';
+
+      const targetId = btn.dataset.copyTarget;
+      const target = targetId ? document.getElementById(targetId) : null;
+      if (!target) return;
+
+      const originalLabel = btn.textContent;
+
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(target.textContent?.trim() ?? '');
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = originalLabel;
+            btn.classList.remove('copied');
+          }, 2000);
+        } catch {
+          // Clipboard API unavailable — the text is already selectable by hand.
+        }
+      });
+    });
+  }
+
+  initCopyButtons();
+  document.addEventListener('astro:page-load', initCopyButtons);
+</script>
