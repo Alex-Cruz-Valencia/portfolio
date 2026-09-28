@@ -55,4 +55,15 @@ const building = defineCollection({
   }),
 });
 
-export const collections = { caseStudies, projects, building };
+const puenteLog = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/puente-log' }),
+  schema: z.object({
+    date: z.string(),
+    title: z.string(),
+    assumption: z.enum(['tool-vs-barrier', 'kids-want-role', 'nonprofit-commitment']),
+    finding: z.string(),
+    changed: z.string(),
+  }),
+});
+
+export const collections = { caseStudies, projects, building, puenteLog };

@@ -159,14 +159,15 @@ function demoAssets(demoPath: string) {
               </p>
               <p class="project-blurb">{p.data.blurb}</p>
               {p.data.link && (
-                <a
-                  class="project-link"
-                  href={p.data.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {p.data.linkLabel ?? p.data.link} ↗
-                </a>
+                p.data.link.startsWith('http') ? (
+                  <a class="project-link" href={p.data.link} target="_blank" rel="noopener noreferrer">
+                    {p.data.linkLabel ?? p.data.link} ↗
+                  </a>
+                ) : (
+                  <a class="project-link" href={p.data.link}>
+                    {p.data.linkLabel ?? p.data.link} →
+                  </a>
+                )
               )}
             </li>
           ))}
