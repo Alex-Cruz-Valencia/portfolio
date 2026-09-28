@@ -5,6 +5,14 @@ excerpt: "I spent my EchoStar internship turning manual spreadsheet analysis int
 tags: ["Prioritization", "Data & Analytics", "Stakeholder Management"]
 readTime: "6 min read"
 order: 2
+role: "Product Commercialization Intern"
+team: "Product team; solo build"
+timeline: "Summer 2026"
+outcome: "Four-page self-serve Streamlit dashboard on live Snowflake data, replacing recurring manual spreadsheet analysis"
+keyDecisions:
+  - "Chose Streamlit over Looker Studio and Tableau for native Snowflake access under IT constraints"
+  - "Built an Executive Mode, then killed it after leadership said granularity was the point"
+  - "Cut scope from ~8 planned pages to 4 core categories"
 ---
 
 ## It all started when...

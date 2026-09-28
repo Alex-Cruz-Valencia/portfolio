@@ -5,11 +5,19 @@ excerpt: "As PM on Evergreen, Dartmouth's student-built AI wellness platform, I 
 tags: ["Design Leadership", "User Research", "Stakeholder Management", "0-to-1"]
 readTime: "8 min read"
 order: 1
+role: "Product Manager — led design; now leads design and development"
+team: "6 designers; partners across Dartmouth leadership and faculty"
+timeline: "2026 – present"
+outcome: "V1 into first student testing; real-photo decision held; leadership committed to A/B testing the permissions ask"
+keyDecisions:
+  - "Recommended cutting upfront permissions from ~6 to 2; negotiated an A/B test commitment when leadership disagreed"
+  - "Settled AI-generated vs. real photos with a 50-student survey — 48 chose real photos"
+  - "Held the V1 scope line against partner feature requests and flagged fairness risks in event suggestions"
 ---
 
 ## It all started when...
 
-Before Evergreen had been tested with a single student, our own research told us students were uneasy about it. Evergreen is a generative-AI wellness platform built at Dartmouth — hundreds of student builders, grounded in the university's behavioral-health research, with a conversational tool at the center. A campus survey and student interviews kept surfacing the same discomfort: an AI in the wellness space, asking for personal data, felt like a lot to trust.
+Before Evergreen had been tested with a single student, our own research told us students were uneasy about it. Evergreen is a generative-AI wellness platform built at Dartmouth — hundreds of student builders, grounded in the university's behavioral-health research, with a conversational tool at the center. It's backed by $5M in Dartmouth research grant funding. A campus survey and student interviews kept surfacing the same discomfort: an AI in the wellness space, asking for personal data, felt like a lot to trust.
 
 I was the product manager taking design from that starting point toward a first real testing build with Dartmouth students. I led a 6-person design team. I had no authority at all over the two groups whose decisions mattered most: project leadership and our faculty and staff partners.
 
@@ -58,7 +66,8 @@ Two more, briefly, both about protecting a crunch:
 
 Evergreen went into its first testing phase with a group of about 15 Dartmouth students. The onboarding flow was rebuilt from the partner spec after testing showed polish alone couldn't fix a flow that was too long and hard to move through. The real-photo decision held. The permissions A/B commitment was locked in — though as of my last work on it, the test hadn't run yet, so I can't tell you what it found.
 
-*Where this stands now: since this phase, I've taken on leadership of both the design and development teams, and the testing group has continued to grow past this initial round. I'll keep this case study updated as that happens.*
+*Where this stands now: since this phase, I've taken on leadership of both the design and development teams, including the development work on Evie's persistent memory and the data framework it uses during student interventions, and the testing group has continued to grow past this initial round. I'll keep this case study updated as that happens.*
+<!-- TODO(Alex): add current tester count once confirmed -->
 
 ## What this revealed about how I think
 

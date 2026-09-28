@@ -5,6 +5,14 @@ excerpt: "I'd been a member of Digital NEST, then an instructor there. So I prop
 tags: ["User Research", "Journey Mapping", "0-to-1"]
 readTime: "6 min read"
 order: 4
+role: "UX researcher (self-proposed, solo)"
+team: "Solo, with Digital NEST leadership as sponsor"
+timeline: "Nov – Dec 2025 (3 weeks)"
+outcome: "5 near-zero-cost pilots; the End of Season Push recommendation matches the org's current newsletter and social cadence"
+keyDecisions:
+  - "Anchored the study on one hard ratio: 5 of 17 new members finished onboarding"
+  - "Scoped every recommendation to what a small nonprofit staff could actually run"
+  - "Left out a real but narrow pain point rather than overweight it"
 ---
 
 ## It all started when...

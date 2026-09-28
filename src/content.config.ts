@@ -10,6 +10,12 @@ const caseStudies = defineCollection({
     tags: z.array(z.string()).optional(),
     readTime: z.string().optional(),
     order: z.number().optional(),
+    // Recruiter-skim summary block (see src/components/CaseSummary.astro)
+    role: z.string().optional(),
+    team: z.string().optional(),
+    timeline: z.string().optional(),
+    outcome: z.string().optional(),
+    keyDecisions: z.array(z.string()).optional(),
   }),
 });
 

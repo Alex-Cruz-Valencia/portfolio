@@ -5,6 +5,14 @@ excerpt: "Co-leading research on Dartmouth's residential communities, I got a di
 tags: ["User Research", "Research Leadership", "Stakeholder Management"]
 readTime: "6 min read"
 order: 3
+role: "Research co-lead"
+team: "2-person research subgroup, reporting to a working group under the SVP for Campus Life"
+timeline: "Sep 2025 – Mar 2026"
+outcome: "7 recommendations; findings cited in a President's Office report and informed Dartmouth's ~$500M Residential Communities initiative"
+keyDecisions:
+  - "Kept individual interviews running when leadership redirected to focus groups — which later fell through"
+  - "Covered 15 of 17 communities: 23 interviews, 41 student voices, 7 peer institutions benchmarked"
+  - "Proposed an annual review process so recommendations get tracked"
 ---
 
 ## It all started when...
@@ -54,6 +62,9 @@ We presented to the working group and again at Technigala, Dartmouth's tech-and-
 As of our final report, none of the seven had been formally piloted. The research didn't translate into immediate action.
 
 What it did do: leadership told us the findings closely matched concerns they already held but hadn't seen laid out with evidence behind them. That's a real result for a research engagement, even without adoption — it's the difference between a hunch and a documented case. The annual review process we proposed exists to close that loop over time.
+
+<!-- TODO(Alex): verify exact report name/wording and that this is OK to state publicly -->
+The research also traveled further than the pilots did: our findings were cited by name in a report from Dartmouth's President's Office, and they informed the University's roughly $500M Residential Communities initiative.
 
 ## What this revealed about how I think
 
