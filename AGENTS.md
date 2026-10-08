@@ -51,15 +51,15 @@ Editorial "field notes": warm paper background, ink text, one deep green accent 
 
 Case study frontmatter also supports `org`, `role`, `team`, `methods`, `outcome`, `tldr`, `featured` — these drive the home cards and the "At a glance" box.
 
-Optional assets render only when present (see `src/lib/site.ts`): `public/resume.pdf` (nav, hero, footer, contact) and `public/alex.jpg` (hero + About). Testimonials live in `src/data/testimonials.ts`; the section hides while empty.
+Optional assets render only when present (see `src/lib/site.ts`): `public/Alex_Cruz-Valencia_Resume.pdf` (nav, hero, footer, contact; `/resume.pdf` redirects via `vercel.json`) and `public/alex.jpg` (hero + About). Testimonials live in `src/data/testimonials.ts`; the section hides while empty.
 
 ## Pages
 
 | Route | File | Notes |
 |---|---|---|
 | `/` | `src/pages/index.astro` | Hero + case study list. Hero CTA scrolls to `#work`. |
-| `/about` | `src/pages/about.astro` | Story, quick facts, toolkit, campus roles. |
-| `/contact` | `src/pages/contact.astro` | Real email/LinkedIn/GitHub wired up. Resume link needs `public/resume.pdf`. |
+| `/about` | `src/pages/about.astro` | Story, linked quick facts, How I work, toolkit, campus roles. |
+| `/contact` | `src/pages/contact.astro` | Real email/LinkedIn/GitHub wired up. Résumé link uses `public/Alex_Cruz-Valencia_Resume.pdf`. |
 | `/case-studies/[slug]` | `src/pages/case-studies/[slug].astro` | Reads from content collection. Has reading progress bar + end-of-article nav. |
 | `/404` | `src/pages/404.astro` | Custom branded 404. |
 

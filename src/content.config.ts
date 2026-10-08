@@ -18,6 +18,8 @@ const caseStudies = defineCollection({
     outcome: z.string().optional(),
     tldr: z.array(z.string()).optional(),
     featured: z.boolean().optional(),
+    // Plain keyword line under the title, for skimmers.
+    subtitle: z.string().optional(),
   }),
 });
 
@@ -33,6 +35,10 @@ const projects = defineCollection({
     linkLabel: z.string().optional(),
     status: z.string().optional(),
     order: z.number().optional(),
+    // One or two lines shown on the home page; the full blurb sits behind "More".
+    summary: z.string().optional(),
+    // Smaller items go in the compact "Also" list.
+    minor: z.boolean().optional(),
   }),
 });
 

@@ -40,9 +40,10 @@ const glance = [
         <a href="/#work" class="back-link mono">← All work</a>
         <p class="eyebrow case-kicker">
           Case study {String(currentIndex + 1).padStart(2, '0')}
-          {d.readTime && <span class="case-read">· {d.readTime}</span>}
+          {d.readTime && <span class="case-read">{' · '}{d.readTime}</span>}
         </p>
         <h1>{d.title}</h1>
+        {d.subtitle && <p class="mono case-sub">{d.subtitle}</p>}
         <p class="case-excerpt">{d.excerpt}</p>
       </div>
     </header>
@@ -148,6 +149,11 @@ const glance = [
   .case-header h1 {
     font-size: clamp(2.2rem, 5.2vw, 3.6rem);
     margin-bottom: 1.25rem;
+  }
+
+  .case-sub {
+    color: var(--color-text-secondary);
+    margin: -0.25rem 0 1.25rem;
   }
 
   .case-excerpt {

@@ -7,4 +7,5 @@ blurb: "Social wellness and fitness app (live on the App Store). Promoted from i
 link: "https://youphoriaapp.com"
 linkLabel: "youphoriaapp.com"
 order: 1
+summary: "Promoted from intern to Product Director within a month. Owned the Groups feature from pitch to launch; most testers used it, with encouraging retention."
 ---

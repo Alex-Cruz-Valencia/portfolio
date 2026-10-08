@@ -8,4 +8,5 @@ blurb: "A morning dashboard that pulls my Todoist tasks, Google Calendar, Gmail 
 link: "https://github.com/Alex-Cruz-Valencia/Personal_Dashboard"
 linkLabel: "View on GitHub"
 order: 2
+summary: "Tasks, calendar, email that needs a reply, and weather on one screen, with an AI daily summary. Built end to end with Claude Code, Cursor, and Codex."
 ---

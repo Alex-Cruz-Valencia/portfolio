@@ -4,6 +4,7 @@ date: "Sep 2025 – Mar 2026"
 excerpt: "Co-leading research on Dartmouth's residential communities, I got a directive mid-project to stop doing interviews. I complied in spirit and kept interviewing anyway. The focus groups that were supposed to replace them fell through — and the research survived because the work never actually stopped."
 tags: ["User Research", "Research Leadership", "Stakeholder Management"]
 readTime: "6 min read"
+subtitle: "User research · 41 student voices · Influencing senior leadership"
 order: 3
 org: "Design Corps · Dartmouth Design Initiative"
 role: "Research co-lead (Project Manager)"
