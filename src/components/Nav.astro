@@ -1,31 +1,42 @@
 ---
+import { resumeHref } from '../lib/site';
+
 const { pathname } = Astro.url;
 
 const links = [
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/#work', label: 'Work', match: '/case-studies' },
+  { href: '/about', label: 'About', match: '/about' },
+  { href: '/contact', label: 'Contact', match: '/contact' },
 ];
 
-function isActive(href: string) {
-  return pathname === href || pathname.startsWith(href + '/');
+function isActive(match: string) {
+  return pathname === match || pathname.startsWith(match + '/');
 }
 ---
 
 <nav aria-label="Main navigation">
   <div class="container nav-inner">
-    <a href="/" class="nav-logo">Alex Cruz-Valencia</a>
+    <a href="/" class="nav-logo">
+      <span class="nav-mark" aria-hidden="true">AC</span>
+      <span class="nav-name">Alex Cruz-Valencia</span>
+    </a>
     <ul class="nav-links" role="list">
       {links.map(link => (
         <li>
           <a
             href={link.href}
-            class={isActive(link.href) ? 'active' : ''}
-            aria-current={isActive(link.href) ? 'page' : undefined}
+            class={isActive(link.match) ? 'active' : ''}
+            aria-current={isActive(link.match) ? 'page' : undefined}
           >
             {link.label}
           </a>
         </li>
       ))}
+      {resumeHref && (
+        <li>
+          <a href={resumeHref} class="nav-resume" target="_blank" rel="noopener noreferrer">Résumé</a>
+        </li>
+      )}
     </ul>
   </div>
 </nav>
@@ -35,7 +46,7 @@ function isActive(href: string) {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-border);
@@ -48,59 +59,76 @@ function isActive(href: string) {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
   }
 
   .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
     font-family: var(--font-display);
-    font-size: 1.1875rem;
-    font-weight: 600;
+    font-size: 1.125rem;
+    font-weight: 500;
     color: var(--color-text);
-    letter-spacing: -0.02em;
-    transition: color 0.15s;
   }
 
-  .nav-logo:hover {
-    color: var(--color-accent);
+  .nav-mark {
+    display: inline-grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.75rem;
     list-style: none;
   }
 
   .nav-links a {
     position: relative;
-    font-size: 0.9375rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--color-text-secondary);
     transition: color 0.15s;
-    padding-bottom: 2px;
   }
 
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--color-accent);
-    border-radius: 1px;
-    transform: scaleX(0);
-    transition: transform 0.2s var(--ease-out);
-  }
-
-  .nav-links a:hover {
-    color: var(--color-text);
-  }
-
-  .nav-links a.active {
-    color: var(--color-text);
-  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--color-text); }
 
   .nav-links a.active::after {
-    transform: scaleX(1);
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+
+  .nav-links .nav-resume {
+    padding: 0.4rem 0.95rem;
+    border: 1.5px solid var(--color-text);
+    border-radius: 9999px;
+    color: var(--color-text);
+  }
+
+  .nav-links .nav-resume:hover {
+    background: var(--color-text);
+    color: var(--color-bg);
+  }
+
+  @media (max-width: 640px) {
+    .nav-name { display: none; }
+    .nav-links { gap: 1.1rem; }
+    .nav-links a { font-size: 0.85rem; }
   }
 </style>

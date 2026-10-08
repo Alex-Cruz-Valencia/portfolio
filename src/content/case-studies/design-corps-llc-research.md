@@ -5,6 +5,15 @@ excerpt: "Co-leading research on Dartmouth's residential communities, I got a di
 tags: ["User Research", "Research Leadership", "Stakeholder Management"]
 readTime: "6 min read"
 order: 3
+org: "Design Corps · Dartmouth Design Initiative"
+role: "Research co-lead (Project Manager)"
+team: "Two-person research subgroup, reporting to a working group under the SVP for Campus Life"
+methods: ["23 interviews", "Group interview", "Focus group", "Site tours", "Peer benchmarking"]
+outcome: "Seven recommendations to campus leadership. Our findings are cited by name in the Working Group's official June 2026 report to Dartmouth leadership."
+tldr:
+  - "41 student voices across 15 of Dartmouth's 17 living learning communities, plus benchmarking at 7 peer schools."
+  - "Leadership told us to stop interviewing and switch to focus groups. I kept interviews running in the meantime. The focus groups never happened."
+  - "The research is cited in the Working Group's June 2026 report and fed into Dartmouth's roughly $500M residential communities initiative."
 ---
 
 ## It all started when...
@@ -49,11 +58,15 @@ Seven recommendations, short- and long-term:
 
 We presented to the working group and again at Technigala, Dartmouth's tech-and-design showcase.
 
-## The honest outcome
+## The outcome
 
-As of our final report, none of the seven had been formally piloted. The research didn't translate into immediate action.
+As of our final report, none of the seven had been formally piloted. The research didn't translate into immediate action, and I don't want to dress that up.
 
-What it did do: leadership told us the findings closely matched concerns they already held but hadn't seen laid out with evidence behind them. That's a real result for a research engagement, even without adoption — it's the difference between a hunch and a documented case. The annual review process we proposed exists to close that loop over time.
+What it did do mattered more than I expected. Leadership told us the findings closely matched concerns they already held but hadn't seen laid out with evidence behind them — the difference between a hunch and a documented case.
+
+Then it showed up in writing. The Residential Communities Working Group's official June 2026 report to Dartmouth leadership, circulated campus-wide by the President's office, names Design Corps' role in collecting the student-experience data and cites a specific finding from our interviews: that undergraduate advisor support is uneven across communities, so a first-year's experience depends heavily on where they land. That report feeds into Dartmouth's roughly $500M residential communities initiative.
+
+The annual review process we proposed exists to close the adoption loop over time.
 
 ## What this revealed about how I think
 

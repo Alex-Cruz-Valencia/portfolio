@@ -1,10 +1,19 @@
 ---
 title: "The dashboard that got smaller on purpose"
-date: "Summer 2026"
+date: "May – Aug 2026"
 excerpt: "I spent my EchoStar internship turning manual spreadsheet analysis into a self-serve product dashboard. Almost every decision that shaped it — the platform, the scope, the feature I killed — was forced by a constraint, not a wishlist."
 tags: ["Prioritization", "Data & Analytics", "Stakeholder Management"]
 readTime: "6 min read"
-order: 1
+order: 2
+org: "EchoStar"
+role: "Product Commercialization Intern"
+team: "Solo build, with my manager, leadership, and a cross-functional manager as stakeholders"
+methods: ["Snowflake", "Streamlit", "SQL & Python", "Gemini Gems", "Stakeholder interviews", "Usability sessions"]
+outcome: "Shipped a four-page self-serve dashboard on live Snowflake data covering ~13 product launches, replacing a recurring manual spreadsheet analysis."
+tldr:
+  - "Picked Streamlit over Looker Studio and Tableau because it was the one tool I could actually get to the data with."
+  - "Built an Executive Mode for leadership, then asked leadership. They didn't want it, so I killed it."
+  - "Cut eight planned pages down to four, and only showed numbers that already had a paper trail."
 ---
 
 ## It all started when...
@@ -47,7 +56,13 @@ One more guardrail came out of that data-validity warning: I limited the dashboa
 
 ## What shipped
 
-A four-page Streamlit dashboard reading live from Snowflake, covering the parts of product performance the team looked at most, built only on numbers with an existing paper trail. It replaced a recurring manual analysis with something people could query themselves.
+A four-page Streamlit dashboard reading live from Snowflake, covering roughly 13 product launches from the first half of 2026 and data ranging from hundreds of thousands to millions of rows. It covered the parts of product performance the team looked at most, built only on numbers with an existing paper trail, and replaced a recurring manual analysis with something people could query themselves.
+
+AI did a lot of the drafting. I wrote SQL and Python with Gemini and other AI coding tools, and built a custom Gemini Gem that turned scattered stakeholder feedback into prioritized action items. But nothing an AI drafted shipped without me checking it. I hand-validated hundreds of data points against expected results and the existing internal dashboards before handoff, because a fast wrong number is worse than a slow right one.
+
+> "Over ten short weeks, Alex architected an enterprise-grade AI platform to measure product performance. His process was a masterclass in precision — hand-validating hundreds of data points to ensure long-term stability, all while grounding every decision in a sharp, value-driven business case."
+>
+> — Tia Kubicka, Product Leader, Boost Mobile
 
 I can't claim adoption metrics — the internship ended close to the handoff. What I can say is that the version that shipped was smaller, narrower, and more conservative than the one I sketched on day one, and every one of those reductions was the right call.
 

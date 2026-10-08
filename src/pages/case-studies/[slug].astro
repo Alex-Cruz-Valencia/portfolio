@@ -12,71 +12,104 @@ export async function getStaticPaths() {
 
 const study = Astro.props;
 const { Content } = await render(study);
+const d = study.data;
 
 const allStudies = (await getCollection('caseStudies')).sort(
   (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
 );
 const currentIndex = allStudies.findIndex(s => s.id === study.id);
-const nextStudy = allStudies[currentIndex + 1] ?? null;
+const nextStudy = allStudies[currentIndex + 1] ?? allStudies[0];
 const prevStudy = allStudies[currentIndex - 1] ?? null;
+
+const glance = [
+  { label: 'Role', value: d.role },
+  { label: 'Where', value: d.org },
+  { label: 'Team', value: d.team },
+  { label: 'When', value: d.date },
+].filter(g => g.value);
 ---
 
-<Layout title={study.data.title} description={study.data.excerpt}>
+<Layout title={d.title} description={d.excerpt}>
 
-  <!-- Reading progress bar -->
   <div id="reading-progress" aria-hidden="true"></div>
 
   <article>
 
-    <!-- Header -->
     <header class="case-header">
       <div class="content-width">
-        <a href="/#work" class="btn btn-outline back-btn" aria-label="Back to all work">← All work</a>
-        <div class="case-meta">
-          <span>{study.data.date}</span>
-          {study.data.readTime && <span>{study.data.readTime}</span>}
-        </div>
-        <h1>{study.data.title}</h1>
-        <p class="case-excerpt">{study.data.excerpt}</p>
-        {study.data.tags && study.data.tags.length > 0 && (
-          <div class="case-tags" aria-label="Tags">
-            {study.data.tags.map(t => <span class="tag">{t}</span>)}
-          </div>
-        )}
+        <a href="/#work" class="back-link mono">← All work</a>
+        <p class="eyebrow case-kicker">
+          Case study {String(currentIndex + 1).padStart(2, '0')}
+          {d.readTime && <span class="case-read">· {d.readTime}</span>}
+        </p>
+        <h1>{d.title}</h1>
+        <p class="case-excerpt">{d.excerpt}</p>
       </div>
     </header>
 
-    <hr />
+    {(glance.length > 0 || d.tldr) && (
+      <section class="glance content-width" aria-label="At a glance">
+        <div class="glance-card">
+          {glance.length > 0 && (
+            <dl class="glance-grid">
+              {glance.map(g => (
+                <div>
+                  <dt class="mono">{g.label}</dt>
+                  <dd>{g.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
 
-    <!-- Body -->
+          {d.tldr && (
+            <div class="glance-tldr">
+              <p class="mono glance-heading">The short version</p>
+              <ul>
+                {d.tldr.map(line => <li>{line}</li>)}
+              </ul>
+            </div>
+          )}
+
+          {d.outcome && (
+            <div class="glance-outcome">
+              <p class="mono glance-heading">Outcome</p>
+              <p>{d.outcome}</p>
+            </div>
+          )}
+
+          {(d.methods || d.tags) && (
+            <div class="glance-tags">
+              {(d.methods ?? []).concat(d.tags ?? []).map(t => <span class="tag">{t}</span>)}
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
     <div class="case-body content-width">
       <Content />
     </div>
 
-    <!-- End of article navigation -->
-    <div class="case-end">
-      <hr />
-      <div class="content-width case-end-inner">
-        <div class="case-end-nav">
-          {prevStudy && (
-            <a href={`/case-studies/${prevStudy.id}`} class="case-nav-link case-nav-prev">
-              <span class="case-nav-label">← Previous</span>
-              <span class="case-nav-title">{prevStudy.data.title}</span>
-            </a>
-          )}
-          {nextStudy && (
-            <a href={`/case-studies/${nextStudy.id}`} class="case-nav-link case-nav-next">
-              <span class="case-nav-label">Next →</span>
-              <span class="case-nav-title">{nextStudy.data.title}</span>
-            </a>
-          )}
-        </div>
-        <div class="case-end-cta">
-          <p>Want to talk about this work?</p>
-          <div class="case-end-actions">
-            <a href="/contact" class="btn">Get in touch →</a>
-            <a href="/#work" class="btn btn-outline">All case studies</a>
-          </div>
+    <div class="case-end content-width">
+      <div class="case-end-nav">
+        {prevStudy && (
+          <a href={`/case-studies/${prevStudy.id}`} class="case-nav-link">
+            <span class="mono case-nav-label">← Previous</span>
+            <span class="case-nav-title">{prevStudy.data.title}</span>
+          </a>
+        )}
+        {nextStudy && nextStudy.id !== study.id && (
+          <a href={`/case-studies/${nextStudy.id}`} class="case-nav-link case-nav-next">
+            <span class="mono case-nav-label">{currentIndex + 1 === allStudies.length ? 'Back to the first →' : 'Next →'}</span>
+            <span class="case-nav-title">{nextStudy.data.title}</span>
+          </a>
+        )}
+      </div>
+      <div class="case-end-cta">
+        <p>Want to dig into the decisions behind this?</p>
+        <div class="case-end-actions">
+          <a href="/contact" class="btn">Get in touch →</a>
+          <a href="/#work" class="btn btn-outline">All work</a>
         </div>
       </div>
     </div>
@@ -85,7 +118,6 @@ const prevStudy = allStudies[currentIndex - 1] ?? null;
 </Layout>
 
 <style>
-  /* ── Reading Progress ── */
   #reading-progress {
     position: fixed;
     top: var(--nav-height);
@@ -96,101 +128,118 @@ const prevStudy = allStudies[currentIndex - 1] ?? null;
     transform: scaleX(0);
     transform-origin: left;
     z-index: 99;
-    will-change: transform;
     pointer-events: none;
   }
 
   /* ── Header ── */
-  .case-header {
-    padding: 4rem 0 3.5rem;
-  }
+  .case-header { padding: 3.5rem 0 2.5rem; }
 
-  .back-btn {
-    font-size: 0.875rem;
-    padding: 0.5rem 1.125rem;
-    margin-bottom: 2.75rem;
-  }
-
-  .case-meta {
-    display: flex;
-    font-size: 0.8125rem;
+  .back-link {
+    display: inline-block;
     color: var(--color-text-secondary);
-    font-weight: 500;
-    margin-bottom: 1.125rem;
+    margin-bottom: 2.5rem;
   }
 
-  .case-meta span + span::before {
-    content: '·';
-    margin: 0 0.75rem;
-  }
+  .back-link:hover { color: var(--color-accent); }
+
+  .case-kicker { margin-bottom: 1rem; }
+  .case-read { color: var(--color-text-muted); }
 
   .case-header h1 {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
+    font-size: clamp(2.2rem, 5.2vw, 3.6rem);
     margin-bottom: 1.25rem;
-    line-height: 1.1;
   }
 
   .case-excerpt {
-    font-size: 1.125rem;
+    font-size: 1.15rem;
     color: var(--color-text-secondary);
-    line-height: 1.65;
-    max-width: 580px;
-    margin-bottom: 1.5rem;
+    line-height: 1.6;
   }
 
-  .case-tags {
+  /* ── At a glance ── */
+  .glance { margin-bottom: 1rem; }
+
+  .glance-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 1.75rem;
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1.5rem;
   }
+
+  .glance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem 2rem;
+  }
+
+  .glance-grid dt { color: var(--color-text-muted); margin-bottom: 0.15rem; }
+  .glance-grid dd { font-size: 0.95rem; line-height: 1.45; }
+
+  .glance-heading { color: var(--color-accent); margin-bottom: 0.5rem; }
+
+  .glance-tldr,
+  .glance-outcome {
+    padding-top: 1.25rem;
+    border-top: 1px dashed var(--color-border);
+  }
+
+  .glance-tldr ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .glance-tldr li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .glance-tldr li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  .glance-outcome p:last-child {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.45;
+  }
+
+  .glance-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
   /* ── Prose ── */
-  .case-body {
-    padding: 4rem 0 5rem;
-  }
+  .case-body { padding: 3rem 0 4rem; }
 
   .case-body :global(h2) {
-    font-family: var(--font-display);
-    font-size: 1.625rem;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    margin: 3.5rem 0 1.25rem;
-    padding-top: 2.5rem;
-    border-top: 1px solid var(--color-border);
-    line-height: 1.2;
+    font-size: 1.7rem;
+    margin: 3.25rem 0 1.1rem;
   }
 
-  .case-body :global(h2:first-child) {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-  }
+  .case-body :global(h2:first-child) { margin-top: 0; }
 
   .case-body :global(p) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
     font-size: 1.0625rem;
     line-height: 1.8;
   }
 
-  .case-body :global(p:last-child) {
-    margin-bottom: 0;
-  }
+  .case-body :global(strong) { font-weight: 600; }
 
-  .case-body :global(strong) {
-    font-weight: 600;
-  }
-
-  .case-body :global(em) {
-    font-style: italic;
-    color: var(--color-text-secondary);
-  }
+  .case-body :global(em) { font-style: italic; }
 
   .case-body :global(ul),
   .case-body :global(ol) {
     padding-left: 1.375rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
   }
 
   .case-body :global(li) {
@@ -199,26 +248,19 @@ const prevStudy = allStudies[currentIndex - 1] ?? null;
     font-size: 1.0625rem;
   }
 
-  /* Pull quote */
+  .case-body :global(li::marker) { color: var(--color-accent); }
+
   .case-body :global(blockquote) {
     margin: 2.5rem 0;
-    padding: 1.25rem 1.75rem;
+    padding: 0.25rem 0 0.25rem 1.5rem;
     border-left: 3px solid var(--color-accent);
-    background: var(--color-accent-light);
-    border-radius: 0 0.5rem 0.5rem 0;
   }
 
   .case-body :global(blockquote p) {
     margin: 0;
     font-family: var(--font-display);
-    font-size: 1.125rem;
-    font-style: italic;
-    color: var(--color-accent);
-    line-height: 1.5;
-  }
-
-  .case-body :global(hr) {
-    margin: 3rem 0;
+    font-size: 1.3rem;
+    line-height: 1.45;
   }
 
   .case-body :global(a) {
@@ -226,24 +268,15 @@ const prevStudy = allStudies[currentIndex - 1] ?? null;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
-    transition: color 0.15s;
   }
 
-  .case-body :global(a:hover) {
-    color: var(--color-accent-hover);
-  }
-
-  /* ── End Navigation ── */
+  /* ── End ── */
   .case-end {
-    margin-top: 2rem;
-  }
-
-  .case-end-inner {
-    padding-top: 3.5rem;
-    padding-bottom: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .case-end-nav {
@@ -257,83 +290,47 @@ const prevStudy = allStudies[currentIndex - 1] ?? null;
     flex-direction: column;
     gap: 0.3rem;
     max-width: 320px;
-    transition: color 0.15s;
   }
 
-  .case-nav-link:hover .case-nav-title {
-    color: var(--color-accent);
-  }
+  .case-nav-next { text-align: right; margin-left: auto; }
 
-  .case-nav-next {
-    text-align: right;
-    margin-left: auto;
-  }
-
-  .case-nav-label {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--color-text-secondary);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
+  .case-nav-label { color: var(--color-text-muted); }
 
   .case-nav-title {
     font-family: var(--font-display);
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-text);
+    font-size: 1.15rem;
     line-height: 1.3;
     transition: color 0.15s;
   }
+
+  .case-nav-link:hover .case-nav-title { color: var(--color-accent); }
 
   .case-end-cta {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    padding: 2rem 2.5rem;
-    background: var(--color-surface);
-    border-radius: 1rem;
+    padding: 1.75rem 2rem;
+    background: var(--color-paper);
     border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
   }
 
   .case-end-cta p {
     font-family: var(--font-display);
     font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin: 0;
+    line-height: 1.3;
   }
 
-  .case-end-actions {
-    display: flex;
-    gap: 0.75rem;
-    flex-shrink: 0;
-  }
+  .case-end-actions { display: flex; gap: 0.75rem; flex-shrink: 0; }
 
   @media (max-width: 600px) {
-    .case-header {
-      padding: 2.5rem 0 2.5rem;
-    }
-
-    .case-end-nav {
-      flex-direction: column;
-    }
-
-    .case-nav-next {
-      text-align: left;
-      margin-left: 0;
-    }
-
-    .case-end-cta {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 1.5rem;
-    }
-
-    .case-end-actions {
-      flex-wrap: wrap;
-    }
+    .glance-card { padding: 1.25rem; }
+    .glance-grid { grid-template-columns: 1fr; }
+    .case-end-nav { flex-direction: column; }
+    .case-nav-next { text-align: left; margin-left: 0; }
+    .case-end-cta { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+    .case-end-actions { flex-wrap: wrap; }
   }
 </style>
 
@@ -341,17 +338,13 @@ const prevStudy = allStudies[currentIndex - 1] ?? null;
   function initProgress() {
     const bar = document.getElementById('reading-progress');
     if (!bar) return;
-
-    function update() {
+    const update = () => {
       const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-      const progress = scrollTop / (scrollHeight - clientHeight);
-      bar.style.transform = `scaleX(${Math.min(progress, 1)})`;
-    }
-
+      bar.style.transform = `scaleX(${Math.min(scrollTop / (scrollHeight - clientHeight), 1)})`;
+    };
     window.addEventListener('scroll', update, { passive: true });
     update();
   }
-
   initProgress();
   document.addEventListener('astro:page-load', initProgress);
 </script>

@@ -1,49 +1,72 @@
 ---
+import { links, resumeHref } from '../lib/site';
 const year = new Date().getFullYear();
 ---
 
 <footer>
   <div class="container footer-inner">
-    <a href="/" class="footer-name">Alex Cruz-Valencia</a>
-    <p class="footer-copy">© {year} · Built with Astro</p>
+    <div class="footer-cta">
+      <p class="footer-line">Hiring for a Summer 2027 APM or PM intern? I'd love to talk.</p>
+      <a class="footer-email" href={`mailto:${links.email}`}>{links.email} →</a>
+    </div>
+    <div class="footer-meta">
+      <ul class="footer-links" role="list">
+        <li><a href={links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+        <li><a href={links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+        {resumeHref && <li><a href={resumeHref} target="_blank" rel="noopener noreferrer">Résumé ↗</a></li>}
+      </ul>
+      <p class="mono footer-copy">© {year} Alex Cruz-Valencia · Built with Astro and Claude Code</p>
+    </div>
   </div>
 </footer>
 
 <style>
   footer {
     border-top: 1px solid var(--color-border);
-    padding: 2rem 0;
+    padding: 3.5rem 0 2.5rem;
     margin-top: 6rem;
   }
 
   .footer-inner {
     display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .footer-line {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.2;
+    max-width: 22ch;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-email {
+    font-size: 1rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .footer-meta {
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
   }
 
-  .footer-name {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-text);
-    transition: color 0.15s;
-  }
-
-  .footer-name:hover {
-    color: var(--color-accent);
-  }
-
-  .footer-copy {
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
     font-size: 0.875rem;
     color: var(--color-text-secondary);
   }
 
-  @media (max-width: 480px) {
-    .footer-inner {
-      flex-direction: column;
-      gap: 0.5rem;
-      text-align: center;
-    }
-  }
+  .footer-links a:hover { color: var(--color-text); }
+
+  .footer-copy { color: var(--color-text-muted); }
 </style>
