@@ -249,7 +249,7 @@ const principles = [
         </div>
         <ul class="project-list" role="list">
           {projects.map(p => (
-            <li class="project-item scroll-in">
+            <li class="project-item scroll-in" id={`project-${p.id}`}>
               <div class="project-left">
                 <h3 class="project-title">{p.data.title}</h3>
                 <p class="mono project-role">
@@ -591,6 +591,18 @@ const principles = [
   }
 
   .project-item:first-child { padding-top: 0; }
+
+  .project-item { scroll-margin-top: calc(var(--nav-height) + 1.5rem); }
+
+  .project-item:target {
+    animation: target-flash 2.4s var(--ease-out) both;
+    border-radius: var(--radius-card);
+  }
+
+  @keyframes target-flash {
+    0%, 35% { background: var(--color-accent-light); box-shadow: 0 0 0 1rem var(--color-accent-light); }
+    100% { background: transparent; box-shadow: 0 0 0 1rem transparent; }
+  }
 
   .project-title { font-size: 1.4rem; margin-bottom: 0.35rem; }
 

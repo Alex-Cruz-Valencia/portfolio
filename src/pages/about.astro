@@ -2,9 +2,25 @@
 import Layout from '../layouts/Layout.astro';
 import { links, portraitSrc, resumeHref } from '../lib/site';
 
-const facts = [
-  { label: 'Now', lines: ['PM, Evergreen (DALI Lab)', 'PM Mentor & Instructor, DALI Lab'] },
-  { label: 'Before', lines: ['Product Commercialization Intern, EchoStar', 'Product Director, Youphoria', 'Research co-lead, Design Corps'] },
+// A line can be a plain string or { text, href } to link it to the work.
+type Line = string | { text: string; href: string; hint: string };
+
+const facts: { label: string; lines: Line[] }[] = [
+  {
+    label: 'Now',
+    lines: [
+      { text: 'PM, Evergreen (DALI Lab)', href: '/case-studies/evergreen-design-leadership', hint: 'Case study' },
+      { text: 'PM Mentor & Instructor, DALI Lab', href: '/#project-dali-mentor', hint: 'More work' },
+    ],
+  },
+  {
+    label: 'Before',
+    lines: [
+      { text: 'Product Commercialization Intern, EchoStar', href: '/case-studies/echostar-dashboard', hint: 'Case study' },
+      { text: 'Product Director, Youphoria', href: '/#project-youphoria', hint: 'More work' },
+      { text: 'Research co-lead, Design Corps', href: '/case-studies/design-corps-llc-research', hint: 'Case study' },
+    ],
+  },
   { label: 'Studying', lines: ['Dartmouth College, Class of 2028', 'B.A. Computer Science, minor in Human-Centered Design'] },
   { label: 'Seeking', lines: ['APM / PM internships, Summer 2027', 'Bay Area, anywhere in California, or remote'] },
   { label: 'Drawn to', lines: ['AI products people have to trust', 'Wellness and behavioral health', 'Learning and education', 'Consumer social'] },
@@ -95,7 +111,17 @@ const community = [
         {facts.map(f => (
           <div class="aside-block">
             <dt class="mono">{f.label}</dt>
-            {f.lines.map(l => <dd>{l}</dd>)}
+            {f.lines.map(l => typeof l === 'string'
+              ? <dd>{l}</dd>
+              : (
+                <dd class="fact-link-wrap">
+                  <a href={l.href} class="fact-link">
+                    <span class="fact-text">{l.text}</span>
+                    <span class="fact-arrow" aria-hidden="true">→</span>
+                    <span class="mono fact-hint">{l.hint}</span>
+                  </a>
+                </dd>
+              ))}
           </div>
         ))}
       </dl>
@@ -205,6 +231,71 @@ const community = [
     font-size: 0.92rem;
     line-height: 1.5;
     color: var(--color-text-secondary);
+  }
+
+  /* Linked roles: a whole-row hit area that nudges right and turns green. */
+  .aside-block dd.fact-link-wrap { margin: 0 -0.6rem; }
+
+  .fact-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: 'text arrow' 'hint hint';
+    align-items: start;
+    column-gap: 0.75rem;
+    padding: 0.35rem 0.6rem;
+    border-radius: 8px;
+    color: var(--color-text);
+    transition: background 0.2s var(--ease-out), color 0.2s;
+  }
+
+  .fact-text {
+    grid-area: text;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s var(--ease-out);
+  }
+
+  .fact-arrow {
+    grid-area: arrow;
+    color: var(--color-text-muted);
+    transition: transform 0.25s var(--ease-out), color 0.2s;
+  }
+
+  .fact-hint {
+    grid-area: hint;
+    font-size: 0.68rem;
+    color: var(--color-text-muted);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.25s var(--ease-out), opacity 0.2s;
+  }
+
+  .fact-link:hover,
+  .fact-link:focus-visible {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+  }
+
+  .fact-link:hover .fact-text,
+  .fact-link:focus-visible .fact-text { background-size: 100% 1px; }
+
+  .fact-link:hover .fact-arrow,
+  .fact-link:focus-visible .fact-arrow {
+    color: var(--color-accent);
+    transform: translateX(4px);
+  }
+
+  .fact-link:hover .fact-hint,
+  .fact-link:focus-visible .fact-hint {
+    max-height: 1.2rem;
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fact-link, .fact-text, .fact-arrow, .fact-hint { transition: none; }
   }
 
   .about-section { padding-top: 4.5rem; }
