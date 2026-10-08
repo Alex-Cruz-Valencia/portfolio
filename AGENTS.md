@@ -58,16 +58,14 @@ Optional assets render only when present (see `src/lib/site.ts`): `public/resume
 | Route | File | Notes |
 |---|---|---|
 | `/` | `src/pages/index.astro` | Hero + case study list. Hero CTA scrolls to `#work`. |
-| `/about` | `src/pages/about.astro` | Two-column: bio left, sidebar right. Still has placeholder copy. |
+| `/about` | `src/pages/about.astro` | Story, quick facts, toolkit, campus roles. |
 | `/contact` | `src/pages/contact.astro` | Real email/LinkedIn/GitHub wired up. Resume link needs `public/resume.pdf`. |
 | `/case-studies/[slug]` | `src/pages/case-studies/[slug].astro` | Reads from content collection. Has reading progress bar + end-of-article nav. |
 | `/404` | `src/pages/404.astro` | Custom branded 404. |
 
 ## Still Placeholder (needs Alex to fill in)
 
-- `public/resume.pdf` and `public/alex.jpg`
-- `src/data/testimonials.ts` entries
-- Evergreen case study: `[PLACEHOLDER]` line in "Where it stands now"
+- `public/alex.jpg` (portrait)
 
 ## Accessibility & SEO
 

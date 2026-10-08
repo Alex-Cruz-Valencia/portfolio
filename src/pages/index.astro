@@ -18,7 +18,7 @@ const proof = [
   { value: '$5M', label: 'in Dartmouth research funding behind Evergreen, the AI product I PM' },
   { value: '200', label: 'students in Evergreen\'s current research group, up from 15 at first test' },
   { value: '41', label: 'student voices in research cited in Dartmouth\'s official residential communities report' },
-  { value: '5 of 17', label: 'the onboarding number that reframed a nonprofit\'s retention problem' },
+  { value: '8 → 2', label: 'upfront permissions on Evergreen, the ask leadership rejected twice in V1' },
 ];
 
 const now = [
@@ -35,7 +35,7 @@ const now = [
   {
     where: 'Evergreen',
     what: 'Onboarding friction audit',
-    detail: 'Onboarding is where students drop off. Finding exactly where and why before anyone redesigns it.',
+    detail: 'Onboarding is where students dropped off. Cut it from 80 questions to 30, split across 4 modules, and still digging into why.',
   },
   {
     where: 'DALI Lab',
@@ -174,6 +174,29 @@ const principles = [
     </div>
   </section>
 
+  <!-- Testimonials (hidden until data/testimonials.ts has entries) -->
+  {testimonials.length > 0 && (
+    <section class="voices" aria-labelledby="voices-title">
+      <div class="container">
+        <div class="section-label">
+          <h2 id="voices-title">From people I've worked with</h2>
+        </div>
+        <div class="voice-grid">
+          {testimonials.map(t => (
+            <figure class="voice scroll-in">
+              <blockquote>“{t.quote}”</blockquote>
+              <figcaption>
+                <strong>{t.name}</strong>
+                <span>{t.title}</span>
+                {t.relation && <span class="mono">{t.relation}</span>}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- Now -->
   <section class="now" aria-labelledby="now-title">
     <div class="container">
@@ -212,29 +235,6 @@ const principles = [
       </ol>
     </div>
   </section>
-
-  <!-- Testimonials (hidden until data/testimonials.ts has entries) -->
-  {testimonials.length > 0 && (
-    <section class="voices" aria-labelledby="voices-title">
-      <div class="container">
-        <div class="section-label">
-          <h2 id="voices-title">From people I've worked with</h2>
-        </div>
-        <div class="voice-grid">
-          {testimonials.map(t => (
-            <figure class="voice scroll-in">
-              <blockquote>“{t.quote}”</blockquote>
-              <figcaption>
-                <strong>{t.name}</strong>
-                <span>{t.title}</span>
-                {t.relation && <span class="mono">{t.relation}</span>}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
 
   <!-- More work -->
   {projects.length > 0 && (

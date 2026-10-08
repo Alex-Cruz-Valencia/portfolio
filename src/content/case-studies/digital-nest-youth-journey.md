@@ -20,7 +20,7 @@ tldr:
 
 Digital NEST is a nonprofit in Salinas, California, that gives young people a path into tech careers. I know it from the inside — I was a member there, and later an instructor.
 
-That's why the research was my idea, not an assignment. I proposed investigating whether there were specific points in the member journey where people hit friction. Leadership reviewed the proposal, approved it, and brought me on to run it. Three weeks, start to finish.
+That's why the research was my idea, not an assignment. I proposed investigating whether there were specific points in the member journey where people hit friction. Leadership reviewed the proposal, approved it, and brought me on to run it. About a month, start to finish.
 
 ## The approach
 
