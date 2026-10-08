@@ -4,6 +4,7 @@ date: "Nov – Dec 2025"
 excerpt: "I'd been a member of Digital NEST, then an instructor there. So I proposed the research myself: where do people fall through the cracks between joining and staying? One hard number carried the whole study — and one recommendation is now how the org communicates."
 tags: ["User Research", "Journey Mapping", "0-to-1"]
 readTime: "6 min read"
+subtitle: "UX research · Onboarding & retention · Nonprofit"
 order: 4
 org: "Digital NEST · Salinas, CA"
 role: "UX Researcher (self-proposed)"

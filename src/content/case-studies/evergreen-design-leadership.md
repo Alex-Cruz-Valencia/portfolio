@@ -4,6 +4,7 @@ date: "Mar 2026 – present"
 excerpt: "As PM on Evergreen, Dartmouth's student-built AI wellness platform, I led a 6-person design team toward first testing — with no formal authority over the leadership or partners I most needed to move. The recurring problem: winning the argument with evidence instead of position."
 tags: ["Design Leadership", "User Research", "Stakeholder Management", "0-to-1"]
 readTime: "8 min read"
+subtitle: "AI product · Trust & data permissions · Leading designers without authority"
 order: 1
 featured: true
 org: "Evergreen · DALI Lab & Dartmouth Center for Technology and Behavioral Health"
@@ -12,9 +13,8 @@ team: "6 designers, with project leadership and faculty/staff partners as stakeh
 methods: ["Campus survey", "Student interviews", "50-student preference survey", "A/B test design"]
 outcome: "Shipped the V1 testing build and kept the permissions question alive. Now PM for all of Evergreen: upfront permissions cut from 8 to 2, onboarding from 80 questions to 30."
 tldr:
-  - "Students told us an AI that asks for personal data felt like a lot to trust. I recommended cutting the upfront ask from six permissions and two integrations down to two."
+  - "Students told us an AI that asks for personal data felt like a lot to trust. I recommended cutting the upfront ask from 8 (six permissions, two integrations) to 2."
   - "Leadership said no twice. So I stopped arguing for the change and won a commitment to A/B test it instead."
-  - "Now that I PM all of Evergreen: the upfront permissions ask is down from 8 to 2, and onboarding from 80 questions to 30, split across 4 modules."
   - "Settled an AI-imagery debate with a 50-student survey. 48 picked real photos, and told us they felt more ethical."
   - "Held scope against partner feature creep through the V1 crunch, and the boundary stuck."
 ---

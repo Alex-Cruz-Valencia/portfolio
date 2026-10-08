@@ -4,6 +4,7 @@ date: "May – Aug 2026"
 excerpt: "I spent my EchoStar internship turning manual spreadsheet analysis into a self-serve product dashboard. Almost every decision that shaped it — the platform, the scope, the feature I killed — was forced by a constraint, not a wishlist."
 tags: ["Prioritization", "Data & Analytics", "Stakeholder Management"]
 readTime: "6 min read"
+subtitle: "Data product · Prioritization under constraint · Killing my own feature"
 order: 2
 org: "EchoStar"
 role: "Product Commercialization Intern"

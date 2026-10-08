@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/resume.pdf", "destination": "/Alex_Cruz-Valencia_Resume.pdf", "permanent": true },
+    { "source": "/resume", "destination": "/Alex_Cruz-Valencia_Resume.pdf", "permanent": false }
+  ]
+}

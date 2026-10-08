@@ -27,6 +27,29 @@ const facts: { label: string; lines: Line[] }[] = [
   { label: 'From', lines: ['Salinas, California · now Hanover, NH'] },
 ];
 
+const principles = [
+  {
+    title: 'When I can\'t win the decision, I win a way to learn it.',
+    body: 'Leadership rejected my permissions recommendation twice. I stopped arguing and got them to commit to an A/B test instead.',
+    href: '/case-studies/evergreen-design-leadership',
+  },
+  {
+    title: 'Constraints are the spec.',
+    body: 'Security rules, data sensitivity, and what execs actually wanted carved an 8-page dashboard down to the 4 it should have been.',
+    href: '/case-studies/echostar-dashboard',
+  },
+  {
+    title: 'Find the number that changes the question.',
+    body: '17 people joined, 5 finished onboarding. That ratio turned "market better" into "stop losing people at the door."',
+    href: '/case-studies/digital-nest-youth-journey',
+  },
+  {
+    title: 'Comply with the directive, protect the work.',
+    body: 'Told to stop interviews for focus groups, I kept a safety net running. The focus groups never happened. The research survived.',
+    href: '/case-studies/design-corps-llc-research',
+  },
+];
+
 const toolkit = [
   { group: 'Research', items: ['Interviews', 'Surveys', 'Journey mapping', 'Usability testing', 'Synthesis'] },
   { group: 'Product', items: ['Figma', 'Jira', 'Miro', 'Notion', 'Experiment design'] },
@@ -127,6 +150,23 @@ const community = [
       </dl>
     </aside>
   </div>
+
+  <section class="container about-section" aria-labelledby="principles-title">
+    <div class="section-label">
+      <h2 id="principles-title">How I work</h2>
+      <span class="mono">Lessons I paid for</span>
+    </div>
+    <ol class="principle-grid" role="list">
+      {principles.map((p, i) => (
+        <li class="principle">
+          <span class="mono principle-num">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{p.title}</h3>
+          <p>{p.body}</p>
+          <a href={p.href} class="principle-link">The full story →</a>
+        </li>
+      ))}
+    </ol>
+  </section>
 
   <section class="container about-section" aria-labelledby="toolkit-title">
     <div class="section-label">
@@ -300,6 +340,50 @@ const community = [
 
   .about-section { padding-top: 4.5rem; }
 
+  /* ── Principles ── */
+  .principle-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin-top: -2rem;
+  }
+
+  .principle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 2rem 2rem 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .principle:nth-child(even) {
+    padding-left: 2rem;
+    padding-right: 0;
+    border-left: 1px solid var(--color-border);
+  }
+
+  .principle-num { color: var(--color-text-muted); }
+
+  .principle h3 {
+    font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+    line-height: 1.2;
+  }
+
+  .principle p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .principle-link {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+
+
+
   .toolkit {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -336,6 +420,7 @@ const community = [
   @media (max-width: 600px) {
     .about-hero { flex-direction: column-reverse; align-items: flex-start; padding-top: 3rem; }
     .about-portrait { width: 180px; }
-    .toolkit, .community { grid-template-columns: 1fr; }
+    .toolkit, .community, .principle-grid { grid-template-columns: 1fr; }
+    .principle, .principle:nth-child(even) { padding: 1.5rem 0; border-left: none; }
   }
 </style>
