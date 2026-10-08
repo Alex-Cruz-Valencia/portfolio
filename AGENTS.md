@@ -66,6 +66,7 @@ Optional assets render only when present (see `src/lib/site.ts`): `public/resume
 ## Still Placeholder (needs Alex to fill in)
 
 - `public/alex.jpg` (portrait)
+- `public/logos/<slug>.svg|png` for the "Where I've built" strip (slugs in `src/data/orgs.ts`); text wordmarks show until added
 
 ## Accessibility & SEO
 
