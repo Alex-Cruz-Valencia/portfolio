@@ -4,7 +4,16 @@ date: "Summer 2026"
 excerpt: "I spent my EchoStar internship turning manual spreadsheet analysis into a self-serve product dashboard. Almost every decision that shaped it — the platform, the scope, the feature I killed — was forced by a constraint, not a wishlist."
 tags: ["Prioritization", "Data & Analytics", "Stakeholder Management"]
 readTime: "6 min read"
-order: 1
+order: 2
+org: "EchoStar"
+role: "Product Commercialization Intern"
+team: "Solo build, with my manager, leadership, and a cross-functional manager as stakeholders"
+methods: ["Snowflake", "Streamlit", "Tool evaluation", "Stakeholder feedback"]
+outcome: "Shipped a four-page self-serve dashboard on live Snowflake data, replacing a recurring manual spreadsheet analysis."
+tldr:
+  - "Picked Streamlit over Looker Studio and Tableau because it was the one tool I could actually get to the data with."
+  - "Built an Executive Mode for leadership, then asked leadership. They didn't want it, so I killed it."
+  - "Cut eight planned pages down to four, and only showed numbers that already had a paper trail."
 ---
 
 ## It all started when...

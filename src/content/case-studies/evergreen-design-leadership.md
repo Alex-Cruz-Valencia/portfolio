@@ -4,7 +4,18 @@ date: "2026"
 excerpt: "As PM on Evergreen, Dartmouth's student-built AI wellness platform, I led a 6-person design team toward first testing — with no formal authority over the leadership or partners I most needed to move. The recurring problem: winning the argument with evidence instead of position."
 tags: ["Design Leadership", "User Research", "Stakeholder Management", "0-to-1"]
 readTime: "8 min read"
-order: 2
+order: 1
+featured: true
+org: "Evergreen · DALI Lab & Dartmouth Center for Technology and Behavioral Health"
+role: "Product Manager — design team in v1, now design and engineering"
+team: "6 designers, with project leadership and faculty/staff partners as stakeholders"
+methods: ["Campus survey", "Student interviews", "50-student preference survey", "A/B test design"]
+outcome: "Shipped the V1 testing build, locked in an A/B test on permissions, and settled the imagery debate with data. I now PM all of Evergreen."
+tldr:
+  - "Students told us an AI that asks for personal data felt like a lot to trust. I recommended cutting the upfront ask from six permissions and two integrations down to two."
+  - "Leadership said no twice. So I stopped arguing for the change and won a commitment to A/B test it instead."
+  - "Settled an AI-imagery debate with a 50-student survey. 48 picked real photos, and told us they felt more ethical."
+  - "Held scope against partner feature creep through the V1 crunch, and the boundary stuck."
 ---
 
 ## It all started when...
@@ -58,7 +69,17 @@ Two more, briefly, both about protecting a crunch:
 
 Evergreen went into its first testing phase with a group of about 15 Dartmouth students. The onboarding flow was rebuilt from the partner spec after testing showed polish alone couldn't fix a flow that was too long and hard to move through. The real-photo decision held. The permissions A/B commitment was locked in — though as of my last work on it, the test hadn't run yet, so I can't tell you what it found.
 
-*Where this stands now: since this phase, I've taken on leadership of both the design and development teams, and the testing group has continued to grow past this initial round. I'll keep this case study updated as that happens.*
+## Where it stands now
+
+The scope grew. As of this fall I'm the PM for all of Evergreen — design *and* development — and the research group testing it has grown from about 15 students to around 200. Evergreen is backed by $5M in Dartmouth research grant funding, so the decisions here carry real weight.
+
+The work has also moved deeper into the AI itself. Three things are on my plate right now:
+
+- **Tool calling for Evie**, Evergreen's AI. Deciding what Evie can do on a student's behalf, which tools come first, and what it should never be allowed to call on its own in a wellness context.
+- **How Evie remembers.** What it keeps, for how long, what it deliberately forgets, and how a student can see, correct, or delete what it knows about them. This is the permissions question again, one layer down.
+- **An onboarding friction audit.** Onboarding is where students are dropping off. I'm finding out exactly where and why before anyone redesigns it.
+
+I'll update this page as those land. *[PLACEHOLDER: add one concrete decision or early number from the tool-calling, memory, or onboarding work once you have it]*
 
 ## What this revealed about how I think
 

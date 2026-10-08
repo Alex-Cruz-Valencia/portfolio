@@ -41,13 +41,17 @@ Adding a `.md` file with valid frontmatter is all that's needed — routing and 
 
 ## Design System
 
-Editorial serif (Playfair Display) + Monday.com-inspired layout: white background, indigo accent (`#5b5bd6`), pill buttons, generous whitespace. Design tokens are CSS custom properties in `src/layouts/Layout.astro` (`<style is:global>`).
+Editorial "field notes": warm paper background, ink text, one deep green accent (`#0f5c45`). Fraunces (serif) for headings and voice, Geist for body, Geist Mono for metadata labels. Tokens live in `src/layouts/Layout.astro` (`<style is:global>`), with a dark-mode set.
 
-- Use `.eyebrow` for small uppercase labels above headings
-- Use `.btn` / `.btn-outline` for calls to action (pill-shaped)
-- Use `.tag` for topic tags (indigo pill on light indigo background)
-- Use `.content-width` for reading-width containers (760px max)
-- Use `.container` for full-width nav/footer containers (1100px max)
+- `.eyebrow` / `.mono` for small mono labels
+- `.btn` / `.btn-outline` for CTAs (pill-shaped)
+- `.tag` for outlined mono chips; `.status-pill` for the green "open to" badge
+- `.section-label` for section headings with a rule and a mono aside
+- `.content-width` (720px) for reading, `.container` (1120px) for wide layouts
+
+Case study frontmatter also supports `org`, `role`, `team`, `methods`, `outcome`, `tldr`, `featured` — these drive the home cards and the "At a glance" box.
+
+Optional assets render only when present (see `src/lib/site.ts`): `public/resume.pdf` (nav, hero, footer, contact) and `public/alex.jpg` (hero + About). Testimonials live in `src/data/testimonials.ts`; the section hides while empty.
 
 ## Pages
 
@@ -61,10 +65,9 @@ Editorial serif (Playfair Display) + Monday.com-inspired layout: white backgroun
 
 ## Still Placeholder (needs Alex to fill in)
 
-- About page bio copy (`src/pages/about.astro`) — university name, graduation year, personal details, "Interested in" domains
-- `public/resume.pdf` — not yet uploaded; contact page Resume link 404s until added
-- `astro.config.mjs` `site:` field — set to real Vercel URL once known
-- Case study content — `redesigning-onboarding.md` is a placeholder; replace with real work
+- `public/resume.pdf` and `public/alex.jpg`
+- `src/data/testimonials.ts` entries
+- Evergreen case study: `[PLACEHOLDER]` line in "Where it stands now"
 
 ## Accessibility & SEO
 
@@ -79,5 +82,5 @@ Editorial serif (Playfair Display) + Monday.com-inspired layout: white backgroun
 
 - Commit directly to `main` for content updates and small fixes
 - Use feature branches (`feat/`, `fix/`) for larger changes
-- Always include `Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>` in AI-assisted commits
+- Always include a `Co-Authored-By:` Claude line in AI-assisted commits
 - Push after every commit — Vercel deploys automatically

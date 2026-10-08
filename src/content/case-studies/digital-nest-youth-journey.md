@@ -5,6 +5,15 @@ excerpt: "I'd been a member of Digital NEST, then an instructor there. So I prop
 tags: ["User Research", "Journey Mapping", "0-to-1"]
 readTime: "6 min read"
 order: 4
+org: "Digital NEST · Salinas, CA"
+role: "UX Researcher (self-proposed)"
+team: "Solo, with Digital NEST leadership as sponsor"
+methods: ["Journey mapping", "5 interviews", "Membership data"]
+outcome: "Five near-zero-cost pilots. The End of Season Push recommendation lines up with the newsletter and social cadence Digital NEST now runs."
+tldr:
+  - "Proposed the study myself, as a former member and instructor who'd walked the journey."
+  - "17 new adult members joined; 5 finished mandatory onboarding. That one ratio reframed the whole problem."
+  - "Scoped every recommendation to what a small nonprofit staff could actually run."
 ---
 
 ## It all started when...

@@ -1,178 +1,250 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { links, portraitSrc, resumeHref } from '../lib/site';
+
+const facts = [
+  { label: 'Now', lines: ['PM, Evergreen (DALI Lab)', 'PM Mentor & Instructor, DALI Lab'] },
+  { label: 'Before', lines: ['Product Commercialization Intern, EchoStar', 'Product Director, Youphoria', 'Research co-lead, Design Corps'] },
+  { label: 'Studying', lines: ['Dartmouth College, Class of 2028', 'B.A. Computer Science, minor in Human-Centered Design'] },
+  { label: 'Seeking', lines: ['APM / PM internships, Summer 2027', 'Bay Area, anywhere in California, or remote'] },
+  { label: 'Drawn to', lines: ['AI products people have to trust', 'Wellness and behavioral health', 'Learning and education', 'Consumer social'] },
+  { label: 'From', lines: ['Salinas, California · now Hanover, NH'] },
+];
+
+const toolkit = [
+  { group: 'Research', items: ['Interviews', 'Surveys', 'Journey mapping', 'Usability testing', 'Synthesis'] },
+  { group: 'Product', items: ['Figma', 'Jira', 'Miro', 'Notion', 'Experiment design'] },
+  { group: 'Data', items: ['SQL', 'Snowflake', 'Streamlit', 'Python'] },
+  { group: 'Building', items: ['Next.js', 'TypeScript', 'Claude Code', 'Cursor', 'Codex', 'Gemini'] },
+];
+
+const community = [
+  'Officer, Dartmouth Society of Computer Science Students',
+  'Dartmouth Tech Consulting Group (formerly UX/UI designer)',
+  'QuestBridge Scholar',
+  'SHPE · ALPFA · ColorStack',
+];
 ---
 
-<Layout title="About" description="About Alex Cruz-Valencia — a product management student targeting APM internships for summer 2027.">
+<Layout
+  title="About"
+  description="About Alex Cruz-Valencia: CS and Human-Centered Design at Dartmouth, PM for Evergreen, first-gen from Salinas, CA. Seeking Summer 2027 APM/PM internships."
+>
 
-  <section class="about-hero content-width">
-    <p class="eyebrow">About</p>
-    <h1>The kind of PM who asks "why" before "what."</h1>
+  <section class="about-hero container">
+    <div class="about-hero-copy">
+      <p class="eyebrow">About</p>
+      <h1>The kind of PM who asks <em>why</em> before <em>what</em>.</h1>
+    </div>
+    {portraitSrc && (
+      <img class="about-portrait" src={portraitSrc} alt="Alex Cruz-Valencia" width="420" height="525" />
+    )}
   </section>
 
-  <hr />
-
-  <div class="about-body content-width">
+  <div class="about-body container">
     <div class="bio">
-      <p>
-        I'm Alex Cruz-Valencia, a Computer Science major and Human-Centered Design minor
-        at Dartmouth, Class of 2028. I grew up in Salinas, California, and I'm looking
-        for an APM or PM internship for summer 2027.
+      <p class="bio-lead">
+        I'm Alex Cruz-Valencia. I grew up in Salinas, California, I'm a first-generation college
+        student and QuestBridge Scholar, and I study Computer Science and Human-Centered Design at Dartmouth.
       </p>
+
       <p>
-        My work sits between building and understanding — I can read a schema and I can
-        run a user interview, and I think both belong in the room when a product decision
-        gets made. Most of my experience is in wellness and behavioral-health tools: I lead
-        design and development on <a href="https://evergreen.dartmouth.edu" target="_blank" rel="noopener noreferrer">Evergreen</a>,
-        Dartmouth's student-built generative-AI flourishing platform, and I've been Product
-        Director at <a href="https://youphoriaapp.com" target="_blank" rel="noopener noreferrer">Youphoria</a>,
-        a live social-wellness app.
+        Back home, I was a member at Digital NEST, a nonprofit in Salinas that gives young people a
+        path into tech, and later an instructor there. Last winter
+        I went back and proposed my own research study on why new members stall out, and one of my
+        recommendations is now how the org talks to its members. That's still my favorite kind of work:
+        knowing a group of people well enough to see what's actually in their way.
       </p>
+
       <p>
-        The through-line is a pull toward products that help people live a little better —
-        and a habit of testing my own assumptions before I trust them. On Evergreen I
-        recommended cutting a permissions ask by two-thirds based on student research;
-        when leadership disagreed, I negotiated a commitment to A/B test it rather than
-        let the question quietly disappear.
+        Today I'm the product manager for <strong>Evergreen</strong>, Dartmouth's student-built AI wellness
+        app, backed by $5M in research funding and in testing with about 200 students. I started by leading
+        its design team through the first build. Now I lead design and engineering, and I own the parts of
+        the AI that decide whether students trust it: what Evie can do on their behalf, and what it remembers
+        about them.
       </p>
+
       <p>
-        Outside product work, I box, play poker, sew and tailor my own clothes, and build
-        custom keyboards.
+        My work sits between building and understanding. I can read a schema and I can run a user interview,
+        and I think both belong in the room when a product decision gets made. This summer at EchoStar that
+        meant shipping a self-serve dashboard on Snowflake and deleting a feature I'd built once I checked my
+        assumption with the people it was for. At Youphoria it meant arguing for a social feature, Groups,
+        and owning it all the way to launch.
       </p>
+
+      <p>
+        The through-line is a pull toward products that help people live a little better, and a habit of
+        testing my own assumptions before I trust them. It's why my side project,{' '}
+        <a href="/#projects">Puente</a>, is still in validation instead of in the App Store: I'd rather find out
+        it's the wrong idea in a conversation than after a build.
+      </p>
+
+      <p>
+        Outside product work, I box, play poker, sew and tailor my own clothes, and build custom keyboards.
+      </p>
+
+      <div class="about-ctas">
+        <a href="/contact" class="btn">Get in touch →</a>
+        {resumeHref && <a href={resumeHref} class="btn btn-outline" target="_blank" rel="noopener noreferrer">Résumé (PDF)</a>}
+        <a href={links.linkedin} class="btn btn-outline" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
     </div>
 
-    <div class="about-aside">
-      <div class="aside-block">
-        <p class="aside-label">Currently</p>
-        <p>Dartmouth College, Class of 2028</p>
-        <p>B.A. Computer Science, minor in Human-Centered Design</p>
-      </div>
-      <div class="aside-block">
-        <p class="aside-label">Seeking</p>
-        <p>APM / PM Internships — Summer 2027</p>
-      </div>
-      <div class="aside-block">
-        <p class="aside-label">Interested in</p>
-        <p>Products</p>
-      </div>
-      <div class="aside-block">
-        <p class="aside-label">Based in</p>
-        <p>Salinas, CA · Hanover, NH</p>
-      </div>
-    </div>
-
-    <div class="about-ctas">
-      <a href="/contact" class="btn">Get in touch →</a>
-      <a href="https://www.linkedin.com/in/alex-cruz-valencia" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
-        LinkedIn ↗
-      </a>
-    </div>
+    <aside class="about-aside" aria-label="Quick facts">
+      <dl>
+        {facts.map(f => (
+          <div class="aside-block">
+            <dt class="mono">{f.label}</dt>
+            {f.lines.map(l => <dd>{l}</dd>)}
+          </div>
+        ))}
+      </dl>
+    </aside>
   </div>
+
+  <section class="container about-section" aria-labelledby="toolkit-title">
+    <div class="section-label">
+      <h2 id="toolkit-title">Toolkit</h2>
+      <span class="mono">What I reach for</span>
+    </div>
+    <div class="toolkit">
+      {toolkit.map(t => (
+        <div class="tool-group">
+          <p class="mono tool-label">{t.group}</p>
+          <ul role="list">
+            {t.items.map(i => <li class="tag">{i}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container about-section" aria-labelledby="community-title">
+    <div class="section-label">
+      <h2 id="community-title">On campus</h2>
+    </div>
+    <ul class="community" role="list">
+      {community.map(c => <li>{c}</li>)}
+    </ul>
+  </section>
 
 </Layout>
 
 <style>
   .about-hero {
-    padding: 5.5rem 0 3.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
   }
 
   .about-hero h1 {
-    font-size: clamp(2rem, 4.5vw, 3.125rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-top: 1rem;
-    line-height: 1.15;
-    max-width: 620px;
+    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    line-height: 1.04;
+    margin-top: 1.25rem;
+    max-width: 14ch;
+  }
+
+  .about-hero h1 em { font-style: italic; color: var(--color-accent); }
+
+  .about-portrait {
+    width: 260px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-card);
   }
 
   .about-body {
-    padding: 4rem 0 5rem;
     display: grid;
-    grid-template-columns: 1fr 280px;
-    grid-template-rows: auto auto;
-    gap: 3rem 4rem;
-    align-items: start;
-  }
-
-  .bio {
-    grid-column: 1;
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    gap: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-text);
   }
 
   .bio p {
     font-size: 1.0625rem;
-    line-height: 1.75;
+    line-height: 1.8;
+    margin-bottom: 1.35rem;
   }
 
-  .bio a {
+  .bio .bio-lead {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    line-height: 1.45;
+  }
+
+  .bio strong { font-weight: 600; }
+
+  .bio p a {
     color: var(--color-accent);
     text-decoration: underline;
+    text-underline-offset: 3px;
     text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-    transition: color 0.15s;
   }
 
-  .bio a:hover {
-    color: var(--color-accent-hover);
-  }
+  .about-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
 
-  .about-aside {
-    grid-column: 2;
-    grid-row: 1;
+  .about-aside dl {
+    position: sticky;
+    top: calc(var(--nav-height) + 2rem);
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
-    padding-top: 0.25rem;
+    gap: 1.4rem;
+    padding: 1.6rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
   }
 
-  .aside-block {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
+  .aside-block dt { color: var(--color-accent); margin-bottom: 0.25rem; }
 
-  .aside-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.3rem;
-  }
-
-  .aside-block p:not(.aside-label) {
-    font-size: 0.9375rem;
-    color: var(--color-text-secondary);
+  .aside-block dd {
+    font-size: 0.92rem;
     line-height: 1.5;
+    color: var(--color-text-secondary);
   }
 
-  .about-ctas {
-    grid-column: 1;
-    grid-row: 2;
-    display: flex;
-    gap: 0.875rem;
-    flex-wrap: wrap;
-    align-items: center;
+  .about-section { padding-top: 4.5rem; }
+
+  .toolkit {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 
-  @media (max-width: 640px) {
-    .about-body {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
+  .tool-label { color: var(--color-text-muted); margin-bottom: 0.6rem; }
 
-    .about-aside {
-      grid-column: 1;
-      grid-row: 2;
-      padding-top: 0;
-      border-top: 1px solid var(--color-border);
-      padding-top: 2rem;
-    }
+  .tool-group ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
-    .about-ctas {
-      grid-row: 3;
-    }
+  .community {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 2rem;
+    color: var(--color-text-secondary);
+  }
+
+  .community li { padding-left: 1.2rem; position: relative; }
+
+  .community li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 860px) {
+    .about-body { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-aside dl { position: static; }
+    .toolkit { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .about-hero { flex-direction: column-reverse; align-items: flex-start; padding-top: 3rem; }
+    .about-portrait { width: 180px; }
+    .toolkit, .community { grid-template-columns: 1fr; }
   }
 </style>
