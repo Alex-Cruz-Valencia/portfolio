@@ -1,0 +1,100 @@
+---
+import { orgs } from '../data/orgs';
+---
+
+<section class="logos" aria-labelledby="logos-title">
+  <div class="container logos-inner">
+    <p id="logos-title" class="mono logos-label">Where I've built</p>
+    <ul class="logo-row" role="list">
+      {orgs.map(o => {
+        const Tag = o.href ? 'a' : 'span';
+        const linkProps = o.href
+          ? { href: o.href, target: '_blank', rel: 'noopener noreferrer', title: `${o.name} ↗` }
+          : {};
+        return (
+          <li>
+            <Tag class:list={['org', { 'has-mark': o.logo && o.mark }]} {...linkProps}>
+              {o.logo && (
+                <span
+                  class:list={['logo-mask', { 'is-mark': o.mark }]}
+                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 3}; --scale: ${o.scale ?? 1};`}
+                  role="img"
+                  aria-label={o.mark ? undefined : o.name}
+                  aria-hidden={o.mark ? 'true' : undefined}
+                />
+              )}
+              {(!o.logo || o.mark) && <span class="wordmark">{o.name}</span>}
+            </Tag>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .logos { padding: 1.75rem 0 0.5rem; }
+
+  .logos-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .logos-label {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+  }
+
+  .logo-row {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem 1.85rem;
+  }
+
+  .org {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 34px;
+    color: var(--color-text);
+    opacity: 0.55;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  a.org:hover,
+  a.org:focus-visible {
+    opacity: 1;
+    color: var(--color-accent);
+  }
+
+  /* One-color silhouette: the logo's shape, painted with currentColor. */
+  .logo-mask {
+    display: block;
+    height: calc(20px * var(--scale, 1));
+    aspect-ratio: var(--ratio);
+    background-color: currentColor;
+    -webkit-mask: var(--logo) center / contain no-repeat;
+    mask: var(--logo) center / contain no-repeat;
+  }
+
+  .logo-mask.is-mark { height: calc(28px * var(--scale, 1)); }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 760px) {
+    .logos-inner { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+    .logo-row { gap: 0.7rem 1.6rem; }
+    .wordmark { font-size: 1rem; }
+    .logo-mask { height: calc(17px * var(--scale, 1)); }
+    .logo-mask.is-mark { height: calc(24px * var(--scale, 1)); }
+  }
+</style>

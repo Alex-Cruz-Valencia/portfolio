@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { plain, portraitSrc, resumeHref } from '../lib/site';
 import { testimonials } from '../data/testimonials';
+import LogoStrip from '../components/LogoStrip.astro';
 
 const studies = (await getCollection('caseStudies')).sort(
   (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
@@ -112,6 +113,8 @@ const principles = [
       </dl>
     </div>
   </section>
+
+  <LogoStrip />
 
   <!-- Case studies -->
   <section class="work" id="work" aria-labelledby="work-title">
