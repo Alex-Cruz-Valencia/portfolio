@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Alex Cruz-Valencia's PM portfolio site. Astro 7, deployed on Vercel. Targets APM internship recruiters. See README.md for full project docs.
+Alex Cruz-Valencia's PM portfolio site. Astro 7, deployed on Vercel at https://alexcruzvalencia.com. Targets APM internship recruiters. See README.md for full project docs.
 
 ## Dev Workflow
 
