@@ -43,7 +43,7 @@ const personSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -72,7 +72,7 @@ const personSchema = {
          Editorial "field notes": warm paper, ink, one deep green accent.
          Serif (Fraunces) for voice, Geist for reading, Geist Mono for metadata. */
       :root {
-        color-scheme: light dark;
+        color-scheme: light;
 
         --color-bg: #f6f4ee;
         --color-paper: #fbfaf6;
@@ -101,23 +101,6 @@ const personSchema = {
         --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --color-bg: #121311;
-          --color-paper: #181a17;
-          --color-text: #ecebe6;
-          --color-text-secondary: #b3b0a7;
-          --color-text-muted: #8a877f;
-          --color-accent: #7fcfa8;
-          --color-accent-hover: #a3e0c1;
-          --color-accent-light: #1a2a22;
-          --color-on-accent: #0c1f17;
-          --color-highlight: #3a3424;
-          --color-border: #2b2d29;
-          --color-surface: #1e201c;
-          --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.3), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
-        }
-      }
 
       /* ── Reset ── */
       *, *::before, *::after {
