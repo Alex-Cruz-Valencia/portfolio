@@ -41,13 +41,15 @@ Adding a `.md` file with valid frontmatter is all that's needed — routing and 
 
 ## Design System
 
-Editorial "field notes": warm paper background, ink text, one deep green accent (`#0f5c45`). Fraunces (serif) for headings and voice, Geist for body, Geist Mono for metadata labels. Tokens live in `src/layouts/Layout.astro` (`<style is:global>`), with a dark-mode set.
+**Live theme: Minimal** — white, ink, one cobalt accent (`#2448ff`), Inter Tight for everything, Geist Mono for small metadata labels. Case studies render as a numbered list of rows on the home page.
 
-- `.eyebrow` / `.mono` for small mono labels
-- `.btn` / `.btn-outline` for CTAs (pill-shaped)
-- `.tag` for outlined mono chips; `.status-pill` for the green "open to" badge
-- `.section-label` for section headings with a rule and a mono aside
-- `.content-width` (720px) for reading, `.container` (1120px) for wide layouts
+How it's built: base tokens and components live in `src/layouts/Layout.astro` (`<style is:global>`) and page-scoped styles. The active look is a theme layer in `src/styles/theme.css`, imported by the layout. Its selectors use a `:root:root:root:root` prefix so they beat Astro's scoped `[data-astro-cid]` selectors; keep that prefix when adding rules.
+
+Backup designs (full sites, switchable by merging the branch):
+- `design/dark` — near-black "dark product" theme with glow + glass cards
+- `design/editorial-original` — previous warm-paper editorial look (Fraunces serif, green accent)
+
+Shared helpers: `.eyebrow` / `.mono` labels, `.btn` / `.btn-outline`, `.tag`, `.status-pill`, `.section-label`, `.content-width` (reading), `.container` (wide).
 
 Case study frontmatter also supports `org`, `role`, `team`, `methods`, `outcome`, `tldr`, `featured` — these drive the home cards and the "At a glance" box.
 
