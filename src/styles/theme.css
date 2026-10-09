@@ -1,0 +1,168 @@
+/* ─────────────────────────────────────────────────────────────
+   Theme: MINIMAL — white, ink, one cobalt accent.
+   Layered over the base styles; `html` prefixes win specificity.
+   ───────────────────────────────────────────────────────────── */
+@import '@fontsource-variable/inter-tight';
+
+:root:root {
+  --color-bg: #ffffff;
+  --color-paper: #ffffff;
+  --color-surface: #f5f6f8;
+  --color-text: #0a0a0a;
+  --color-text-secondary: #3d3d3d;
+  --color-text-muted: #737373;
+  --color-accent: #2448ff;
+  --color-accent-hover: #1636d6;
+  --color-accent-light: #eef1ff;
+  --color-on-accent: #ffffff;
+  --color-highlight: #e6ebff;
+  --color-border: #e8e8e8;
+  --shadow-card: none;
+  --font-display: 'Inter Tight Variable', 'Geist Variable', system-ui, sans-serif;
+  --font-body: 'Inter Tight Variable', 'Geist Variable', system-ui, sans-serif;
+  --radius-card: 14px;
+  --max-wide: 1200px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:root {
+    --color-bg: #0a0a0a;
+    --color-paper: #0a0a0a;
+    --color-surface: #141414;
+    --color-text: #f5f5f5;
+    --color-text-secondary: #c4c4c4;
+    --color-text-muted: #8a8a8a;
+    --color-accent: #7f97ff;
+    --color-accent-hover: #a3b3ff;
+    --color-accent-light: #141a33;
+    --color-on-accent: #0a0a0a;
+    --color-highlight: #1d2547;
+    --color-border: #232323;
+  }
+}
+
+html { font-size: 17px; }
+:root:root:root:root body { letter-spacing: -0.01em; }
+:root:root:root:root h1, :root:root:root:root h2, :root:root:root:root h3, :root:root:root:root h4 { font-weight: 600; letter-spacing: -0.04em; }
+:root:root:root:root h1 em, :root:root:root:root .hero h1 em, :root:root:root:root .about-hero h1 em { font-style: normal; }
+
+/* Nav: plain text links, résumé as text + arrow */
+:root:root:root:root nav { background: color-mix(in srgb, var(--color-bg) 85%, transparent); border-bottom-color: transparent; }
+:root:root:root:root .nav-mark { display: none; }
+:root:root:root:root .nav-logo { font-family: var(--font-body); font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; }
+:root:root:root:root .nav-links a.active::after { bottom: -8px; height: 1.5px; background: var(--color-text); }
+:root:root:root:root .nav-links .nav-resume { border: none; padding: 0; }
+:root:root:root:root .nav-links .nav-resume::after { content: ' ↗'; color: var(--color-accent); }
+:root:root:root:root .nav-links .nav-resume:hover { background: none; color: var(--color-accent); }
+
+/* Buttons + chips */
+:root:root:root:root .btn { border-radius: 999px; font-weight: 500; padding: 0.75rem 1.35rem; }
+:root:root:root:root .btn:hover { transform: none; }
+:root:root:root:root .btn-outline { border: 1px solid var(--color-border); }
+:root:root:root:root .btn-outline:hover { border-color: var(--color-text); background: transparent; }
+:root:root:root:root .tag { border-radius: 6px; border-color: var(--color-border); }
+:root:root:root:root .status-pill { border: none; background: none; padding-left: 0; }
+:root:root:root:root .status-pill::before { background: var(--color-accent); box-shadow: 0 0 0 4px var(--color-accent-light); }
+:root:root:root:root .section-label { border-bottom: none; margin-bottom: 1.25rem; padding-bottom: 0; }
+:root:root:root:root .section-label h2 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); }
+
+/* Hero: big, tight, left-aligned */
+:root:root:root:root .hero { padding: 5rem 0 2.5rem; }
+:root:root:root:root .hero h1 { font-size: clamp(2.6rem, 6.6vw, 5.6rem); line-height: 0.98; letter-spacing: -0.05em; max-width: 13.5ch; font-weight: 600; }
+:root:root:root:root .hero-sub { font-size: 1.2rem; color: var(--color-text-secondary); max-width: 600px; }
+:root:root:root:root .hero-sub a { border-bottom: 1px solid var(--color-border); }
+:root:root:root:root .hero-sub a:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* Stats: hairline top rule, quiet numbers */
+:root:root:root:root .proof-row { border-top: 1px solid var(--color-text); border-bottom: none; }
+:root:root:root:root .proof-item + .proof-item { border-left: none; }
+:root:root:root:root .proof-item dd { color: var(--color-text); font-family: var(--font-display); font-weight: 500; letter-spacing: -0.045em; font-size: clamp(2.1rem, 3.6vw, 2.9rem); }
+:root:root:root:root .proof-item dt { font-size: 0.86rem; color: var(--color-text-muted); max-width: 230px; }
+
+/* Logo strip */
+:root:root:root:root .wordmark { font-family: var(--font-body); font-weight: 600; letter-spacing: -0.03em; }
+:root:root:root:root .org { opacity: 0.45; }
+
+/* Case studies → numbered list rows */
+:root:root:root:root .featured,
+:root:root:root:root .study-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  column-gap: 2rem;
+  align-items: start;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.9rem 3.5rem 1.9rem 0;
+  margin: 0;
+  transform: none !important;
+  transition: background 0.25s var(--ease-out);
+}
+:root:root:root:root .featured { grid-template-columns: minmax(0, 1.75fr) minmax(0, 0.85fr); column-gap: 3rem; background: linear-gradient(90deg, var(--color-surface), transparent 90%); }
+:root:root:root:root .featured-copy { display: grid; grid-template-columns: 180px minmax(0, 1fr); column-gap: 2rem; align-content: start; }
+:root:root:root:root .featured .card-meta,
+:root:root:root:root .study-card .card-meta { grid-column: 1; grid-row: 1 / span 5; flex-direction: column; gap: 0.2rem; margin: 0.35rem 0 0; }
+:root:root:root:root .featured-copy > :not(.card-meta),
+:root:root:root:root .study-card > :not(.card-meta) { grid-column: 2; }
+:root:root:root:root .featured-side { border-left: none; padding: 0.35rem 0 0; gap: 0.9rem; }
+:root:root:root:root .featured .card-cta,
+:root:root:root:root .study-card .card-cta { position: absolute; right: 0.25rem; top: 1.9rem; margin: 0; padding: 0; font-size: 0; }
+:root:root:root:root .featured .card-cta::after,
+:root:root:root:root .study-card .card-cta::after { content: '→'; font-size: 1.3rem; color: var(--color-text-muted); transition: transform 0.25s var(--ease-out), color 0.2s; display: inline-block; }
+:root:root:root:root .featured:hover .card-cta::after,
+:root:root:root:root .study-card:hover .card-cta::after { transform: translateX(4px); color: var(--color-accent); }
+:root:root:root:root .featured h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.12; margin-bottom: 0.6rem; }
+:root:root:root:root .study-card h3 { font-size: clamp(1.35rem, 2.1vw, 1.65rem); line-height: 1.15; margin-bottom: 0.5rem; }
+:root:root:root:root .card-sub { margin: 0 0 0.6rem; }
+:root:root:root:root .study-card .card-excerpt { -webkit-line-clamp: 2; }
+:root:root:root:root .card-outcome { border-top: none; padding-top: 0; margin-top: 0.4rem; }
+:root:root:root:root .card-org { color: var(--color-text); font-weight: 500; }
+:root:root:root:root .study-grid { display: block; border-bottom: 1px solid var(--color-border); }
+:root:root:root:root .featured:hover,
+:root:root:root:root .study-card:hover { background: linear-gradient(90deg, var(--color-accent-light), transparent 90%); }
+:root:root:root:root .side-outcome { font-family: var(--font-body); font-size: 0.98rem; }
+:root:root:root:root .card-tags { display: none; }
+
+/* Testimonial: big quote, no box */
+:root:root:root:root .voice { background: none; border: none; padding: 0; border-left: 2px solid var(--color-accent); padding-left: 1.75rem; border-radius: 0; }
+:root:root:root:root .voice blockquote { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.3rem, 2.2vw, 1.75rem); letter-spacing: -0.03em; line-height: 1.35; }
+
+/* Now */
+:root:root:root:root .now-item { border-top: 1px solid var(--color-border); }
+:root:root:root:root .now-where { color: var(--color-accent); }
+
+/* More work */
+:root:root:root:root .project-status { background: var(--color-accent-light); color: var(--color-accent); }
+:root:root:root:root .project-title { font-size: 1.3rem; }
+
+/* Case study page */
+:root:root:root:root .glance-card { background: var(--color-surface); border: none; box-shadow: none; }
+:root:root:root:root .glance-tldr li::before { color: var(--color-accent); }
+:root:root:root:root .glance-outcome p:last-child { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.02em; }
+:root:root:root:root .case-header h1 { letter-spacing: -0.05em; font-size: clamp(2.2rem, 5vw, 3.6rem); }
+:root:root:root:root .case-body h2 { font-size: 1.5rem; }
+:root:root:root:root .case-body blockquote p { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.02em; }
+:root:root:root:root .case-end-cta { background: var(--color-surface); border: none; }
+:root:root:root:root .case-end-cta p, :root:root:root:root .case-nav-title { font-family: var(--font-body); font-weight: 600; letter-spacing: -0.03em; }
+
+/* About + contact */
+:root:root:root:root .about-body { border-top-color: var(--color-text); }
+:root:root:root:root .bio .bio-lead { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.03em; }
+:root:root:root:root .about-aside dl { background: var(--color-surface); border: none; }
+:root:root:root:root .principle h3 { letter-spacing: -0.035em; }
+:root:root:root:root .contact-value { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.03em; }
+
+/* Footer */
+:root:root:root:root .footer-line { font-family: var(--font-body); font-weight: 600; letter-spacing: -0.04em; }
+
+@media (max-width: 760px) {
+  :root:root:root:root .featured, :root:root:root:root .study-card, :root:root:root:root .featured-copy { grid-template-columns: minmax(0, 1fr); padding-right: 0; }
+  :root:root:root:root .featured { padding-right: 0; }
+  :root:root:root:root .featured .card-meta, :root:root:root:root .study-card .card-meta { grid-row: auto; flex-direction: row; flex-wrap: wrap; gap: 0.2rem 0.9rem; margin: 0 2rem 0.6rem 0; }
+  :root:root:root:root .featured-copy > :not(.card-meta), :root:root:root:root .study-card > :not(.card-meta) { grid-column: 1; }
+  :root:root:root:root .featured-side { padding-top: 1rem; }
+  :root:root:root:root .nav-name { display: inline; }
+}
