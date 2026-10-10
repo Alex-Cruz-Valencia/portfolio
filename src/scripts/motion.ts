@@ -9,8 +9,10 @@ let lenis: Lenis | null = null;
 function startLenis() {
   if (reduce.matches || lenis) return;
   lenis = new Lenis({
-    lerp: 0.11,
-    wheelMultiplier: 1,
+    // Higher lerp = page catches up to the wheel faster. 0.11 felt laggy;
+    // 0.22 keeps the glide but responds almost immediately.
+    lerp: 0.22,
+    wheelMultiplier: 1.1,
     anchors: { offset: -84 },
   });
   const raf = (t: number) => {
