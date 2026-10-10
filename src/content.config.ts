@@ -20,6 +20,22 @@ const caseStudies = defineCollection({
     featured: z.boolean().optional(),
     // Plain keyword line under the title, for skimmers.
     subtitle: z.string().optional(),
+    // Optional visuals. Paths are under /public.
+    // gallery: up to 3 phone screens shown above the "At a glance" box.
+    gallery: z.array(z.object({
+      src: z.string(),
+      alt: z.string(),
+      caption: z.string().optional(),
+      kind: z.enum(['image', 'video']).default('image'),
+      // 'framed' = the asset already includes a phone frame; 'screen' = bare screen, framed in CSS.
+      frame: z.enum(['framed', 'screen']).default('framed'),
+      poster: z.string().optional(),
+    })).optional(),
+    // Small animated mark next to the case study kicker.
+    mascot: z.string().optional(),
+    // Image used on the home page card.
+    cardImage: z.string().optional(),
+    cardImageAlt: z.string().optional(),
   }),
 });
 

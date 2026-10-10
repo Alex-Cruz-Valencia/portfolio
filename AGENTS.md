@@ -49,6 +49,10 @@ Backup designs (full sites, switchable by merging the branch):
 - `design/dark` — near-black "dark product" theme with glow + glass cards
 - `design/editorial-original` — previous warm-paper editorial look (Fraunces serif, green accent)
 
+Motion layer (`src/scripts/motion.ts`, styles at the bottom of `theme.css`): Lenis smooth scroll, scroll reveals (JS adds `.will-reveal`/`.is-in`, so no-JS shows everything), stat count-up via `data-count-*` on the home proof row, off-screen video pausing, nav hairline on scroll, and view-transition title morphs (`transition:name="title-<id>"` on home cards and case study h1). All of it is disabled under `prefers-reduced-motion`.
+
+Case study visuals (frontmatter): `gallery` (up to 3 phone screens above "At a glance"; `kind: image|video`, `frame: framed|screen`; video `src` has no extension and needs `.webm` + `.mp4`), `mascot` (small animated mark by the kicker), `cardImage`/`cardImageAlt` (phone peeking out of the featured home card). Assets live in `public/work/<slug>/`. Inline figures in the body use `<figure class="case-figure case-figure-wide">`.
+
 Shared helpers: `.eyebrow` / `.mono` labels, `.btn` / `.btn-outline`, `.tag`, `.status-pill`, `.section-label`, `.content-width` (reading), `.container` (wide).
 
 Case study frontmatter also supports `org`, `role`, `team`, `methods`, `outcome`, `tldr`, `featured` — these drive the home cards and the "At a glance" box.

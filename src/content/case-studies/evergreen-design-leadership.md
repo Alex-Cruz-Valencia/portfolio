@@ -7,6 +7,22 @@ readTime: "8 min read"
 subtitle: "AI product · Trust & data permissions · Leading designers without authority"
 order: 1
 featured: true
+mascot: "/work/evergreen/evie-mascot.webp"
+cardImage: "/work/evergreen/evie-chat.webp"
+cardImageAlt: "Evergreen app on an iPhone: Evie, the AI, helping a student set a SMART goal for undergraduate research"
+gallery:
+  - src: "/work/evergreen/home.webp"
+    alt: "Evergreen home screen: categories like study habits and social connections, recommended dialogues, and campus events"
+    caption: "Home. Dialogues, events, and videos picked for the student."
+    frame: "screen"
+  - src: "/work/evergreen/evie-chat.webp"
+    alt: "Evie, Evergreen's AI, walking a student through setting a SMART goal, with suggested replies"
+    caption: "Evie. Conversations with suggested replies, so a student never faces a blank box."
+  - src: "/work/evergreen/evie-mood-checkin"
+    kind: "video"
+    poster: "/work/evergreen/evie-mood-checkin.jpg"
+    alt: "A student tells Evie they are not feeling great, then drags a five-point mood scale from Not great to I'm good"
+    caption: "Mood check-in. A 5-point scale you drag, not a form you fill out."
 org: "Evergreen · DALI Lab & Dartmouth Center for Technology and Behavioral Health"
 role: "Product Manager (promoted from Project Assistant) — design team in v1, now design and engineering"
 team: "6 designers, with project leadership and faculty/staff partners as stakeholders"
@@ -14,7 +30,7 @@ methods: ["Campus survey", "Student interviews", "50-student preference survey",
 outcome: "Shipped the V1 testing build and kept the permissions question alive. Now PM for all of Evergreen: upfront permissions cut from 8 to 2, onboarding from 80 questions to 30."
 tldr:
   - "Students told us an AI that asks for personal data felt like a lot to trust. I recommended cutting the upfront ask from 8 (six permissions, two integrations) to 2."
-  - "Leadership said no twice. So I stopped arguing for the change and won a commitment to A/B test it instead."
+  - "Leadership said no twice. So I stopped arguing and won a commitment to A/B test it. Once real students started onboarding, the evidence finished the argument: 8 became 2."
   - "Settled an AI-imagery debate with a 50-student survey. 48 picked real photos, and told us they felt more ethical."
   - "Held scope against partner feature creep through the V1 crunch, and the boundary stuck."
 ---
@@ -78,14 +94,33 @@ The work has also moved deeper into the AI itself. Three things are on my plate 
 
 - **Tool calling for Evie**, Evergreen's AI. Deciding what Evie can do on a student's behalf, which tools come first, and what it should never be allowed to call on its own in a wellness context.
 - **How Evie remembers.** What it keeps, for how long, what it deliberately forgets, and how a student can see, correct, or delete what it knows about them. This is the permissions question again, one layer down.
-- **An onboarding friction audit.** Onboarding is where students are dropping off. I'm finding out exactly where and why before anyone redesigns it.
+- **An onboarding friction audit.** Onboarding has already been rebuilt once (more on that below), and it's still where students drop off most. I'm finding out exactly where and why before the next round of changes.
 
-Two numbers already moved. The upfront permissions ask, the one leadership rejected twice in V1, is now down from **8 to 2**: six permissions and two integrations on the way in became two, with the rest asked for later, in context. And onboarding went from **80 questions to 30**, split across 4 shorter modules instead of one long wall, because a student who quits on question 40 never meets Evie at all.
+<figure class="case-figure case-figure-wide">
+  <video autoplay muted loop playsinline preload="metadata" poster="/work/evergreen/insights.jpg" aria-label="Evergreen Insights screen: a month of moods, sleep, activity, and a weekly steps graph">
+    <source src="/work/evergreen/insights.webm" type="video/webm" />
+    <source src="/work/evergreen/insights.mp4" type="video/mp4" />
+  </video>
+  <figcaption>Insights: mood, sleep, and activity in one place. This is what the permissions are <em>for</em>, which is exactly why when and how we ask for them matters.</figcaption>
+</figure>
+
+## How 8 became 2
+
+What finally moved the permissions question wasn't a better slide. It was real students.
+
+Once Evergreen started onboarding the research group, the thing my team had been saying since V1 stopped being an opinion. Students were going through the flow, and the friction showed up where we'd said it would. More and more people on the project came around to what we'd argued from the beginning: this needed real changes, not polish.
+
+And it turned out to be bigger than permissions. The whole onboarding changed, which is what we'd been advocating from the start.
+
+- **The upfront ask went from 8 to 2.** Six permissions and two integrations on the way in became two, with the rest asked for later, in context.
+- **Onboarding went from 80 questions to 30**, split across 4 shorter modules instead of one long wall, because a student who quits on question 40 never meets Evie at all.
+
+I didn't win this one in a meeting. The A/B commitment kept the question open, and real users answered it. My job was to make sure the question was still on the table, and the case was ready, when the evidence showed up.
 
 I'll keep updating this page as the tool-calling and memory work lands.
 
 ## What this revealed about how I think
 
-Every real decision here was made without the authority to just make it. What moved leadership on permissions wasn't a better argument, it was a testable compromise. What settled the image debate wasn't seniority, it was 50 survey responses. What fixed my team structure was listening to the people in it.
+Every real decision here was made without the authority to just make it. What kept the permissions question alive wasn't a better argument, it was a testable compromise, and what settled it was real users. What settled the image debate wasn't seniority, it was 50 survey responses. What fixed my team structure was listening to the people in it.
 
 The pattern I'd take anywhere: when you can't win the decision, win a way to *learn* the decision. And come to the room with a plan, not just a concern.

@@ -18,10 +18,10 @@ const majorProjects = projects.filter(p => !p.data.minor);
 const minorProjects = projects.filter(p => p.data.minor);
 
 const proof = [
-  { value: '$5M', label: 'in Dartmouth research funding behind Evergreen, the AI product I PM' },
-  { value: '200', label: 'students in Evergreen\'s current research group, up from 15 at first test' },
-  { value: '41', label: 'student voices in research cited in Dartmouth\'s official residential communities report' },
-  { value: '8 → 2', label: 'upfront permissions on Evergreen, after leadership rejected the cut twice in V1' },
+  { value: '$5M', count: { to: 5, prefix: '$', suffix: 'M' }, label: 'in Dartmouth research funding behind Evergreen, the AI product I PM' },
+  { value: '200', count: { to: 200 }, label: 'students in Evergreen\'s current research group, up from 15 at first test' },
+  { value: '41', count: { to: 41 }, label: 'student voices in research cited in Dartmouth\'s official residential communities report' },
+  { value: '8 → 2', count: { from: 8, to: 2, prefix: '8 → ' }, label: 'upfront permissions on Evergreen. Leadership said no twice; real users changed their minds' },
 ];
 
 const now = [
@@ -56,8 +56,10 @@ const now = [
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="status-pill reveal" style="--i: 0">Dartmouth '28 · Open to Summer 2027 APM / PM internships</p>
-        <h1 class="reveal" style="--i: 1">
-          I build products people <em>trust</em>.
+        <h1 class="hero-title" aria-label="I build products people trust.">
+          {['I', 'build', 'products', 'people'].map((w, i) => (
+            <Fragment><span class="w" aria-hidden="true"><span style={`--w:${i}`}>{w}</span></span>{' '}</Fragment>
+          ))}<span class="w" aria-hidden="true"><span style="--w:4"><em>trust</em>.</span></span>
         </h1>
         <p class="hero-sub reveal" style="--i: 2">
           Right now that's{' '}
@@ -87,7 +89,12 @@ const now = [
       <dl class="proof-row">
         {proof.map(p => (
           <div class="proof-item scroll-in">
-            <dd>{p.value}</dd>
+            <dd
+              data-count-to={p.count?.to}
+              data-count-from={p.count?.from}
+              data-prefix={p.count?.prefix}
+              data-suffix={p.count?.suffix}
+            >{p.value}</dd>
             <dt>{p.label}</dt>
           </div>
         ))}
@@ -113,7 +120,7 @@ const now = [
               <span>{plain(featured.data.date)}</span>
               {featured.data.readTime && <span>{featured.data.readTime}</span>}
             </p>
-            <h3>{plain(featured.data.title)}</h3>
+            <h3 transition:name={`title-${featured.id}`}>{plain(featured.data.title)}</h3>
             {featured.data.subtitle && <p class="mono card-sub">{featured.data.subtitle}</p>}
             <p class="card-excerpt">{plain(featured.data.excerpt)}</p>
             <span class="card-cta">Read the case study →</span>
@@ -137,6 +144,11 @@ const now = [
               </div>
             )}
           </div>
+          {featured.data.cardImage && (
+            <div class="featured-visual" aria-hidden="true">
+              <img src={featured.data.cardImage} alt="" width="640" height="1333" loading="lazy" decoding="async" />
+            </div>
+          )}
         </a>
       )}
 
@@ -147,7 +159,7 @@ const now = [
               <span class="card-org">{study.data.org?.split(' · ')[0]}</span>
               <span>{plain(study.data.date)}</span>
             </p>
-            <h3>{plain(study.data.title)}</h3>
+            <h3 transition:name={`title-${study.id}`}>{plain(study.data.title)}</h3>
             {study.data.subtitle && <p class="mono card-sub">{study.data.subtitle}</p>}
             <p class="card-excerpt">{plain(study.data.excerpt)}</p>
             {study.data.outcome && (
@@ -266,13 +278,6 @@ const now = [
     @keyframes rise {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: none; }
-    }
-    @supports (animation-timeline: view()) {
-      .scroll-in {
-        animation: rise linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 35%;
-      }
     }
   }
 
