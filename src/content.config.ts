@@ -36,6 +36,8 @@ const caseStudies = defineCollection({
     // Image used on the home page card.
     cardImage: z.string().optional(),
     cardImageAlt: z.string().optional(),
+    // 'window' adds an app-window bar (dashboards, websites); 'plain' for documents.
+    cardFrame: z.enum(['window', 'plain']).default('window'),
   }),
 });
 
