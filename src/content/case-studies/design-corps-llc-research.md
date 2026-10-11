@@ -1,7 +1,7 @@
 ---
 title: "What 41 students told us about where they live"
 date: "Sep 2025 – Mar 2026"
-excerpt: "Co-leading research on Dartmouth's residential communities, I got a directive mid-project to stop doing interviews. I complied in spirit and kept interviewing anyway. The focus groups that were supposed to replace them fell through — and the research survived because the work never actually stopped."
+excerpt: "Co-leading research on Dartmouth's residential communities, I got a directive mid-project to stop doing interviews. I complied in spirit and kept interviewing anyway. The focus groups leadership planned to run instead never happened, and the research survived because the work never actually stopped."
 tags: ["User Research", "Research Leadership", "Stakeholder Management"]
 readTime: "6 min read"
 subtitle: "User research · 41 student voices · Influencing senior leadership"
@@ -16,7 +16,7 @@ methods: ["23 interviews", "Group interview", "Focus group", "Site tours", "Peer
 outcome: "Seven recommendations to campus leadership. Our findings are cited by name in the Working Group's official June 2026 report to Dartmouth leadership."
 tldr:
   - "41 student voices across 15 of Dartmouth's 17 living learning communities, plus benchmarking at 7 peer schools."
-  - "Leadership told us to stop interviewing and switch to focus groups. I kept interviews running in the meantime. The focus groups never happened."
+  - "After we ran our own focus group, leadership told us to stop interviewing and wait for focus groups they would organize. I kept interviews running in the meantime. Theirs never happened."
   - "The research is cited in the Working Group's June 2026 report and fed into Dartmouth's roughly $500M residential communities initiative."
 ---
 
@@ -32,7 +32,7 @@ We covered 15 of the 17 communities. The research base:
 
 - 23 individual semi-structured student interviews
 - one group interview with 10 students
-- one focus group with 8 students
+- one focus group with 8 students, which we organized ourselves
 - 4 in-person tours of standalone residences
 - benchmarking against residential models at 7 peer institutions
 
@@ -57,13 +57,15 @@ We covered 15 of the 17 communities. The research base:
 
 ## The directive
 
-Partway through, leadership made a call: stop the individual interviews, switch to focus groups.
+Early on, we ran a focus group entirely on our own initiative. We set it up end to end: recruited the eight students, wrote the questions, bought the food, and ran the session ourselves.
 
-I agreed with the intent — focus groups would add a kind of signal we didn't have. But I also knew from experience how hard focus groups are to actually organize on a college campus: scheduling eight students in one room at one time is a project in itself. Stopping our interviews cold, on the promise of focus groups that didn't exist yet, felt like trading a bird in the hand for one that might never land.
+Afterward, leadership made a call: stop the individual interviews and wait for focus groups they would organize, using their own research process.
 
-So I asked for and got permission to keep running individual interviews in the meantime — not instead of the focus groups, alongside the wait for them.
+I understood the reasoning: they had their own way of running research, and focus groups add a kind of signal interviews don't. But we had just organized one ourselves, so I knew exactly how hard they are to pull off on a college campus. Getting eight students in one room at one time is a project in itself. Stopping our interviews cold, on the promise of sessions that didn't exist yet, felt like trading a bird in the hand for one that might never land.
 
-Leadership's focus groups fell through entirely. They never came together. If we'd stopped interviewing when the directive came down, we'd have lost weeks and had a thin research base to show for the whole engagement. Because the work hadn't actually paused, we still had a solid foundation of real conversations.
+So I asked for and got permission to keep running individual interviews while we waited. Not instead of their focus groups, alongside the wait for them.
+
+Their focus groups never came together. Nothing was ever scheduled for us. If we'd stopped interviewing when the directive came down, we'd have had almost no data to show for the engagement. Because we kept going, our interviews became the foundation of everything we delivered.
 
 ## What we delivered
 
