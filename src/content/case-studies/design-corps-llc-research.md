@@ -35,6 +35,23 @@ We covered 15 of the 17 communities. The research base:
 
 41 student voices in total, plus the outside comparison. Enough to see patterns repeat and to tell a real theme from a one-off.
 
+<figure class="case-figure">
+  <div class="stat-viz" role="img" aria-label="41 student voices: 23 individual interviews, 10 in a group interview, and 8 in a focus group. Plus 15 of 17 communities covered, 7 peer institutions benchmarked, and 4 site visits.">
+    <div class="dot-grid dot-grid-41" aria-hidden="true"><span class="dot on m1" style="--d:0ms"></span><span class="dot on m1" style="--d:25ms"></span><span class="dot on m1" style="--d:50ms"></span><span class="dot on m1" style="--d:75ms"></span><span class="dot on m1" style="--d:100ms"></span><span class="dot on m1" style="--d:125ms"></span><span class="dot on m1" style="--d:150ms"></span><span class="dot on m1" style="--d:175ms"></span><span class="dot on m1" style="--d:200ms"></span><span class="dot on m1" style="--d:225ms"></span><span class="dot on m1" style="--d:250ms"></span><span class="dot on m1" style="--d:275ms"></span><span class="dot on m1" style="--d:300ms"></span><span class="dot on m1" style="--d:325ms"></span><span class="dot on m1" style="--d:350ms"></span><span class="dot on m1" style="--d:375ms"></span><span class="dot on m1" style="--d:400ms"></span><span class="dot on m1" style="--d:425ms"></span><span class="dot on m1" style="--d:450ms"></span><span class="dot on m1" style="--d:475ms"></span><span class="dot on m1" style="--d:500ms"></span><span class="dot on m1" style="--d:525ms"></span><span class="dot on m1" style="--d:550ms"></span><span class="dot on m2" style="--d:575ms"></span><span class="dot on m2" style="--d:600ms"></span><span class="dot on m2" style="--d:625ms"></span><span class="dot on m2" style="--d:650ms"></span><span class="dot on m2" style="--d:675ms"></span><span class="dot on m2" style="--d:700ms"></span><span class="dot on m2" style="--d:725ms"></span><span class="dot on m2" style="--d:750ms"></span><span class="dot on m2" style="--d:775ms"></span><span class="dot on m2" style="--d:800ms"></span><span class="dot on m3" style="--d:825ms"></span><span class="dot on m3" style="--d:850ms"></span><span class="dot on m3" style="--d:875ms"></span><span class="dot on m3" style="--d:900ms"></span><span class="dot on m3" style="--d:925ms"></span><span class="dot on m3" style="--d:950ms"></span><span class="dot on m3" style="--d:975ms"></span><span class="dot on m3" style="--d:1000ms"></span></div>
+    <ul class="dot-legend" aria-hidden="true">
+      <li><span class="dot on m1"></span><strong>23</strong> individual interviews</li>
+      <li><span class="dot on m2"></span><strong>10</strong> in a group interview</li>
+      <li><span class="dot on m3"></span><strong>8</strong> in a focus group</li>
+    </ul>
+    <div class="stat-chips" aria-hidden="true">
+      <p><strong>15<span>/17</span></strong>communities covered</p>
+      <p><strong>7</strong>peer institutions benchmarked</p>
+      <p><strong>4</strong>residences toured</p>
+    </div>
+  </div>
+  <figcaption>The research base: 41 student voices, each dot one student.</figcaption>
+</figure>
+
 ## The directive
 
 Partway through, leadership made a call: stop the individual interviews, switch to focus groups.
@@ -47,15 +64,12 @@ Leadership's focus groups fell through entirely. They never came together. If we
 
 ## What we delivered
 
-Seven recommendations, short- and long-term:
+Seven recommendations, split into what could start now and what needs longer runway:
 
-1. A rebuild of the LLC web presence
-2. Recurring community rituals
-3. Standardized student leadership roles across communities
-4. Co-locating residential spaces that currently sit apart
-5. Formal partnerships with academic departments
-6. A cross-LLC advisory board
-7. An annual review process — proposed specifically so that whatever got implemented from this would actually be tracked
+<figure class="case-figure case-figure-wide">
+  <div class="roadmap"><div class="roadmap-lane"><p class="mono roadmap-label">Short term · 0–2 years</p><ol><li value="1"><span class="mono roadmap-num">01</span><div><strong>Rebuild the LLC web presence</strong><span>Students mostly learned about LLCs by word of mouth; the official pages didn't show what living there is like.</span></div></li><li value="2"><span class="mono roadmap-num">02</span><div><strong>Recurring, informal rituals</strong><span>Shared meals and low-stakes gatherings were the most effective way to keep a community going.</span></div></li><li value="3"><span class="mono roadmap-num">03</span><div><strong>Consistent leadership roles</strong><span>Houses with visible, present leadership reported healthier communities.</span></div></li></ol></div><div class="roadmap-lane"><p class="mono roadmap-label">Long term · 2+ years</p><ol><li value="4"><span class="mono roadmap-num">04</span><div><strong>Anchor each LLC in a shared space</strong><span>A shared physical space consistently predicted stronger community.</span></div></li><li value="5"><span class="mono roadmap-num">05</span><div><strong>Partnerships with academic departments</strong><span>The strongest LLCs sat inside a wider academic or cultural ecosystem.</span></div></li><li value="6"><span class="mono roadmap-num">06</span><div><strong>A cross-LLC advisory board</strong><span>LLCs vary widely in structure, programming, and support.</span></div></li><li value="7"><span class="mono roadmap-num">07</span><div><strong>An annual review process</strong><span>None of this had been piloted yet, so whatever gets implemented needs tracking.</span></div></li></ol></div></div>
+  <figcaption>The seven recommendations, each paired with the finding behind it.</figcaption>
+</figure>
 
 We presented to the working group and again at Technigala, Dartmouth's tech-and-design showcase.
 

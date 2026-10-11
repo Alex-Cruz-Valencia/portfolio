@@ -53,6 +53,8 @@ Motion layer (`src/scripts/motion.ts`, styles at the bottom of `theme.css`): Len
 
 Case study visuals (frontmatter): `gallery` (up to 3 phone screens above "At a glance"; `kind: image|video`, `frame: framed|screen`; video `src` has no extension and needs `.webm` + `.mp4`), `mascot` (small animated mark by the kicker), `cardImage`/`cardImageAlt` (phone peeking out of the featured home card). Assets live in `public/work/<slug>/`. Inline figures in the body use `<figure class="case-figure case-figure-wide">`.
 
+Research visuals are plain HTML inside the case study markdown (no images): `.journey-map` (Digital NEST stages), `.stat-viz` with `.dot-grid` / `.bar-track` (dots and bars animate in on reveal), and `.roadmap` (Design Corps recommendations). Styles live at the bottom of `theme.css`.
+
 Shared helpers: `.eyebrow` / `.mono` labels, `.btn` / `.btn-outline`, `.tag`, `.status-pill`, `.section-label`, `.content-width` (reading), `.container` (wide).
 
 Case study frontmatter also supports `org`, `role`, `team`, `methods`, `outcome`, `tldr`, `featured` — these drive the home cards and the "At a glance" box.
