@@ -32,7 +32,7 @@ html { font-size: 17px; }
 :root:root:root:root h1 em, :root:root:root:root .hero h1 em, :root:root:root:root .about-hero h1 em { font-style: normal; }
 
 /* Nav: plain text links, résumé as text + arrow */
-:root:root:root:root nav { background: color-mix(in srgb, var(--color-bg) 85%, transparent); border-bottom-color: transparent; }
+:root:root:root:root nav { background: color-mix(in srgb, var(--color-bg) 94%, transparent); border-bottom-color: transparent; }
 :root:root:root:root .nav-mark { display: none; }
 :root:root:root:root .nav-logo { font-family: var(--font-body); font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; }
 :root:root:root:root .nav-links a.active::after { bottom: -8px; height: 1.5px; background: var(--color-text); }
@@ -328,3 +328,14 @@ html.lenis, html.lenis body { height: auto; }
   :root:root:root:root .hero-title em::after { transform: scaleX(0); animation: underline-in 0.9s var(--ease-butter) 1.05s forwards; }
 }
 @keyframes underline-in { to { transform: scaleX(1); } }
+
+/* Dark product screenshots (EchoStar recreation) */
+:root:root:root:root .case-figure-dark video,
+:root:root:root:root .case-figure-dark img { background: #0e1117; box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 24px 48px -28px rgba(10, 14, 30, 0.45); }
+:root:root:root:root .case-figure a { display: block; border-radius: 18px; transition: transform 0.6s var(--ease-butter); }
+:root:root:root:root .case-figure a:hover { transform: translateY(-3px); }
+:root:root:root:root .figure-flag {
+  display: inline-block; margin-right: 0.4rem; padding: 0.1em 0.6em;
+  border: 1px solid #e9c46a; border-radius: 999px; background: #fff8e6; color: #8a6200;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.02em; white-space: nowrap;
+}
