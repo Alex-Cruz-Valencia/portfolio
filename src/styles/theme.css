@@ -339,3 +339,28 @@ html.lenis, html.lenis body { height: auto; }
   border: 1px solid #e9c46a; border-radius: 999px; background: #fff8e6; color: #8a6200;
   font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.02em; white-space: nowrap;
 }
+
+/* Two screenshots side by side in a case study */
+:root:root:root:root .case-figure-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+:root:root:root:root .case-figure-pair figcaption { grid-column: 1 / -1; }
+:root:root:root:root .case-figure-pair img { border-radius: 14px; }
+@media (max-width: 760px) { :root:root:root:root .case-figure-pair { grid-template-columns: minmax(0, 1fr); } }
+
+/* Study rows with a product preview on the right */
+:root:root:root:root .study-card.has-visual { grid-template-columns: 180px minmax(0, 1fr) 300px; column-gap: 2rem; }
+:root:root:root:root .study-card.has-visual > :not(.card-meta):not(.card-visual) { grid-column: 2; }
+:root:root:root:root .study-card .card-visual { grid-column: 3; grid-row: 1 / span 6; align-self: center; padding-top: 2.5rem; }
+:root:root:root:root .study-card .card-visual img {
+  display: block; width: 100%; height: auto; border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 18px 36px -20px rgba(10, 14, 30, 0.5);
+  transition: transform 0.8s var(--ease-butter), box-shadow 0.8s var(--ease-butter);
+}
+:root:root:root:root .study-card.has-visual:hover .card-visual img { transform: translateY(-6px); box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 26px 44px -20px rgba(10, 14, 30, 0.55); }
+@media (max-width: 960px) {
+  :root:root:root:root .study-card.has-visual { grid-template-columns: 180px minmax(0, 1fr) 220px; }
+}
+@media (max-width: 760px) {
+  :root:root:root:root .study-card.has-visual { grid-template-columns: minmax(0, 1fr); }
+  :root:root:root:root .study-card.has-visual > :not(.card-meta):not(.card-visual) { grid-column: 1; }
+  :root:root:root:root .study-card .card-visual { grid-column: 1; grid-row: auto; padding-top: 1rem; }
+}
