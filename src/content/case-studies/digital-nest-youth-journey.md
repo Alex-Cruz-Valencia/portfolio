@@ -25,17 +25,17 @@ Digital NEST is a nonprofit in Salinas, California, that gives young people a pa
 
 That's why the research was my idea, not an assignment. I proposed investigating whether there were specific points in the member journey where people hit friction. Leadership reviewed the proposal, approved it, and brought me on to run it. About a month, start to finish.
 
-<figure class="case-figure">
-  <div class="browser-frame"><img src="/work/digital-nest/site-home.webp" loading="lazy" decoding="async" alt="Digital NEST homepage with the headline Your Future, Built Right Here and buttons to join the NEST or support its work." /></div>
-  <figcaption>Digital NEST: free tech programs, technology access, and community for young people in Salinas. (digitalnest.org)</figcaption>
+<figure class="case-figure case-figure-wide">
+  <div class="browser-frame"><img src="/work/digital-nest/site-map.webp" width="1600" height="914" loading="lazy" decoding="async" alt="Digital NEST website: Prosperity belongs to our communities, beside a map of its California sites including Salinas, Watsonville, Gilroy, Modesto and Stockton." /></div>
+  <figcaption>Digital NEST runs sites from the Central Coast to the Central Valley. My study focused on Salinas, where I'd been a member and then an instructor. (digitalnest.org)</figcaption>
 </figure>
 
 ## The approach
 
 I built a journey map of how members experience joining Digital NEST and progressing through it, then pressure-tested it with five interviews — youth members and staff. Being a former member and instructor made access easy: people I already knew, a journey I'd personally walked.
 
-<figure class="case-figure">
-  <div class="browser-frame"><img src="/work/digital-nest/site-start-here.webp" loading="lazy" decoding="async" alt="Digital NEST's Start Here section: 1, tell us about yourself; 2, we'll reach out within 48 hours; 3, experience the NEST. A Member Interest Form button sits below." /></div>
+<figure class="case-figure case-figure-wide">
+  <div class="browser-frame"><img src="/work/digital-nest/site-start-here.webp" width="1600" height="914" loading="lazy" decoding="async" alt="Digital NEST's Start Here section: 1, tell us about yourself; 2, we'll reach out within 48 hours; 3, experience the NEST. A Member Interest Form button sits below." /></div>
   <figcaption>The front door as Digital NEST describes it: an interest form, a call within 48 hours, a visit. My study looked at what happens on either side of those three steps. (digitalnest.org)</figcaption>
 </figure>
 
@@ -72,6 +72,11 @@ I organized findings into three stages: **Entry**, **Engagement**, **Progression
     </li>
   </ol>
   <figcaption>The journey map, simplified: where members hit friction at each stage, and the pilot designed for it.</figcaption>
+</figure>
+
+<figure class="case-figure case-figure-wide">
+  <div class="browser-frame"><img src="/work/digital-nest/site-pathway.webp" width="1600" height="790" loading="lazy" decoding="async" alt="Digital NEST's three program stages as photo cards: Launch, turn your skills into a paycheck; Explore, find what excites you; Build, go deeper and get professional." /></div>
+  <figcaption>The pathway members move through: Explore, Build, Launch. The Progression stage of my map is about the handoffs between them. (digitalnest.org)</figcaption>
 </figure>
 
 ## The number that anchored everything
