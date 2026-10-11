@@ -55,6 +55,8 @@ Case study visuals (frontmatter): `gallery` (up to 3 phone screens above "At a g
 
 Research visuals are plain HTML inside the case study markdown (no images): `.journey-map` (Digital NEST stages), `.stat-viz` with `.dot-grid` / `.bar-track` (dots and bars animate in on reveal), and `.roadmap` (Design Corps recommendations). Styles live at the bottom of `theme.css`.
 
+Website screenshots use `<div class="browser-frame">` inside a `.case-figure`; quotes from public documents use `<blockquote class="doc-quote">` with a `.doc-source` line and `<mark>` for the key sentence. Home rows take `cardFrame: window|plain` (plain for documents).
+
 Shared helpers: `.eyebrow` / `.mono` labels, `.btn` / `.btn-outline`, `.tag`, `.status-pill`, `.section-label`, `.content-width` (reading), `.container` (wide).
 
 Case study frontmatter also supports `org`, `role`, `team`, `methods`, `outcome`, `tldr`, `featured` — these drive the home cards and the "At a glance" box.
