@@ -6,9 +6,6 @@ tags: ["User Research", "Journey Mapping", "0-to-1"]
 readTime: "6 min read"
 subtitle: "UX research · Onboarding & retention · Nonprofit"
 order: 4
-cardImage: "/work/digital-nest/card-preview.webp"
-cardImageAlt: "Pages from the written report: the overview, cover, and purpose"
-cardFrame: "plain"
 org: "Digital NEST · Salinas, CA"
 role: "UX Researcher (self-proposed)"
 team: "Solo, with Digital NEST leadership as sponsor"
@@ -25,11 +22,6 @@ tldr:
 Digital NEST is a nonprofit in Salinas, California, that gives young people a path into tech careers. I know it from the inside — I was a member there, and later an instructor.
 
 That's why the research was my idea, not an assignment. I proposed investigating whether there were specific points in the member journey where people hit friction. Leadership reviewed the proposal, approved it, and brought me on to run it. About a month, start to finish.
-
-<figure class="case-figure case-figure-wide">
-  <img src="/work/digital-nest/report-pages.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Three pages of the written report Following the Youth Journey: the cover, the overview of its structure, and the purpose and limitations section." />
-  <figcaption>The written report I delivered to Digital NEST leadership in December 2025: cover, overview, and purpose.</figcaption>
-</figure>
 
 ## The approach
 
