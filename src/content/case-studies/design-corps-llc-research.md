@@ -6,6 +6,9 @@ tags: ["User Research", "Research Leadership", "Stakeholder Management"]
 readTime: "6 min read"
 subtitle: "User research · 41 student voices · Influencing senior leadership"
 order: 3
+cardImage: "/work/design-corps/report-cover.webp"
+cardImageAlt: "Cover of Dartmouth's June 2026 Report of the Residential Communities Working Group"
+cardFrame: "plain"
 org: "Design Corps · Dartmouth Design Initiative"
 role: "Research co-lead (Project Manager)"
 team: "Two-person research subgroup, reporting to a working group under the SVP for Campus Life"
@@ -71,6 +74,11 @@ Seven recommendations, split into what could start now and what needs longer run
   <figcaption>The seven recommendations, each paired with the finding behind it.</figcaption>
 </figure>
 
+<figure class="case-figure">
+  <div class="browser-frame"><img src="/work/design-corps/llc-site.webp" loading="lazy" decoding="async" alt="Dartmouth's Living Learning Communities website: a green header, About, Communities and Get Involved tabs, and a photo slideshow." /></div>
+  <figcaption>Dartmouth's LLC website (fall 2026). Students said it didn't show what living in each house is actually like, which is why recommendation 01 is a rebuild.</figcaption>
+</figure>
+
 We presented to the working group and again at Technigala, Dartmouth's tech-and-design showcase.
 
 ## The outcome
@@ -79,7 +87,16 @@ As of our final report, none of the seven had been formally piloted. The researc
 
 What it did do mattered more than I expected. Leadership told us the findings closely matched concerns they already held but hadn't seen laid out with evidence behind them — the difference between a hunch and a documented case.
 
-Then it showed up in writing. The Residential Communities Working Group's official June 2026 report to Dartmouth leadership, circulated campus-wide by the President's office, names Design Corps' role in collecting the student-experience data and cites a specific finding from our interviews: that undergraduate advisor support is uneven across communities, so a first-year's experience depends heavily on where they land. That report feeds into Dartmouth's roughly $500M residential communities initiative.
+Then it showed up in writing.
+
+<figure class="case-figure">
+  <blockquote class="doc-quote">
+    <p class="mono doc-source">Report of the Residential Communities Working Group · June 2026 · p. 26</p>
+    <p>…Program participation that starts strong in the fall tends to drop off for the first year. <mark>According to the Design Corps researcher interviews, UGA support is uneven across communities, meaning a first-year's experience varies significantly depending on where they land.</mark></p>
+  </blockquote>
+  <figcaption>Dartmouth's official report, which also notes that two Design Corps researchers staffed each subcommittee (p. 9). <a href="https://ccl.dartmouth.edu/sites/ccl/files/2026-06/Residential%20Communities%20Working%20Group%20Final%20Report_0.pdf" target="_blank" rel="noopener noreferrer">Read the full report ↗</a></figcaption>
+</figure>
+ The Residential Communities Working Group's official June 2026 report to Dartmouth leadership, circulated campus-wide by the President's office, names Design Corps' role in collecting the student-experience data and cites a specific finding from our interviews: that undergraduate advisor support is uneven across communities, so a first-year's experience depends heavily on where they land. That report feeds into Dartmouth's roughly $500M residential communities initiative.
 
 The annual review process we proposed exists to close the adoption loop over time.
 

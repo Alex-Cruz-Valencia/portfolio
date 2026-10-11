@@ -6,6 +6,8 @@ tags: ["User Research", "Journey Mapping", "0-to-1"]
 readTime: "6 min read"
 subtitle: "UX research · Onboarding & retention · Nonprofit"
 order: 4
+cardImage: "/work/digital-nest/site-home.webp"
+cardImageAlt: "Digital NEST homepage: Your Future, Built Right Here"
 org: "Digital NEST · Salinas, CA"
 role: "UX Researcher (self-proposed)"
 team: "Solo, with Digital NEST leadership as sponsor"
@@ -23,9 +25,19 @@ Digital NEST is a nonprofit in Salinas, California, that gives young people a pa
 
 That's why the research was my idea, not an assignment. I proposed investigating whether there were specific points in the member journey where people hit friction. Leadership reviewed the proposal, approved it, and brought me on to run it. About a month, start to finish.
 
+<figure class="case-figure">
+  <div class="browser-frame"><img src="/work/digital-nest/site-home.webp" loading="lazy" decoding="async" alt="Digital NEST homepage with the headline Your Future, Built Right Here and buttons to join the NEST or support its work." /></div>
+  <figcaption>Digital NEST: free tech programs, technology access, and community for young people in Salinas. (digitalnest.org)</figcaption>
+</figure>
+
 ## The approach
 
 I built a journey map of how members experience joining Digital NEST and progressing through it, then pressure-tested it with five interviews — youth members and staff. Being a former member and instructor made access easy: people I already knew, a journey I'd personally walked.
+
+<figure class="case-figure">
+  <div class="browser-frame"><img src="/work/digital-nest/site-start-here.webp" loading="lazy" decoding="async" alt="Digital NEST's Start Here section: 1, tell us about yourself; 2, we'll reach out within 48 hours; 3, experience the NEST. A Member Interest Form button sits below." /></div>
+  <figcaption>The front door as Digital NEST describes it: an interest form, a call within 48 hours, a visit. My study looked at what happens on either side of those three steps. (digitalnest.org)</figcaption>
+</figure>
 
 I organized findings into three stages: **Entry**, **Engagement**, **Progression**.
 
