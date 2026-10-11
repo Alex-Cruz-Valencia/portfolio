@@ -19,7 +19,7 @@ tldr:
 
 ## It all started when...
 
-The product team I joined at EchoStar as a Product Commercialization Intern was tracking how its consumer products performed — sales, inventory, returns, sentiment — the way a lot of teams do: someone pulled data into a spreadsheet, cut it by hand, and circulated the result. Every refresh was a person-hour. Every question that didn't fit the existing cuts was a new person-hour.
+The product team I joined at EchoStar as a Product Commercialization Intern was tracking how its consumer products performed — sales, inventory, customer sentiment — the way a lot of teams do: someone pulled data into a spreadsheet, cut it by hand, and circulated the result. Every refresh was a person-hour. Every question that didn't fit the existing cuts was a new person-hour.
 
 My project was to replace that with a living, self-serve dashboard on top of the company's Snowflake data. The brief was open-ended. What actually determined the shape of the thing were three constraints I didn't fully see coming.
 
@@ -59,13 +59,12 @@ I was wrong about what "executive" meant here. I'd imported a generic idea — e
 
 ## Constraint three: the scope had to come down
 
-I started with a wide map: dedicated pages for sales, inventory, returns, geography, sales channels, pricing, financials, customer sentiment — nearly every angle on product performance.
+I started with a wide map: dedicated pages for sales, bring-your-own activations, inventory, returns, geography, sales channels, pricing, financials, customer sentiment — nearly every angle on product performance.
 
-Narrowing that became one of the last real decisions of the project. I landed on four core categories: **sales** (is it selling), **inventory** (is there enough of it), **returns** (are customers bringing devices back), and **customer sentiment** (how do people feel about it). The cuts:
+Narrowing that became one of the last real decisions of the project. I landed on four core pages: **sales** (is it selling), **bring your own** (which customers activate a phone they already own, and through which channels), **inventory** (is there enough of it), and **customer sentiment** (how do people feel about it). The test for making the cut was simple: the data behind it had to be valid, and it had to be something leadership actually focused on. Those four passed. The rest didn't:
 
 - **Financials** got cut even though I was sure we'd keep it. Product financial data was sensitive enough internally that it wasn't appropriate territory for an intern project to touch.
-- **Geography, channels, and pricing** got cut to data-availability gaps and the timeline.
-- The **returns** page, which I'd underestimated as a minor initiative, turned out to matter most — it reflected a real strategic pivot the company was actually making.
+- **Returns, geography, channels, and pricing** got cut because the data behind them wasn't solid enough to validate in time, or they weren't where leadership's attention was.
 
 One more guardrail came out of that data-validity warning: I limited the dashboard to figures that already had precedent on legacy dashboards, just presented better. New metrics invented by an intern were exactly the kind of thing that could backfire.
 
