@@ -6,6 +6,8 @@ tags: ["Prioritization", "Data & Analytics", "Stakeholder Management"]
 readTime: "6 min read"
 subtitle: "Data product · Prioritization under constraint · Killing my own feature"
 order: 2
+cardImage: "/work/echostar/card-preview.webp"
+cardImageAlt: "Recreated dashboard with synthetic data: Device Sales page with four headline numbers"
 org: "EchoStar"
 role: "Product Commercialization Intern"
 team: "Solo build, with my manager, leadership, and a cross-functional manager as stakeholders"
@@ -68,9 +70,10 @@ Narrowing that became one of the last real decisions of the project. I landed on
 
 One more guardrail came out of that data-validity warning: I limited the dashboard to figures that already had precedent on legacy dashboards, just presented better. New metrics invented by an intern were exactly the kind of thing that could backfire.
 
-<figure class="case-figure case-figure-wide case-figure-dark">
+<figure class="case-figure case-figure-wide case-figure-dark case-figure-pair">
   <a href="/work/echostar/01-sales-overview.webp" target="_blank" rel="noopener"><img src="/work/echostar/01-sales-overview.webp" width="1600" height="1150" loading="lazy" decoding="async" alt="Sales page with four KPI cards and a weekly sales line chart by device, with filters in a left sidebar." /></a>
-  <figcaption>The Sales page leads with four numbers leaders already trusted (last week's units, change vs the 4-week average, top movers) and lets them re-cut the trend by device, channel, OEM or plan. (Recreation, synthetic data.)</figcaption>
+  <a href="/work/echostar/03-byo-channels.webp" target="_blank" rel="noopener"><img src="/work/echostar/03-byo-channels.webp" width="1600" height="1150" loading="lazy" decoding="async" alt="Bring Your Own page with a share-by-channel line chart and a bar chart of BYO activations by channel." /></a>
+  <figcaption><strong>Sales</strong> leads with four numbers leaders already trusted (last week's units, change vs the 4-week average, top movers) and re-cuts the trend by device, channel, OEM or plan. <strong>Bring your own</strong> shows where customers arrive with a phone they already own, and how that shifts month to month. Click either to enlarge. (Recreation, synthetic data.)</figcaption>
 </figure>
 
 

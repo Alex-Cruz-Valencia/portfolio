@@ -154,7 +154,7 @@ const now = [
 
       <div class="study-grid" role="list">
         {rest.map(study => (
-          <a href={`/case-studies/${study.id}`} class="study-card scroll-in" role="listitem">
+          <a href={`/case-studies/${study.id}`} class:list={['study-card scroll-in', { 'has-visual': study.data.cardImage }]} role="listitem">
             <p class="mono card-meta">
               <span class="card-org">{study.data.org?.split(' · ')[0]}</span>
               <span>{plain(study.data.date)}</span>
@@ -166,6 +166,11 @@ const now = [
               <p class="card-outcome"><span class="mono">Outcome</span>{study.data.outcome}</p>
             )}
             <span class="card-cta">Read →</span>
+            {study.data.cardImage && (
+              <div class="card-visual" aria-hidden="true">
+                <img src={study.data.cardImage} alt="" width="900" height="343" loading="lazy" decoding="async" />
+              </div>
+            )}
           </a>
         ))}
       </div>
