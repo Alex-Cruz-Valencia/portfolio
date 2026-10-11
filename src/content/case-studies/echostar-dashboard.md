@@ -59,6 +59,14 @@ One more guardrail came out of that data-validity warning: I limited the dashboa
 
 A four-page Streamlit dashboard reading live from Snowflake, covering roughly 13 product launches from the first half of 2026 and data ranging from hundreds of thousands to millions of rows. It covered the parts of product performance the team looked at most, built only on numbers with an existing paper trail, and replaced a recurring manual analysis with something people could query themselves.
 
+<figure class="case-figure case-figure-wide">
+  <video autoplay muted loop playsinline preload="metadata" poster="/work/echostar/dashboard-walkthrough-poster.jpg" aria-label="Screen recording of the dashboard recreation moving through the Sales, Launch Ramp, Bring Your Own, Inventory and Customer Sentiment pages, ending on agent summaries of customer calls">
+    <source src="/work/echostar/dashboard-walkthrough.webm" type="video/webm" />
+    <source src="/work/echostar/dashboard-walkthrough.mp4" type="video/mp4" />
+  </video>
+  <figcaption>A recreation with synthetic data. The real dashboard ran on internal data I can't share. Shown here: sales, the launch ramp, and clicking a chart to read the customer calls behind it.</figcaption>
+</figure>
+
 AI did a lot of the drafting. I wrote SQL and Python with Gemini and other AI coding tools, and built a custom Gemini Gem that turned scattered stakeholder feedback into prioritized action items. But nothing an AI drafted shipped without me checking it. I hand-validated hundreds of data points against expected results and the existing internal dashboards before handoff, because a fast wrong number is worse than a slow right one.
 
 > "Over ten short weeks, Alex architected an enterprise-grade AI platform to measure product performance. His process was a masterclass in precision — hand-validating hundreds of data points to ensure long-term stability, all while grounding every decision in a sharp, value-driven business case."
