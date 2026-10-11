@@ -167,7 +167,7 @@ const now = [
             )}
             <span class="card-cta">Read →</span>
             {study.data.cardImage && (
-              <div class="card-visual" aria-hidden="true">
+              <div class:list={['card-visual', `card-visual-${study.data.cardFrame}`]} aria-hidden="true">
                 <img src={study.data.cardImage} alt="" width="1000" height="683" loading="lazy" decoding="async" />
               </div>
             )}
