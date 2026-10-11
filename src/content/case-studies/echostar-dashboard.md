@@ -23,6 +23,14 @@ The product team I joined at EchoStar as a Product Commercialization Intern was 
 
 My project was to replace that with a living, self-serve dashboard on top of the company's Snowflake data. The brief was open-ended. What actually determined the shape of the thing were three constraints I didn't fully see coming.
 
+<figure class="case-figure case-figure-wide case-figure-dark">
+  <video autoplay muted loop playsinline preload="metadata" poster="/work/echostar/dashboard-walkthrough-poster.jpg" aria-label="Screen recording of a dark dashboard moving through Sales, Launch Ramp, Bring Your Own, Inventory and Customer Sentiment pages, ending on a list of call summaries.">
+    <source src="/work/echostar/dashboard-walkthrough.webm" type="video/webm" />
+    <source src="/work/echostar/dashboard-walkthrough.mp4" type="video/mp4" />
+  </video>
+  <figcaption><span class="figure-flag">Recreation · synthetic data</span> The real dashboard ran on internal data I can't share, so I rebuilt its structure in Streamlit with a fictional company and generated numbers. A 15-second click-through: sales, launch ramp, bring-your-own, inventory, then from a churn chart straight to the customer calls behind it.</figcaption>
+</figure>
+
 ## Constraint one: I couldn't get the tools I wanted
 
 I evaluated three ways to build it: Looker Studio, Tableau, and Streamlit.
@@ -41,6 +49,12 @@ Then I checked the assumption. Through my manager, leadership's feedback came ba
 
 Between that feedback and a tight timeline, I scrapped Executive Mode entirely. It wasn't worth building or maintaining something the intended users had told me they wouldn't use.
 
+<figure class="case-figure case-figure-wide case-figure-dark">
+  <a href="/work/echostar/04-customer-calls.webp" target="_blank" rel="noopener"><img src="/work/echostar/04-customer-calls.webp" width="1600" height="1150" loading="lazy" decoding="async" alt="Customer Calls panel filtered to one device and billing calls, showing call stats and summary cards tagged by sentiment, intent and outcome." /></a>
+  <figcaption>What leadership wanted instead of a summary: more depth. Click any bar on the sentiment page and the agent summaries of the matching calls appear, so leaders can read what customers actually said. (Recreation, synthetic data.)</figcaption>
+</figure>
+
+
 I was wrong about what "executive" meant here. I'd imported a generic idea — executives want less detail — instead of asking the actual executives.
 
 ## Constraint three: the scope had to come down
@@ -55,9 +69,21 @@ Narrowing that became one of the last real decisions of the project. I landed on
 
 One more guardrail came out of that data-validity warning: I limited the dashboard to figures that already had precedent on legacy dashboards, just presented better. New metrics invented by an intern were exactly the kind of thing that could backfire.
 
+<figure class="case-figure case-figure-wide case-figure-dark">
+  <a href="/work/echostar/01-sales-overview.webp" target="_blank" rel="noopener"><img src="/work/echostar/01-sales-overview.webp" width="1600" height="1150" loading="lazy" decoding="async" alt="Sales page with four KPI cards and a weekly sales line chart by device, with filters in a left sidebar." /></a>
+  <figcaption>The Sales page leads with four numbers leaders already trusted (last week's units, change vs the 4-week average, top movers) and lets them re-cut the trend by device, channel, OEM or plan. (Recreation, synthetic data.)</figcaption>
+</figure>
+
+
 ## What shipped
 
 A four-page Streamlit dashboard reading live from Snowflake, covering roughly 13 product launches from the first half of 2026 and data ranging from hundreds of thousands to millions of rows. It covered the parts of product performance the team looked at most, built only on numbers with an existing paper trail, and replaced a recurring manual analysis with something people could query themselves.
+
+<figure class="case-figure case-figure-wide case-figure-dark">
+  <a href="/work/echostar/02-launch-ramp.webp" target="_blank" rel="noopener"><img src="/work/echostar/02-launch-ramp.webp" width="1600" height="960" loading="lazy" decoding="async" alt="Line chart of daily units by days since launch for 13 devices, two of which spike far above the rest in the first 10 days." /></a>
+  <figcaption>The launch ramp lines every device up on day 0, so the strongest launches stand out at a glance. (Recreation, synthetic data.)</figcaption>
+</figure>
+
 
 AI did a lot of the drafting. I wrote SQL and Python with Gemini and other AI coding tools, and built a custom Gemini Gem that turned scattered stakeholder feedback into prioritized action items. But nothing an AI drafted shipped without me checking it. I hand-validated hundreds of data points against expected results and the existing internal dashboards before handoff, because a fast wrong number is worse than a slow right one.
 
