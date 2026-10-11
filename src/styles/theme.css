@@ -346,21 +346,28 @@ html.lenis, html.lenis body { height: auto; }
 :root:root:root:root .case-figure-pair img { border-radius: 14px; }
 @media (max-width: 760px) { :root:root:root:root .case-figure-pair { grid-template-columns: minmax(0, 1fr); } }
 
-/* Study rows with a product preview on the right */
-:root:root:root:root .study-card.has-visual { grid-template-columns: 180px minmax(0, 1fr) 300px; column-gap: 2rem; }
+/* Study rows with a product preview on the right, framed like an app window */
+:root:root:root:root .study-card.has-visual { grid-template-columns: 180px minmax(0, 1fr) minmax(0, 0.95fr); column-gap: 2rem; }
 :root:root:root:root .study-card.has-visual > :not(.card-meta):not(.card-visual) { grid-column: 2; }
-:root:root:root:root .study-card .card-visual { grid-column: 3; grid-row: 1 / span 6; align-self: center; padding-top: 2.5rem; }
-:root:root:root:root .study-card .card-visual img {
-  display: block; width: 100%; height: auto; border-radius: 12px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 18px 36px -20px rgba(10, 14, 30, 0.5);
+:root:root:root:root .study-card .card-visual {
+  grid-column: 3; grid-row: 1 / span 6; align-self: center;
+  margin-top: 3.25rem; /* clear the arrow */
+  border-radius: 12px; overflow: hidden; background: #0e1117;
+  box-shadow: 0 0 0 1px rgba(10, 14, 30, 0.12), 0 24px 48px -24px rgba(10, 14, 30, 0.55);
   transition: transform 0.8s var(--ease-butter), box-shadow 0.8s var(--ease-butter);
 }
-:root:root:root:root .study-card.has-visual:hover .card-visual img { transform: translateY(-6px); box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 26px 44px -20px rgba(10, 14, 30, 0.55); }
-@media (max-width: 960px) {
-  :root:root:root:root .study-card.has-visual { grid-template-columns: 180px minmax(0, 1fr) 220px; }
+:root:root:root:root .study-card .card-visual::before {
+  /* window bar with three dots */
+  content: ''; display: block; height: 22px; background:
+    radial-gradient(circle at 14px 11px, #ff5f57 4px, transparent 4.5px),
+    radial-gradient(circle at 28px 11px, #febc2e 4px, transparent 4.5px),
+    radial-gradient(circle at 42px 11px, #28c840 4px, transparent 4.5px),
+    #1b1e26;
 }
+:root:root:root:root .study-card .card-visual img { display: block; width: 100%; height: auto; }
+:root:root:root:root .study-card.has-visual:hover .card-visual { transform: translateY(-6px); box-shadow: 0 0 0 1px rgba(10, 14, 30, 0.12), 0 32px 56px -24px rgba(10, 14, 30, 0.6); }
 @media (max-width: 760px) {
   :root:root:root:root .study-card.has-visual { grid-template-columns: minmax(0, 1fr); }
   :root:root:root:root .study-card.has-visual > :not(.card-meta):not(.card-visual) { grid-column: 1; }
-  :root:root:root:root .study-card .card-visual { grid-column: 1; grid-row: auto; padding-top: 1rem; }
+  :root:root:root:root .study-card .card-visual { grid-column: 1; grid-row: auto; margin-top: 1.25rem; }
 }
