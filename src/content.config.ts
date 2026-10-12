@@ -10,7 +10,7 @@ const caseStudies = defineCollection({
     tags: z.array(z.string()).optional(),
     readTime: z.string().optional(),
     order: z.number().optional(),
-    // "At a glance" box — what a recruiter skimming for 30 seconds needs.
+    // "At a glance" box: what a recruiter skimming for 30 seconds needs.
     role: z.string().optional(),
     team: z.string().optional(),
     org: z.string().optional(),

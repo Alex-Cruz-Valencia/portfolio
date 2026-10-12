@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────
-   Theme: MINIMAL — white, ink, one cobalt accent.
+   Theme: MINIMAL: white, ink, one cobalt accent.
    Layered over the base styles; `html` prefixes win specificity.
    ───────────────────────────────────────────────────────────── */
 @import '@fontsource-variable/inter-tight';
@@ -481,3 +481,13 @@ html.lenis, html.lenis body { height: auto; }
 
 :root:root:root:root .study-card .card-visual-plain { box-shadow: 0 0 0 1px var(--color-border), 0 24px 44px -28px rgba(10, 14, 30, 0.35); }
 :root:root:root:root .study-card .card-visual-plain::before { display: none; }
+
+/* Project write-ups behind "Read more" */
+:root:root:root:root .project-body { margin-top: 1rem; padding: 1.25rem 1.4rem; background: var(--color-surface); border-radius: 14px; }
+:root:root:root:root .project-body h4 { font-size: 0.72rem; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-accent); margin: 1.4rem 0 0.4rem; }
+:root:root:root:root .project-body h4:first-child { margin-top: 0; }
+:root:root:root:root .project-body p, :root:root:root:root .project-body li { font-size: 0.95rem; line-height: 1.6; color: var(--color-text-secondary); margin: 0 0 0.6rem; }
+:root:root:root:root .project-body ul, :root:root:root:root .project-body ol { padding-left: 1.2rem; margin: 0 0 0.6rem; }
+:root:root:root:root .project-body strong { color: var(--color-text); font-weight: 600; }
+:root:root:root:root .project-more summary { cursor: pointer; }
+:root:root:root:root .project-more[open] summary { color: var(--color-accent); }

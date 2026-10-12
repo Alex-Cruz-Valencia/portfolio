@@ -37,17 +37,17 @@ schema: z.object({
 })
 ```
 
-Adding a `.md` file with valid frontmatter is all that's needed — routing and home page listing update automatically.
+Adding a `.md` file with valid frontmatter is all that's needed: routing and home page listing update automatically.
 
 ## Design System
 
-**Live theme: Minimal** — white, ink, one cobalt accent (`#2448ff`), Inter Tight for everything, Geist Mono for small metadata labels. Case studies render as a numbered list of rows on the home page.
+**Live theme: Minimal**: white, ink, one cobalt accent (`#2448ff`), Inter Tight for everything, Geist Mono for small metadata labels. Case studies render as a numbered list of rows on the home page.
 
 How it's built: base tokens and components live in `src/layouts/Layout.astro` (`<style is:global>`) and page-scoped styles. The active look is a theme layer in `src/styles/theme.css`, imported by the layout. Its selectors use a `:root:root:root:root` prefix so they beat Astro's scoped `[data-astro-cid]` selectors; keep that prefix when adding rules.
 
 Backup designs (full sites, switchable by merging the branch):
-- `design/dark` — near-black "dark product" theme with glow + glass cards
-- `design/editorial-original` — previous warm-paper editorial look (Fraunces serif, green accent)
+- `design/dark`: near-black "dark product" theme with glow + glass cards
+- `design/editorial-original`: previous warm-paper editorial look (Fraunces serif, green accent)
 
 Motion layer (`src/scripts/motion.ts`, styles at the bottom of `theme.css`): Lenis smooth scroll, scroll reveals (JS adds `.will-reveal`/`.is-in`, so no-JS shows everything), stat count-up via `data-count-*` on the home proof row, off-screen video pausing, nav hairline on scroll, and view-transition title morphs (`transition:name="title-<id>"` on home cards and case study h1). All of it is disabled under `prefers-reduced-motion`.
 
@@ -59,7 +59,7 @@ Website screenshots use `<div class="browser-frame">` inside a `.case-figure`; q
 
 Shared helpers: `.eyebrow` / `.mono` labels, `.btn` / `.btn-outline`, `.tag`, `.status-pill`, `.section-label`, `.content-width` (reading), `.container` (wide).
 
-Case study frontmatter also supports `org`, `role`, `team`, `methods`, `outcome`, `tldr`, `featured` — these drive the home cards and the "At a glance" box.
+Case study frontmatter also supports `org`, `role`, `team`, `methods`, `outcome`, `tldr`, `featured`: these drive the home cards and the "At a glance" box.
 
 Optional assets render only when present (see `src/lib/site.ts`): `public/Alex_Cruz-Valencia_Resume.pdf` (nav, hero, footer, contact; `/resume.pdf` redirects via `vercel.json`) and `public/alex.jpg` (hero + About). Testimonials live in `src/data/testimonials.ts`; the section hides while empty.
 
@@ -78,6 +78,12 @@ Optional assets render only when present (see `src/lib/site.ts`): `public/Alex_C
 - `public/alex.jpg` (portrait)
 - `public/logos/<slug>.svg|png` for the "Where I've built" strip (slugs in `src/data/orgs.ts`); text wordmarks show until added
 
+## Writing style
+
+- Write in Alex's voice: first person, plain words, short sentences, warm and a little wry. No corporate filler.
+- **Never use em dashes** (the long dash, U+2014) anywhere on the site. Use a period, comma, colon, or parentheses instead. En dashes in date ranges (May – Aug) are fine.
+- Don't overclaim: if something is planned, say planned; if a result is mixed, say so.
+
 ## Accessibility & SEO
 
 - Lighthouse scores: Accessibility 100, Best Practices 100, SEO 91
@@ -92,4 +98,4 @@ Optional assets render only when present (see `src/lib/site.ts`): `public/Alex_C
 - Commit directly to `main` for content updates and small fixes
 - Use feature branches (`feat/`, `fix/`) for larger changes
 - Always include a `Co-Authored-By:` Claude line in AI-assisted commits
-- Push after every commit — Vercel deploys automatically
+- Push after every commit: Vercel deploys automatically

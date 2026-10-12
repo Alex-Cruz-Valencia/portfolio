@@ -1,7 +1,7 @@
 ---
 title: "The dashboard that got smaller on purpose"
 date: "May – Aug 2026"
-excerpt: "I spent my EchoStar internship turning manual spreadsheet analysis into a self-serve product dashboard. Almost every decision that shaped it — the platform, the scope, the feature I killed — was forced by a constraint, not a wishlist."
+excerpt: "I spent my EchoStar internship turning manual spreadsheet analysis into a self-serve product dashboard. Almost every decision that shaped it (the platform, the scope, the feature I killed) came from a constraint, not a wishlist."
 tags: ["Prioritization", "Data & Analytics", "Stakeholder Management"]
 readTime: "6 min read"
 subtitle: "Data product · Prioritization under constraint · Killing my own feature"
@@ -21,7 +21,7 @@ tldr:
 
 ## It all started when...
 
-The product team I joined at EchoStar as a Product Commercialization Intern was tracking how its consumer products performed — sales, inventory, customer sentiment — the way a lot of teams do: someone pulled data into a spreadsheet, cut it by hand, and circulated the result. Every refresh was a person-hour. Every question that didn't fit the existing cuts was a new person-hour.
+The product team I joined at EchoStar as a Product Commercialization Intern was tracking how its consumer products performed (sales, inventory, customer sentiment) the way a lot of teams do: someone pulled data into a spreadsheet, cut it by hand, and circulated the result. Every refresh was a person-hour. Every question that didn't fit the existing cuts was a new person-hour.
 
 My project was to replace that with a living, self-serve dashboard on top of the company's Snowflake data. The brief was open-ended. What actually determined the shape of the thing were three constraints I didn't fully see coming.
 
@@ -37,17 +37,17 @@ My project was to replace that with a living, self-serve dashboard on top of the
 
 I evaluated three ways to build it: Looker Studio, Tableau, and Streamlit.
 
-Looker Studio was the obvious first choice, and I couldn't make it work. It could not export data out of Snowflake at all under the company's IT security rules — a wall that was never resolved, even by the end of the internship. Tableau had its own gate: building on it required passing a certification test and clearing a licensing requirement before I could get access, and its structure was rigid for what I wanted to do.
+Looker Studio was the obvious first choice, and I couldn't make it work. It could not export data out of Snowflake at all under the company's IT security rules, and that wall never came down, not even by the end of my internship. Tableau had its own gate: building on it required passing a certification test and clearing a licensing requirement before I could get access, and its structure was rigid for what I wanted to do.
 
-Streamlit integrated natively with Snowflake. That one property — fewer security hurdles and less IT gatekeeping between me and the data — outweighed everything else. I built on Streamlit.
+Streamlit integrated natively with Snowflake. That one thing, fewer security hurdles and less IT gatekeeping between me and the data, outweighed everything else. I built on Streamlit.
 
 The lesson I didn't expect going in: for an intern, *access* is a design constraint. The best tool you can actually get your hands on beats the better tool you can't.
 
 ## Constraint two: I built a feature, then killed it
 
-The dashboard was detailed — deliberately, because the people using it day to day wanted depth. But I assumed senior stakeholders would want something different: a glanceable, high-level view. So I proposed and built an "Executive Mode" toggle, a light/dark-style switch between the full dashboard and a simplified one.
+The dashboard was detailed on purpose, because the people using it day to day wanted depth. But I assumed senior stakeholders would want something different: a glanceable, high-level view. So I proposed and built an "Executive Mode" toggle, a light/dark-style switch between the full dashboard and a simplified one.
 
-Then I checked the assumption. Through my manager, leadership's feedback came back: they did **not** want a simplified view. They saw the granularity as the whole point — a differentiator over what they'd had before, not a burden to hide behind an "executive" label. Separately, a manager outside my reporting line gave me a blunt warning about data validity and the risk of how numbers get represented, which made me cautious about any feature whose job was to *summarize*.
+Then I checked the assumption. Through my manager, leadership's feedback came back: they did **not** want a simplified view. They saw the granularity as the whole point: a differentiator over what they'd had before, not a burden to hide behind an "executive" label. Separately, a manager outside my reporting line gave me a blunt warning about data validity and the risk of how numbers get represented, which made me cautious about any feature whose job was to *summarize*.
 
 Between that feedback and a tight timeline, I scrapped Executive Mode entirely. It wasn't worth building or maintaining something the intended users had told me they wouldn't use.
 
@@ -57,11 +57,11 @@ Between that feedback and a tight timeline, I scrapped Executive Mode entirely. 
 </figure>
 
 
-I was wrong about what "executive" meant here. I'd imported a generic idea — executives want less detail — instead of asking the actual executives.
+I was wrong about what "executive" meant here. I'd borrowed a generic idea (executives want less detail) instead of asking the actual executives.
 
 ## Constraint three: the scope had to come down
 
-I started with a wide map: dedicated pages for sales, bring-your-own activations, inventory, returns, geography, sales channels, pricing, financials, customer sentiment — nearly every angle on product performance.
+I started with a wide map: dedicated pages for sales, bring-your-own activations, inventory, returns, geography, sales channels, pricing, financials, customer sentiment. Basically every angle on product performance.
 
 Narrowing that became one of the last real decisions of the project. I landed on four core pages: **sales** (is it selling), **bring your own** (which customers activate a phone they already own, and through which channels), **inventory** (is there enough of it), and **customer sentiment** (how do people feel about it). The test for making the cut was simple: the data behind it had to be valid, and it had to be something leadership actually focused on. Those four passed. The rest didn't:
 
@@ -89,14 +89,14 @@ A four-page Streamlit dashboard reading live from Snowflake, covering roughly 13
 
 AI did a lot of the drafting. I wrote SQL and Python with Gemini and other AI coding tools, and built a custom Gemini Gem that turned scattered stakeholder feedback into prioritized action items. But nothing an AI drafted shipped without me checking it. I hand-validated hundreds of data points against expected results and the existing internal dashboards before handoff, because a fast wrong number is worse than a slow right one.
 
-> "Over ten short weeks, Alex architected an enterprise-grade AI platform to measure product performance. His process was a masterclass in precision — hand-validating hundreds of data points to ensure long-term stability, all while grounding every decision in a sharp, value-driven business case."
+> "Over ten short weeks, Alex architected an enterprise-grade AI platform to measure product performance. His process was a masterclass in precision: hand-validating hundreds of data points to ensure long-term stability, all while grounding every decision in a sharp, value-driven business case."
 >
-> — Tia Kubicka, Product Leader, Boost Mobile
+> Tia Kubicka, Product Leader, Boost Mobile
 
-I can't claim adoption metrics — the internship ended close to the handoff. What I can say is that the version that shipped was smaller, narrower, and more conservative than the one I sketched on day one, and every one of those reductions was the right call.
+I can't claim adoption metrics, since my internship ended close to the handoff. What I can say is that the version that shipped was smaller, narrower, and more conservative than the one I sketched on day one, and every one of those reductions was the right call.
 
 ## What this revealed about how I think
 
-I came in thinking the work was choosing the right things to show. The work was actually reading the constraints correctly — security rules, data sensitivity, what stakeholders would truly use, whose numbers I was allowed to trust — and letting them carve the product down to what it should have been.
+I came in thinking the work was choosing the right things to show. The work was actually reading the constraints correctly (security rules, data sensitivity, what stakeholders would actually use, whose numbers I was allowed to trust) and letting them carve the product down to what it should have been.
 
 The feature I'm most glad about is the one I deleted. Building Executive Mode cost me time; killing it cost me a little pride. Shipping it would have cost the team a maintenance burden for a view nobody asked for.
