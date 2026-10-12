@@ -23,7 +23,7 @@ tldr:
 
 Digital NEST is a nonprofit in Salinas, California, that gives young people a path into tech careers. I know it from the inside. I was a member there, and later an instructor.
 
-That's why the research was my idea, not an assignment. I proposed investigating whether there were specific points in the member journey where people hit friction. Leadership reviewed the proposal, approved it, and brought me on to run it. About a month, start to finish.
+That's why the research was my idea, not an assignment. I proposed investigating whether there were specific points in the member journey where people hit friction. Leadership reviewed the proposal, approved it, and brought me on to run it. Three weeks of research, after some planning beforehand.
 
 <figure class="case-figure case-figure-wide">
   <div class="browser-frame"><img src="/work/digital-nest/site-map.webp" width="1600" height="914" loading="lazy" decoding="async" alt="Digital NEST website: Prosperity belongs to our communities, beside a map of its California sites including Salinas, Watsonville, Gilroy, Modesto and Stockton." /></div>

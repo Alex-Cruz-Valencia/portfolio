@@ -1,7 +1,7 @@
 ---
 title: "What 41 students told us about where they live"
 date: "Sep 2025 – Mar 2026"
-excerpt: "Co-leading research on Dartmouth's residential communities, I got a directive mid-project to stop doing interviews. I complied in spirit and kept interviewing anyway. The focus groups leadership planned to run instead never happened, and the research survived because the work never actually stopped."
+excerpt: "Co-leading research on Dartmouth's residential communities, I got a directive mid-project to stop interviews and wait for leadership's focus groups. I asked to keep interviewing while we waited, and got a yes. Their focus groups never happened. Our interviews became the whole foundation of the work."
 tags: ["User Research", "Research Leadership", "Stakeholder Management"]
 readTime: "6 min read"
 subtitle: "User research · 41 student voices · Influencing senior leadership"

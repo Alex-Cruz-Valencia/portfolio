@@ -27,7 +27,7 @@ org: "Evergreen · DALI Lab & Dartmouth Center for Technology and Behavioral Hea
 role: "Product Manager (promoted from Project Assistant). Led the design team in V1; now design and engineering"
 team: "6 designers, with project leadership and faculty/staff partners as stakeholders"
 methods: ["Campus survey", "Student interviews", "50-student preference survey", "A/B test design"]
-outcome: "Shipped the V1 testing build and kept the permissions question alive. Now PM for all of Evergreen: upfront permissions cut from 8 to 2, onboarding from 80 questions to 30."
+outcome: "Upfront permissions cut from 8 to 2 and onboarding from 80 questions to 30, once real users backed the case. Promoted to PM for all of Evergreen, now in testing with 200 students."
 tldr:
   - "Students told us an AI that asks for personal data felt like a lot to trust. I recommended cutting the upfront ask from 8 (six permissions, two integrations) to 2."
   - "Leadership said no twice. So I stopped arguing and won a commitment to A/B test it. Once real students started onboarding, the evidence finished the argument: 8 became 2."
@@ -51,7 +51,7 @@ The designers told me, directly, that they'd rather not work in fixed pairs. The
 
 The structure was "working." I changed it anyway, toward individual assignments. The thing I'd been optimizing, my read of the speed/quality/mentorship tradeoff, turned out to matter less than how the people doing the work actually wanted to work. I should have led from what they told me, not from my own model of what was good for them.
 
-## The decision I'm known for: the permissions ask
+## The hardest call: the permissions ask
 
 Evergreen's design assumed users would grant around six permissions and two integrations up front, so the AI features had what they needed from day one.
 

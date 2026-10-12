@@ -91,7 +91,7 @@ AI did a lot of the drafting. I wrote SQL and Python with Gemini and other AI co
 
 > "Over ten short weeks, Alex architected an enterprise-grade AI platform to measure product performance. His process was a masterclass in precision: hand-validating hundreds of data points to ensure long-term stability, all while grounding every decision in a sharp, value-driven business case."
 >
-> Tia Kubicka, Product Leader, Boost Mobile
+> Tia Kubicka, Product Leader, Boost Mobile (EchoStar)
 
 I can't claim adoption metrics, since my internship ended close to the handoff. What I can say is that the version that shipped was smaller, narrower, and more conservative than the one I sketched on day one, and every one of those reductions was the right call.
 
