@@ -22,9 +22,9 @@ tldr:
 
 ## It all started when...
 
-Design Corps is a paid student consultancy at Dartmouth, run under the Dartmouth Design Initiative. Our engagement: study the university's 17 Living Learning Communities — themed residential houses — and tell senior campus leadership what was and wasn't working.
+Design Corps is a paid student consultancy at Dartmouth, run under the Dartmouth Design Initiative. Our job: study Dartmouth's 17 Living Learning Communities (themed residential houses) and tell senior campus leadership what was working and what wasn't.
 
-I co-led a two-person research subgroup with one other student. In practice that meant I set the timeline, divided the work, chose the methodology, and owned the direction — where the research was actually headed. We reported up through a working group that answers to the SVP for Campus Life.
+I co-led a two-person research subgroup with one other student. In practice that meant I set the timeline, divided the work, chose the methodology, and owned the direction: where the research was actually headed. We reported up through a working group that answers to the SVP for Campus Life.
 
 ## How we scoped it
 
@@ -87,7 +87,7 @@ We presented to the working group and again at Technigala, Dartmouth's tech-and-
 
 As of our final report, none of the seven had been formally piloted. The research didn't translate into immediate action, and I don't want to dress that up.
 
-What it did do mattered more than I expected. Leadership told us the findings closely matched concerns they already held but hadn't seen laid out with evidence behind them — the difference between a hunch and a documented case.
+What it did do mattered more than I expected. Leadership told us the findings closely matched concerns they already held but hadn't seen laid out with evidence behind them. That's the difference between a hunch and a documented case.
 
 Then it showed up in writing.
 
@@ -106,6 +106,6 @@ The annual review process we proposed exists to close the adoption loop over tim
 
 Two things.
 
-First, complying with a directive and protecting the work are not always the same move, and when they diverge it's worth finding the version that does both. I didn't defy leadership — I did what they asked and kept a safety net running while their plan got a chance to work. When it didn't, the net mattered.
+First, complying with a directive and protecting the work are not always the same move, and when they diverge it's worth finding the version that does both. I didn't defy leadership. I did what they asked and kept a safety net running while their plan got a chance to work. When it didn't, the net mattered.
 
-Second, the job with 41 interviews isn't collecting them, it's deciding which signals are real. Co-leading meant I couldn't just assert my read — I had to make the case for why a theme was a theme and not noise, to my research partner and then to leadership.
+Second, the job with 41 interviews isn't collecting them, it's deciding which signals are real. Co-leading meant I couldn't just assert my read. I had to make the case for why a theme was a theme and not noise, to my research partner and then to leadership.

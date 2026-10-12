@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { plain, portraitSrc, resumeHref } from '../lib/site';
 import { testimonials } from '../data/testimonials';
 import LogoStrip from '../components/LogoStrip.astro';
@@ -15,13 +15,17 @@ const projects = (await getCollection('projects')).sort(
   (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
 );
 const majorProjects = projects.filter(p => !p.data.minor);
+// Each project's markdown body becomes its expandable "Read more" write-up.
+const projectBodies = Object.fromEntries(
+  await Promise.all(projects.map(async p => [p.id, p.body?.trim() ? (await render(p)).Content : null]))
+);
 const minorProjects = projects.filter(p => p.data.minor);
 
 const proof = [
   { value: '$5M', count: { to: 5, prefix: '$', suffix: 'M' }, label: 'in Dartmouth research funding behind Evergreen, the AI product I PM' },
   { value: '200', count: { to: 200 }, label: 'students in Evergreen\'s current research group, up from 15 at first test' },
   { value: '41', count: { to: 41 }, label: 'student voices in research cited in Dartmouth\'s official residential communities report' },
-  { value: '8 → 2', count: { from: 8, to: 2, prefix: '8 → ' }, label: 'upfront permissions on Evergreen. Leadership said no twice; real users changed their minds' },
+  { value: '8 → 2', count: { from: 8, to: 2, prefix: '8 → ' }, label: 'upfront permissions on Evergreen. Leadership said no twice. Real users changed their minds.' },
 ];
 
 const now = [
@@ -38,7 +42,7 @@ const now = [
   {
     where: 'Evergreen',
     what: 'Onboarding friction audit',
-    detail: 'Onboarding is where students dropped off. Cut it from 80 questions to 30, split across 4 modules, and still digging into why.',
+    detail: 'Onboarding is where students dropped off. We cut it from 80 questions to 30 across 4 modules, and I\'m still digging into why people leave.',
   },
   {
     where: 'DALI Lab',
@@ -239,12 +243,12 @@ const now = [
               </div>
               <div class="project-right">
                 <p class="project-summary">{p.data.summary ?? p.data.blurb}</p>
-                {p.data.summary && (
+                {(() => { const Body = projectBodies[p.id]; return (
                   <details class="project-more">
-                    <summary class="mono">More detail</summary>
-                    <p class="project-blurb">{plain(p.data.blurb)}</p>
+                    <summary class="mono">Read more</summary>
+                    {Body ? <div class="project-body"><Body /></div> : <p class="project-blurb">{plain(p.data.blurb)}</p>}
                   </details>
-                )}
+                ); })()}
                 {p.data.link && (
                   <a class="project-link" href={p.data.link} target="_blank" rel="noopener noreferrer">
                     {p.data.linkLabel ?? p.data.link} ↗
