@@ -73,6 +73,13 @@ now:
   - title: "Onboarding friction audit"
     body: "Onboarding is still where students drop off most. I'm finding exactly where, and why."
 lesson: "When you can't win the decision, win a way to learn it."
+highlights:
+  - value: "8 \u2192 2"
+    label: "upfront permissions"
+  - value: "80 \u2192 30"
+    label: "onboarding questions"
+  - value: "200"
+    label: "students testing it"
 ---
 
 ## It all started when...

@@ -62,6 +62,13 @@ decisions:
     result: "The findings still landed, cited by name in Dartmouth's June 2026 report."
     lesson: "Don't dress up a mixed result."
 lesson: "Comply with the directive. Protect the work."
+highlights:
+  - value: "41"
+    label: "student voices"
+  - value: "7"
+    label: "recommendations"
+  - value: "Cited"
+    label: "in Dartmouth's official report"
 ---
 
 ## It all started when...

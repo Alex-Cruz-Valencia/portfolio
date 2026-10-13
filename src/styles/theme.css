@@ -492,3 +492,8 @@ html.lenis, html.lenis body { height: auto; }
 :root:root:root:root .project-body strong { color: var(--color-text); font-weight: 600; }
 :root:root:root:root .project-more summary { cursor: pointer; }
 :root:root:root:root .project-more[open] summary { color: var(--color-accent); }
+
+/* Scannable home cards: short decks show in full; highlight numbers sit in one row */
+:root:root:root:root .card-excerpt.card-deck { display: block; -webkit-line-clamp: unset; overflow: visible; }
+:root:root:root:root .featured-side.highlight-stack { grid-template-columns: repeat(3, max-content); column-gap: 2.5rem; }
+@media (max-width: 960px) { :root:root:root:root .featured-side.highlight-stack { margin-left: 0; grid-template-columns: repeat(3, minmax(0, max-content)); column-gap: 1.5rem; } }

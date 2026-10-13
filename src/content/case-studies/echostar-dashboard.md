@@ -68,6 +68,13 @@ quote:
   text: "His process was a masterclass in precision: hand-validating hundreds of data points to ensure long-term stability, all while grounding every decision in a sharp, value-driven business case."
   by: "Tia Kubicka · Product Leader, Boost Mobile (EchoStar)"
 lesson: "The feature I'm proudest of is the one I deleted."
+highlights:
+  - value: "8 \u2192 4"
+    label: "pages, cut on purpose"
+  - value: "~13"
+    label: "launches covered"
+  - value: "1"
+    label: "feature I built, then killed"
 ---
 
 ## It all started when...

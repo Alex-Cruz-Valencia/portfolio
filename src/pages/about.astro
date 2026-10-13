@@ -83,44 +83,41 @@ const community = [
   <div class="about-body container">
     <div class="bio">
       <p class="bio-lead">
-        I'm Alex Cruz-Valencia. I grew up in Salinas, California, I'm a first-generation college
-        student and QuestBridge Scholar, and I study Computer Science and Human-Centered Design at Dartmouth.
+        I'm Alex: first-gen, QuestBridge Scholar, and a Computer Science and Human-Centered Design
+        student at Dartmouth. I speak English and Spanish.
       </p>
 
-      <p>
-        Back home, I was a member at Digital NEST, a nonprofit in Salinas that gives young people a
-        path into tech, and later an instructor there. Last winter
-        I went back and proposed my own research study on why new members stall out, and one of my
-        recommendations lines up with how the org talks to its members today. In Salinas, the NEST is more than a community. It's a family. That's still my favorite kind of work:
-        knowing a group of people well enough to see what's actually in their way.
-      </p>
-
-      <p>
-        Today I'm the product manager for <a href="https://evergreen.dartmouth.edu/" target="_blank" rel="noopener noreferrer">Evergreen</a>, Dartmouth's student-built AI wellness
-        app, backed by $5M in research funding and in testing with about 200 students. I joined as a project assistant, got promoted to PM, and led
-        its design team through the first build. Now I lead design and engineering, and I own the parts of
-        the AI that decide whether students trust it: what Evie can do on their behalf, and what it remembers
-        about them.
-      </p>
-
-      <p>
-        My work sits between building and understanding. I can read a schema and I can run a user interview,
-        and I think both belong in the room when a product decision gets made. This summer at EchoStar that
-        meant shipping a self-serve dashboard on Snowflake and deleting a feature I'd built once I checked my
-        assumption with the people it was for. At Youphoria it meant arguing for a social feature, Groups,
-        and owning it all the way to launch.
-      </p>
-
-      <p>
-        The through-line is a pull toward products that help people live a little better, and a habit of
-        testing my own assumptions before I trust them. It's why my side project,{' '}
-        <a href="/#projects">Puente</a>, is still in validation instead of in the App Store: I'd rather find out
-        it's the wrong idea in a conversation than after a build.
-      </p>
-
-      <p>
-        I speak English and Spanish. Outside product work, I box, play poker, and build custom keyboards. I also sew and tailor my own clothes, which has taught me more about cutting scope than any PM book: you measure the person, not the pattern.
-      </p>
+      <div class="bio-blocks">
+        <section class="bio-block">
+          <h2 class="mono">Where I'm from</h2>
+          <p>
+            Salinas, California. I was a member at Digital NEST, a nonprofit that gives young people a path
+            into tech, then an instructor there. In Salinas, the NEST is more than a community. It's a family.
+          </p>
+        </section>
+        <section class="bio-block">
+          <h2 class="mono">What I do now</h2>
+          <p>
+            I'm the PM for <a href="https://evergreen.dartmouth.edu/" target="_blank" rel="noopener noreferrer">Evergreen</a>,
+            Dartmouth's AI wellness app, in testing with about 200 students. I own the parts that decide whether
+            students trust it: what its AI can do for them, and what it remembers.
+          </p>
+        </section>
+        <section class="bio-block">
+          <h2 class="mono">How I think</h2>
+          <p>
+            I can read a schema and I can run a user interview, and I think both belong in the room. I test my
+            own ideas first, which is why <a href="/#project-puente">Puente</a> is still in validation, not in the App Store.
+          </p>
+        </section>
+        <section class="bio-block">
+          <h2 class="mono">Outside work</h2>
+          <p>
+            I box, play poker, and build custom keyboards. I also sew my own clothes, which taught me more about
+            cutting scope than any PM book: you measure the person, not the pattern.
+          </p>
+        </section>
+      </div>
 
       <div class="about-ctas">
         <a href="/contact" class="btn">Get in touch →</a>
@@ -197,6 +194,13 @@ const community = [
 </Layout>
 
 <style>
+  .bio-blocks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 2rem; margin: 2rem 0 2.25rem; }
+  .bio-block { padding-top: 1rem; border-top: 2px solid var(--color-text); }
+  .bio-block h2 { font-size: 0.75rem; color: var(--color-accent); margin-bottom: 0.6rem; font-weight: 400; letter-spacing: 0.02em; }
+  .bio .bio-block p { font-size: 1rem; line-height: 1.6; margin: 0; color: var(--color-text-secondary); }
+  .bio-block a { color: var(--color-text); border-bottom: 1px solid var(--color-accent); }
+  @media (max-width: 640px) { .bio-blocks { grid-template-columns: 1fr; } }
+
   .about-hero {
     display: flex;
     align-items: flex-end;
