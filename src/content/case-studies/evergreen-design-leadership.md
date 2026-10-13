@@ -30,7 +30,6 @@ team: "Led 6 designers in V1; now design and engineering"
 methods: ["Campus survey", "Student interviews", "50-student survey", "A/B test design"]
 outcome: "Upfront permissions cut from 8 to 2 and onboarding from 80 questions to 30, once real users backed the case. Promoted to PM for all of Evergreen, now in testing with 200 students."
 deck: "I'm the PM on Evergreen, Dartmouth's AI wellness app, now in testing with 200 students."
-facts: ["Product Manager", "Mar 2026 – now", "DALI Lab", "Team of 6 → whole product"]
 hero:
   from: 8
   to: 2
