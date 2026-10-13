@@ -1,7 +1,7 @@
 ---
 title: "Following the youth journey"
 date: "Nov – Dec 2025"
-excerpt: "I'd been a member of Digital NEST, then an instructor there. So I proposed the research myself: where do people fall through the cracks between joining and staying? One hard number carried the whole study, and one recommendation lines up with how the org communicates today."
+excerpt: "I'd been a member of Digital NEST, then an instructor there. So I proposed the research myself: where do people fall through the cracks between joining and staying? One number carried the whole study, and one recommendation lines up with how the org communicates today."
 tags: ["User Research", "Journey Mapping", "0-to-1"]
 readTime: "6 min read"
 subtitle: "UX research · Onboarding & retention · Nonprofit"
@@ -15,7 +15,7 @@ methods: ["Journey mapping", "5 interviews", "Membership data"]
 outcome: "Five near-zero-cost pilots. The End of Season Push recommendation lines up with the newsletter and social cadence Digital NEST now runs."
 tldr:
   - "Proposed the study myself, as a former member and instructor who'd walked the journey."
-  - "17 new adult members joined; 5 finished mandatory onboarding. That one ratio reframed the whole problem."
+  - "Fewer than a third of new adult members finished mandatory onboarding. That one number reframed the whole problem."
   - "Scoped every recommendation to what a small nonprofit staff could actually run."
 ---
 
@@ -47,7 +47,7 @@ I organized findings into three stages: **Entry**, **Engagement**, **Progression
       <p class="mono journey-step">01 · Entry</p>
       <h4>Getting in the door</h4>
       <ul class="journey-frictions">
-        <li>Only 5 of 17 new adult members finished the mandatory training</li>
+        <li>Fewer than a third of new adult members finished the mandatory training</li>
         <li>Hesitant to visit in person: shyness, or assuming it's only for kids already into tech</li>
       </ul>
       <p class="journey-pilot"><span class="mono">Pilots</span>More reminders · Refer-a-Friend</p>
@@ -81,26 +81,26 @@ I organized findings into three stages: **Entry**, **Engagement**, **Progression
 
 ## The number that anchored everything
 
-**Entry.** Between May and November 2025, 17 new adult members joined. Five completed the mandatory onboarding training.
+**Entry.** Over a recent stretch of membership data, fewer than a third of new adult members completed the mandatory onboarding training.
 
-That wasn't a feeling from an interview. It was a hard number, and it reframed the entry problem from "how do we market better" to "people are getting in the door and then stalling before they've really started." Around it, the interviews filled in texture: new members hesitated to show up in person at all, either from shyness or an assumption that the NEST had nothing for someone not already into tech. And 47% of new members had heard about the NEST through someone they knew. Word of mouth was doing most of the recruiting.
+That wasn't a feeling from an interview. It was a number, and it reframed the entry problem from "how do we market better" to "people are getting in the door and then stalling before they've really started." Around it, the interviews filled in texture: new members hesitated to show up in person at all, either from shyness or an assumption that the NEST had nothing for someone not already into tech. And about half of new members had heard about the NEST through someone they knew. Word of mouth was doing most of the recruiting.
 
 <figure class="case-figure">
-  <div class="stat-viz" role="img" aria-label="17 new adult members joined between May and November 2025. 5 completed the mandatory training. 47% of new members heard about Digital NEST from someone they knew.">
+  <div class="stat-viz" role="img" aria-label="Fewer than a third of new adult members completed the mandatory training. About half of new members heard about Digital NEST from someone they knew.">
     <div class="stat-viz-row">
-      <div class="dot-grid dot-grid-17" aria-hidden="true"><span class="dot on" style="--d:0ms"></span><span class="dot on" style="--d:45ms"></span><span class="dot on" style="--d:90ms"></span><span class="dot on" style="--d:135ms"></span><span class="dot on" style="--d:180ms"></span><span class="dot" style="--d:225ms"></span><span class="dot" style="--d:270ms"></span><span class="dot" style="--d:315ms"></span><span class="dot" style="--d:360ms"></span><span class="dot" style="--d:405ms"></span><span class="dot" style="--d:450ms"></span><span class="dot" style="--d:495ms"></span><span class="dot" style="--d:540ms"></span><span class="dot" style="--d:585ms"></span><span class="dot" style="--d:630ms"></span><span class="dot" style="--d:675ms"></span><span class="dot" style="--d:720ms"></span></div>
+      <div class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:30%"></span></div>
       <div class="stat-viz-legend">
-        <p><strong class="stat-big">5<span> of 17</span></strong>new adult members (May–Nov 2025) completed the mandatory training</p>
+        <p><strong class="stat-big">&lt; 1<span> in 3</span></strong>new adult members completed the mandatory training</p>
       </div>
     </div>
     <div class="stat-viz-row">
-      <div class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:47%"></span></div>
+      <div class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:50%"></span></div>
       <div class="stat-viz-legend">
-        <p><strong class="stat-big">47%</strong>of new members heard about the NEST from someone they knew</p>
+        <p><strong class="stat-big">~1<span> in 2</span></strong>new members heard about the NEST from someone they knew</p>
       </div>
     </div>
   </div>
-  <figcaption>The two numbers the study stood on. Source: Digital NEST Salinas membership data.</figcaption>
+  <figcaption>The two numbers the study stood on, rounded to keep Digital NEST's internal data private.</figcaption>
 </figure>
 
 
@@ -113,7 +113,7 @@ That wasn't a feeling from an interview. It was a hard number, and it reframed t
 Five pilots, deliberately kept to near-zero resource cost, because a nonprofit won't adopt anything expensive:
 
 1. **More reminders** for the mandatory training, in class and by email.
-2. **Refer-a-Friend**: lean into the word of mouth that already brings in 47% of new members.
+2. **Refer-a-Friend**: lean into the word of mouth that already brings in about half of new members.
 3. **Check-In**: instructors reach out first, with a light weekly check, so members don't have to.
 4. **Encouraging Understanding**: a short goals form at the start of each season, so programming can flex to why people are actually there. (Yes, the name is very descriptive.)
 5. **End of Season Push**: a coordinated, site-wide effort to talk about next steps as a season wraps up, carried into the off-season by email and social media.
@@ -126,6 +126,6 @@ Digital NEST has since put a regular newsletter and steady social media presence
 
 ## What this revealed about how I think
 
-The strongest part of this study was a single ratio, 5 of 17, because it turned a fuzzy retention worry into a specific, checkable failure. Good research finds the number that changes the question.
+The strongest part of this study was a single number, the share of new members who finished training, because it turned a fuzzy retention worry into a specific, checkable failure. Good research finds the number that changes the question.
 
 And recommendations aren't wishes. Every one of these five was designed around the fact that the people implementing them are a small nonprofit staff with no spare hours. A great idea that no one can execute isn't a great recommendation.

@@ -10,7 +10,7 @@ summary: "Coaching two first-time PMs, one on an AI learning platform and one on
 
 #### What I do
 
-I mentor two new PMs, each leading a different DALI Lab team. One is building an AI learning platform that creates personalized practice for students and shows instructors how their class is doing. The other is working on two games projects with BRIC: a community story experience and an arcade-style game picker.
+I mentor two new PMs, each leading a different DALI Lab team. One is building an AI learning platform that creates personalized practice for students and shows instructors how their class is doing. The other is working on two games projects with a campus partner: a community story experience and an arcade-style game picker.
 
 #### How
 

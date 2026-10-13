@@ -65,7 +65,7 @@ I understood the reasoning: they had their own way of running research, and focu
 
 So I asked for and got permission to keep running individual interviews while we waited. Not instead of their focus groups, alongside the wait for them.
 
-Their focus groups never came together. Nothing was ever scheduled for us. If we'd stopped interviewing when the directive came down, we'd have had almost no data to show for the engagement. Because we kept going, our interviews became the foundation of everything we delivered.
+Their focus groups never came together. Campus schedules are brutal, and nothing ended up on the calendar for us. If we'd stopped interviewing when the directive came down, we'd have had almost no data to show for the engagement. Because we kept going, our interviews became the foundation of everything we delivered.
 
 ## What we delivered
 

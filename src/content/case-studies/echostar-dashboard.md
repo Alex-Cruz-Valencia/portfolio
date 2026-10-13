@@ -37,9 +37,9 @@ My project was to replace that with a living, self-serve dashboard on top of the
 
 I evaluated three ways to build it: Looker Studio, Tableau, and Streamlit.
 
-Looker Studio was the obvious first choice, and I couldn't make it work. It could not export data out of Snowflake at all under the company's IT security rules, and that wall never came down, not even by the end of my internship. Tableau had its own gate: building on it required passing a certification test and clearing a licensing requirement before I could get access, and its structure was rigid for what I wanted to do.
+Looker Studio was the obvious first choice, and I couldn't make it work: company security rules kept it from reaching the data, and that never changed during my internship. Tableau had its own access hurdles, and its structure was rigid for what I wanted to do.
 
-Streamlit integrated natively with Snowflake. That one thing, fewer security hurdles and less IT gatekeeping between me and the data, outweighed everything else. I built on Streamlit.
+Streamlit connected to our data directly, with far fewer hoops between me and the numbers. That one thing outweighed everything else. I built on Streamlit.
 
 The lesson I didn't expect going in: for an intern, *access* is a design constraint. The best tool you can actually get your hands on beats the better tool you can't.
 
@@ -47,7 +47,7 @@ The lesson I didn't expect going in: for an intern, *access* is a design constra
 
 The dashboard was detailed on purpose, because the people using it day to day wanted depth. But I assumed senior stakeholders would want something different: a glanceable, high-level view. So I proposed and built an "Executive Mode" toggle, a light/dark-style switch between the full dashboard and a simplified one.
 
-Then I checked the assumption. Through my manager, leadership's feedback came back: they did **not** want a simplified view. They saw the granularity as the whole point: a differentiator over what they'd had before, not a burden to hide behind an "executive" label. Separately, a manager outside my reporting line gave me a blunt warning about data validity and the risk of how numbers get represented, which made me cautious about any feature whose job was to *summarize*.
+Then I checked the assumption. Through my manager, leadership's feedback came back: they did **not** want a simplified view. They saw the granularity as the whole point: a differentiator over what they'd had before, not a burden to hide behind an "executive" label. Separately, a manager on another team gave me a smart, direct warning about data validity and the risk of how numbers get represented, which made me cautious about any feature whose job was to *summarize*.
 
 Between that feedback and a tight timeline, I scrapped Executive Mode entirely. It wasn't worth building or maintaining something the intended users had told me they wouldn't use.
 
