@@ -38,6 +38,60 @@ const caseStudies = defineCollection({
     cardImageAlt: z.string().optional(),
     // 'window' adds an app-window bar (dashboards, websites); 'plain' for documents.
     cardFrame: z.enum(['window', 'plain']).default('window'),
+    // ── Scannable format (optional; when `story` is set the page uses it) ──
+    // Problem → Decision → Result strip, one sentence each.
+    story: z.object({
+      problem: z.string(),
+      decision: z.string(),
+      result: z.string(),
+    }).optional(),
+    // One short line under the title (the excerpt stays for the home page).
+    deck: z.string().optional(),
+    // Compact facts under the deck, e.g. ["Product Manager", "Mar 2026 – now"].
+    facts: z.array(z.string()).optional(),
+    // Animated before/after: `from` tiles, all but `to` fade out.
+    // kind 'drop': `from` tiles, all but `to` empty out (8 → 2).
+    // kind 'dots': `total` dots, `filled` of them lit, `value` shown big. `groups` shades runs of dots.
+    hero: z.object({
+      kind: z.enum(['drop', 'dots']).default('drop'),
+      from: z.number().optional(),
+      to: z.number().optional(),
+      total: z.number().optional(),
+      filled: z.number().optional(),
+      groups: z.array(z.number()).optional(),
+      value: z.string().optional(),
+      label: z.string(),
+    }).optional(),
+    // One key visual shown right after the story band (when there's no phone gallery).
+    feature: z.object({
+      kind: z.enum(['image', 'video', 'html']),
+      src: z.string().optional(),
+      poster: z.string().optional(),
+      alt: z.string().optional(),
+      html: z.string().optional(),
+      caption: z.string().optional(),
+      flag: z.string().optional(),
+      frame: z.enum(['plain', 'dark', 'browser']).default('plain'),
+      wide: z.boolean().default(true),
+    }).optional(),
+    // A pull quote from someone else, shown in the skim section.
+    quote: z.object({ text: z.string(), by: z.string() }).optional(),
+    // Big-number row.
+    stats: z.array(z.object({ value: z.string(), label: z.string() })).optional(),
+    // Decision cards: the hard calls, three short lines each.
+    decisions: z.array(z.object({
+      title: z.string(),
+      problem: z.string(),
+      decision: z.string(),
+      result: z.string(),
+      lesson: z.string().optional(),
+    })).optional(),
+    // What's happening now (short list).
+    now: z.array(z.object({ title: z.string(), body: z.string() })).optional(),
+    // One-line takeaway shown as a pull quote.
+    lesson: z.string().optional(),
+    // Label for the collapsed full story, e.g. "5 min".
+    fullStoryTime: z.string().optional(),
   }),
 });
 

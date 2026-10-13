@@ -35,7 +35,7 @@ const glance = [
 
   <article>
 
-    <header class="case-header">
+    <header class:list={['case-header', { 'is-skim': d.story }]}>
       <div class="content-width">
         <a href="/#work" class="back-link mono">← All work</a>
         <p class="eyebrow case-kicker">
@@ -46,10 +46,89 @@ const glance = [
           </span>
         </p>
         <h1 transition:name={`title-${study.id}`}>{d.title}</h1>
-        {d.subtitle && <p class="mono case-sub">{d.subtitle}</p>}
-        <p class="case-excerpt">{d.excerpt}</p>
+        {!d.story && d.subtitle && <p class="mono case-sub">{d.subtitle}</p>}
+        <p class:list={['case-excerpt', { 'case-deck': d.deck }]}>{d.deck ?? d.excerpt}</p>
+        {d.facts && (
+          <ul class="fact-line mono">
+            {d.facts.map(f => <li>{f}</li>)}
+          </ul>
+        )}
       </div>
     </header>
+
+    {d.story && (
+      <section class="container story-wrap" aria-label="Problem, decision, result">
+        <div class:list={['story-band', { 'has-hero': d.hero }]} data-reveal>
+          {d.hero && d.hero.kind === 'drop' && (
+            <div class="hero-viz">
+              <div class="tiles" aria-hidden="true">
+                {Array.from({ length: d.hero.from ?? 0 }).map((_, i) => (
+                  <span class:list={['tile', { keep: i < (d.hero!.to ?? 0) }]} style={`--k:${i - (d.hero!.to ?? 0)}`}></span>
+                ))}
+              </div>
+              <p class="hero-num" aria-label={d.hero.value ?? `${d.hero.from} to ${d.hero.to}`}>
+                <span class="hero-from">{d.hero.from}</span>
+                <span class="hero-arrow" aria-hidden="true">→</span>
+                <span class="hero-to">{d.hero.to}</span>
+              </p>
+              <p class="hero-label">{d.hero.label}</p>
+            </div>
+          )}
+          {d.hero && d.hero.kind === 'dots' && (() => {
+            const total = d.hero!.total ?? 0;
+            const filled = d.hero!.filled ?? total;
+            const groups = d.hero!.groups ?? [filled];
+            const groupOf = (i: number) => { let acc = 0; for (let g = 0; g < groups.length; g++) { acc += groups[g]; if (i < acc) return g; } return -1; };
+            const big = total <= 12;
+            return (
+              <div class:list={['hero-viz', 'hero-dots', { 'dots-big': big }]}>
+                <div class="hero-dotgrid" aria-hidden="true" style={`--cols:${big ? total : 9}`}>
+                  {Array.from({ length: total }).map((_, i) => (
+                    <span class:list={['hdot', i < filled && `on g${groupOf(i)}`]} style={`--i:${i}`}></span>
+                  ))}
+                </div>
+                <p class="hero-num"><span class="hero-to">{d.hero!.value}</span></p>
+                <p class="hero-label">{d.hero!.label}</p>
+              </div>
+            );
+          })()}
+          <ol class="story-steps">
+            {[['Problem', d.story.problem], ['Decision', d.story.decision], ['Result', d.story.result]].map(([label, text], i) => (
+              <li class:list={['story-step', { 'story-result': i === 2 }]} style={`--s:${i}`}>
+                <span class="step-dot" aria-hidden="true"></span>
+                <p class="mono story-label">{label}</p>
+                <p class="story-text">{text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    )}
+
+    {d.story && d.feature && (
+      <section class="content-width feature-wrap" aria-label="Key visual">
+        <figure class:list={['case-figure', { 'case-figure-wide': d.feature.wide, 'case-figure-dark': d.feature.frame === 'dark' }]} data-reveal>
+          {d.feature.kind === 'video' && (
+            <video autoplay muted loop playsinline preload="metadata" poster={d.feature.poster} aria-label={d.feature.alt}>
+              <source src={`${d.feature.src}.webm`} type="video/webm" />
+              <source src={`${d.feature.src}.mp4`} type="video/mp4" />
+            </video>
+          )}
+          {d.feature.kind === 'image' && (
+            d.feature.frame === 'browser'
+              ? <div class="browser-frame"><img src={d.feature.src} alt={d.feature.alt} loading="lazy" decoding="async" /></div>
+              : <img src={d.feature.src} alt={d.feature.alt} loading="lazy" decoding="async" />
+          )}
+          {d.feature.kind === 'html' && <Fragment set:html={d.feature.html} />}
+          {(d.feature.caption || d.feature.flag) && (
+            <figcaption>
+              {d.feature.flag && <span class="figure-flag">{d.feature.flag}</span>}
+              {d.feature.caption && <Fragment set:html={' ' + d.feature.caption} />}
+            </figcaption>
+          )}
+        </figure>
+      </section>
+    )}
 
     {d.gallery && d.gallery.length > 0 && (
       <section class="showcase container" aria-label="Product screens">
@@ -73,7 +152,65 @@ const glance = [
       </section>
     )}
 
-    {(glance.length > 0 || d.tldr) && (
+    {d.story && (
+      <section class="skim container" aria-label="The short version">
+
+        {d.stats && (
+          <dl class="stat-row" data-reveal style={`--n:${d.stats.length}`}>
+            {d.stats.map(st => (
+              <div class="stat-cell"><dt>{st.label}</dt><dd>{st.value}</dd></div>
+            ))}
+          </dl>
+        )}
+
+        {d.decisions && (
+          <div class="decisions">
+            <h2 class="skim-heading">The hard calls</h2>
+            <div class="decision-grid">
+              {d.decisions.map((c, i) => (
+                <article class="decision-card" data-reveal>
+                  <p class="mono decision-num">Call {String(i + 1).padStart(2, '0')}</p>
+                  <h3>{c.title}</h3>
+                  <dl class="decision-lines">
+                    <div><dt class="mono">Problem</dt><dd>{c.problem}</dd></div>
+                    <div><dt class="mono">Decision</dt><dd>{c.decision}</dd></div>
+                    <div class="decision-res"><dt class="mono">Result</dt><dd>{c.result}</dd></div>
+                  </dl>
+                  {c.lesson && <p class="decision-lesson">{c.lesson}</p>}
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {d.quote && (
+          <blockquote class="skim-quote" data-reveal>
+            <p class="skim-quote-text">“{d.quote.text}”</p>
+            <p class="mono skim-quote-by">{d.quote.by}</p>
+          </blockquote>
+        )}
+
+        {d.now && (
+          <div class="now-block" data-reveal>
+            <h2 class="skim-heading">What I'm on now</h2>
+            <ul class="now-list">
+              {d.now.map(n => (
+                <li><strong>{n.title}</strong><span>{n.body}</span></li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {d.lesson && (
+          <blockquote class="skim-lesson" data-reveal>
+            <p class="mono">What I'd take anywhere</p>
+            <p class="skim-lesson-text">{d.lesson}</p>
+          </blockquote>
+        )}
+      </section>
+    )}
+
+    {!d.story && (glance.length > 0 || d.tldr) && (
       <section class="glance content-width" aria-label="At a glance">
         <div class="glance-card">
           {glance.length > 0 && (
@@ -112,9 +249,24 @@ const glance = [
       </section>
     )}
 
-    <div class="case-body content-width">
-      <Content />
-    </div>
+    {d.story ? (
+      <details class="full-story content-width" id="full-story">
+        <summary>
+          <span class="full-story-label">
+            <span class="mono">The full story{d.fullStoryTime && ` · ${d.fullStoryTime}`}</span>
+            <span class="full-story-title">Every decision, in detail</span>
+          </span>
+          <span class="full-story-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="case-body">
+          <Content />
+        </div>
+      </details>
+    ) : (
+      <div class="case-body content-width">
+        <Content />
+      </div>
+    )}
 
     <div class="case-end content-width">
       <div class="case-end-nav">
@@ -195,6 +347,209 @@ const glance = [
     .showcase-panel::-webkit-scrollbar { display: none; }
     .showcase-item { flex: 0 0 62%; scroll-snap-align: center; }
     .showcase-item:nth-child(2) { transform: none; }
+  }
+
+
+  /* ── Scannable format ── */
+  .case-deck { font-size: clamp(1.15rem, 2vw, 1.3rem); color: var(--color-text-secondary); max-width: 46ch; line-height: 1.45; }
+  .case-header.is-skim { padding: 2.25rem 0 2rem; }
+  .case-header.is-skim .back-link { margin-bottom: 1.5rem; }
+  .case-header.is-skim h1 { font-size: clamp(2.1rem, 4.4vw, 3.2rem); margin-bottom: 0.9rem; max-width: 20ch; }
+  .case-header.is-skim .case-kicker { margin-bottom: 0.6rem; }
+  .fact-line {
+    list-style: none; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 1.4rem;
+  }
+  .fact-line li {
+    padding: 0.38rem 0.75rem;
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    font-size: 0.74rem;
+  }
+
+  .story-wrap { padding-bottom: 2.5rem; }
+  .skim { display: flex; flex-direction: column; gap: clamp(2.5rem, 6vw, 4rem); padding-bottom: 3rem; }
+
+  .story-band {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: clamp(1.75rem, 4vw, 3rem);
+    border-radius: 24px;
+    background: var(--color-surface);
+  }
+  .story-band.has-hero { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
+
+  /* Before/after tiles */
+  .hero-viz { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: clamp(1.25rem, 3vw, 2.25rem); }
+  .tiles { display: grid; grid-template-columns: repeat(4, 44px); gap: 0.5rem; grid-row: span 2; }
+  .tile { border-radius: 10px; }
+  .tile {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 1.5px dashed color-mix(in srgb, var(--color-text) 18%, transparent);
+    background: transparent;
+  }
+  .tile.keep { border: none; background: var(--color-accent); box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--color-accent) 70%, transparent); }
+  .hero-num { display: flex; align-items: baseline; gap: 0.6rem; font-weight: 500; letter-spacing: -0.05em; line-height: 1; }
+  .hero-from { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--color-text-muted); text-decoration: line-through; text-decoration-thickness: 2px; }
+  .hero-arrow { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--color-text-muted); }
+  .hero-to { font-size: clamp(3.4rem, 7vw, 5rem); color: var(--color-accent); }
+  .hero-label { margin-top: 0.6rem; font-size: 0.95rem; line-height: 1.45; color: var(--color-text-secondary); max-width: 30ch; }
+
+  /* Three steps, connected */
+  .story-steps { list-style: none; padding: 0; display: flex; flex-direction: column; }
+  .story-step { position: relative; padding: 0 0 1.6rem 2rem; }
+  .story-step:last-child { padding-bottom: 0; }
+  .story-step::before {
+    content: ''; position: absolute; left: 5px; top: 1.1rem; bottom: 0.1rem;
+    width: 2px; background: color-mix(in srgb, var(--color-text) 12%, transparent);
+  }
+  .story-step:last-child::before { display: none; }
+  .step-dot {
+    position: absolute; left: 0; top: 0.2rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--color-paper);
+    box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-text) 35%, transparent);
+  }
+  .story-result .step-dot { background: var(--color-accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 20%, transparent); }
+  .story-label { color: var(--color-text-muted); margin-bottom: 0.3rem; }
+  .story-result .story-label { color: var(--color-accent); }
+  .story-text { font-size: 1.1rem; line-height: 1.4; font-weight: 500; letter-spacing: -0.02em; }
+
+  /* Motion: tiles start full, then all but the kept ones empty out; steps arrive in order. */
+  @media (prefers-reduced-motion: no-preference) {
+    .story-band.is-in .tile:not(.keep) { animation: tile-drop 0.7s var(--ease-out) both; animation-delay: calc(450ms + var(--k) * 110ms); }
+    .story-band.is-in .tile.keep { animation: tile-keep 0.9s var(--ease-out) both; animation-delay: 1200ms; }
+    .story-band.is-in .hero-to { animation: num-in 0.8s var(--ease-out) both; animation-delay: 1150ms; }
+    .story-band.is-in .story-step { animation: step-in 0.7s var(--ease-out) both; animation-delay: calc(250ms + var(--s) * 260ms); }
+  }
+  @keyframes tile-drop {
+    0%, 15% { background: var(--color-accent); border-color: transparent; transform: scale(1); }
+    60% { transform: scale(0.82); }
+    100% { background: transparent; transform: scale(1); }
+  }
+  @keyframes tile-keep { 0% { transform: scale(1); } 40% { transform: scale(1.08); } 100% { transform: scale(1); } }
+  @keyframes num-in { from { opacity: 0; transform: translateY(0.3em); } to { opacity: 1; transform: none; } }
+  @keyframes step-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .stat-cell { display: flex; flex-direction: column; gap: 0.45rem; padding: 1.5rem 1.25rem 1.5rem 0; }
+  .stat-cell dd { order: -1; }
+  .stat-cell + .stat-cell { padding-left: 1.25rem; border-left: 1px solid var(--color-border); }
+  .stat-cell dd { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.045em; line-height: 1; white-space: nowrap; }
+  .stat-cell dt { font-size: 0.88rem; line-height: 1.4; color: var(--color-text-secondary); }
+
+  .skim-heading { font-size: 1.5rem; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+
+  .decision-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .decision-card {
+    display: flex; flex-direction: column;
+    padding: 1.6rem 1.6rem 1.4rem;
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    background: var(--color-paper);
+    transition: border-color 0.25s, transform 0.5s var(--ease-out);
+  }
+  .decision-card:hover { border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border)); transform: translateY(-3px); }
+  .decision-num { color: var(--color-accent); margin-bottom: 0.4rem; }
+  .decision-card h3 { font-size: 1.25rem; letter-spacing: -0.025em; margin-bottom: 1.1rem; }
+  .decision-lines { display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
+  .decision-lines div { display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.75rem; align-items: baseline; }
+  .decision-lines dt { color: var(--color-text-muted); }
+  .decision-lines dd { font-size: 0.95rem; line-height: 1.5; color: var(--color-text-secondary); }
+  .decision-res dt { color: var(--color-accent); }
+  .decision-res dd { color: var(--color-text); font-weight: 500; }
+  .decision-lesson {
+    margin-top: 1.2rem; padding-top: 0.9rem;
+    border-top: 1px dashed var(--color-border);
+    font-size: 0.9rem; line-height: 1.45; font-style: italic; color: var(--color-text-secondary);
+  }
+
+  .now-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .now-list li { display: flex; flex-direction: column; gap: 0.4rem; padding-top: 0.9rem; border-top: 2px solid var(--color-text); }
+  .now-list strong { font-weight: 600; letter-spacing: -0.015em; }
+  .now-list span { font-size: 0.93rem; line-height: 1.5; color: var(--color-text-secondary); }
+
+  .skim-lesson { margin: 0; text-align: center; padding: 1rem 0; }
+  .skim-lesson .mono { color: var(--color-text-muted); margin-bottom: 0.7rem; }
+  .skim-lesson-text { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1.15; max-width: 22ch; margin: 0 auto; }
+
+
+  /* Dots version of the hero picture */
+  .hero-dotgrid { display: grid; grid-template-columns: repeat(var(--cols), 14px); gap: 6px; grid-row: span 2; }
+  .hdot { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--color-text) 20%, transparent); }
+  .hdot.on { box-shadow: none; background: var(--color-accent); }
+  .hdot.on.g1 { background: color-mix(in srgb, var(--color-accent) 55%, var(--color-surface)); }
+  .hdot.on.g2 { background: color-mix(in srgb, var(--color-accent) 28%, var(--color-surface)); }
+  .dots-big .hero-dotgrid { grid-template-columns: repeat(var(--cols), 46px); gap: 10px; }
+  .dots-big .hdot { width: 46px; height: 46px; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-text) 16%, transparent); }
+  .dots-big .hdot.on { box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--color-accent) 70%, transparent); }
+  .hero-dots .hero-to { font-size: clamp(2.8rem, 6vw, 4.2rem); white-space: nowrap; }
+  @media (prefers-reduced-motion: no-preference) {
+    .story-band.is-in .hdot { animation: dot-pop 0.5s var(--ease-out) both; animation-delay: calc(300ms + var(--i) * 22ms); }
+    .story-band.is-in .dots-big .hdot { animation-delay: calc(350ms + var(--i) * 220ms); }
+    .story-band.is-in .hero-dots .hero-to { animation: num-in 0.8s var(--ease-out) both; animation-delay: 900ms; }
+  }
+  @keyframes dot-pop { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: none; } }
+
+  .feature-wrap { padding-bottom: 1rem; }
+  .feature-wrap .case-figure { margin-top: 0; }
+
+  .skim-quote { margin: 0; padding: clamp(1.75rem, 4vw, 2.75rem); border-radius: 24px; background: var(--color-surface); }
+  .skim-quote-text { font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 500; letter-spacing: -0.025em; line-height: 1.4; max-width: 46ch; }
+  .skim-quote-by { margin-top: 1rem; color: var(--color-text-muted); }
+
+  .full-story { margin-bottom: 3.5rem; }
+  .full-story summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1.4rem 1.6rem;
+    border-radius: 18px;
+    background: var(--color-surface);
+    transition: background 0.2s;
+  }
+  .full-story summary::-webkit-details-marker { display: none; }
+  .full-story summary:hover { background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface)); }
+  .full-story-label { display: flex; flex-direction: column; gap: 0.25rem; }
+  .full-story-label .mono { color: var(--color-accent); }
+  .full-story-title { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.025em; }
+  .full-story-icon {
+    width: 2.2rem; height: 2.2rem; flex-shrink: 0;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: var(--color-text); color: var(--color-paper);
+    font-size: 1.3rem; line-height: 1;
+    transition: transform 0.3s var(--ease-out);
+  }
+  .full-story[open] .full-story-icon { transform: rotate(45deg); }
+  .full-story .case-body { padding-top: 2.5rem; padding-bottom: 1rem; }
+
+  @media (max-width: 860px) {
+    .story-band.has-hero { grid-template-columns: 1fr; }
+    .tiles { grid-template-columns: repeat(4, 34px); gap: 0.4rem; }
+    .hero-dotgrid { grid-template-columns: repeat(var(--cols), 10px); gap: 4px; grid-row: auto; }
+    .hdot { width: 10px; height: 10px; }
+    .dots-big .hero-dotgrid { grid-template-columns: repeat(var(--cols), 36px); gap: 8px; }
+    .dots-big .hdot { width: 36px; height: 36px; }
+    .tiles { grid-row: auto; }
+    .hero-label { grid-column: 1 / -1; margin-top: 1rem; max-width: none; }
+    .stat-row { grid-template-columns: 1fr; }
+    .stat-row .stat-cell { padding: 1.2rem 0; border-left: none; flex-direction: row; align-items: baseline; gap: 1rem; }
+    .stat-row .stat-cell dd { min-width: 6.5ch; }
+    .stat-row .stat-cell + .stat-cell { border-top: 1px solid var(--color-border); }
+    .decision-grid, .now-list { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .decision-lines div { grid-template-columns: 1fr; gap: 0.2rem; }
   }
 
   .case-mascot {

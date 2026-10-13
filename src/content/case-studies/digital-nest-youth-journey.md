@@ -3,7 +3,7 @@ title: "Following the youth journey"
 date: "Nov – Dec 2025"
 excerpt: "I'd been a member of Digital NEST, then an instructor there. So I proposed the research myself: where do people fall through the cracks between joining and staying? One number carried the whole study, and one recommendation lines up with how the org communicates today."
 tags: ["User Research", "Journey Mapping", "0-to-1"]
-readTime: "6 min read"
+readTime: "1 min skim"
 subtitle: "UX research · Onboarding & retention · Nonprofit"
 order: 4
 cardImage: "/work/digital-nest/site-home.webp"
@@ -17,6 +17,49 @@ tldr:
   - "Proposed the study myself, as a former member and instructor who'd walked the journey."
   - "Fewer than a third of new adult members finished mandatory onboarding. That one number reframed the whole problem."
   - "Scoped every recommendation to what a small nonprofit staff could actually run."
+fullStoryTime: "4 min"
+deck: "I was a member at Digital NEST, then an instructor. So I proposed my own study: where do new members fall through the cracks?"
+hero:
+  kind: dots
+  total: 3
+  filled: 1
+  value: "< 1 in 3"
+  label: "new adult members finished the mandatory training. That one number reframed the whole study."
+story:
+  problem: "New members were joining, then stalling before they'd really started."
+  decision: "I proposed a 3-week study myself: a journey map, 5 interviews, and the membership data."
+  result: "One number reframed the problem, and became 5 pilots a small staff could actually run."
+feature:
+  kind: html
+  html: "<ol class=\"journey-map\"><li class=\"journey-stage\"><p class=\"mono journey-step\">01 \u00b7 Entry</p><h4>Getting in the door</h4><ul class=\"journey-frictions\"><li>Fewer than a third of new adult members finished the mandatory training</li><li>Hesitant to visit in person: shyness, or assuming it's only for kids already into tech</li></ul><p class=\"journey-pilot\"><span class=\"mono\">Pilots</span>More reminders \u00b7 Refer-a-Friend</p></li><li class=\"journey-stage\"><p class=\"mono journey-step\">02 \u00b7 Engagement</p><h4>Staying involved</h4><ul class=\"journey-frictions\"><li>Jobs and family clash with attendance</li><li>Members feel it's on them to ask for help when they fall behind</li></ul><p class=\"journey-pilot\"><span class=\"mono\">Pilot</span>Check-In</p></li><li class=\"journey-stage\"><p class=\"mono journey-step\">03 \u00b7 Progression</p><h4>Moving forward</h4><ul class=\"journey-frictions\"><li>No shared picture of why members join: career, community, fun, volunteer hours</li><li>\"Out of the loop\" once a season ends</li></ul><p class=\"journey-pilot\"><span class=\"mono\">Pilots</span>Encouraging Understanding \u00b7 End of Season Push</p></li></ol>"
+  caption: "The journey map, simplified: where members hit friction at each stage, and the pilot designed for it."
+stats:
+  - value: "3 weeks"
+    label: "of research, self-proposed"
+  - value: "~1 in 2"
+    label: "new members came through word of mouth"
+  - value: "5"
+    label: "near-zero-cost pilots"
+decisions:
+  - title: "Proposing it myself"
+    problem: "I'd walked the member journey myself, as a member and then an instructor."
+    decision: "Pitched leadership on a study of where people hit friction. They approved it."
+    result: "Three weeks of research, with easy access to people I already knew."
+  - title: "Finding the number"
+    problem: "Interviews kept pointing at the front door, but feelings aren't evidence."
+    decision: "Checked the membership data for who actually finished onboarding."
+    result: "Fewer than 1 in 3. \"Market better\" became \"stop losing people at the door.\""
+    lesson: "Find the number that changes the question."
+  - title: "Scoping for a small staff"
+    problem: "A nonprofit with no spare hours won't adopt anything expensive."
+    decision: "Kept all 5 pilots near zero cost: reminders, referrals, check-ins, a goals form, a season-end push."
+    result: "Digital NEST now runs the kind of off-season outreach my End of Season Push recommended."
+  - title: "What I left out"
+    problem: "I found a real pain point around the org's age limits."
+    decision: "Kept it out of the main report. It hit a narrow slice of members."
+    result: "The report stayed focused on what generalized."
+    lesson: "Knowing what not to report is part of the job."
+lesson: "Good research finds the number that changes the question."
 ---
 
 ## It all started when...
@@ -41,38 +84,6 @@ I built a journey map of how members experience joining Digital NEST and progres
 
 I organized findings into three stages: **Entry**, **Engagement**, **Progression**.
 
-<figure class="case-figure case-figure-wide">
-  <ol class="journey-map">
-    <li class="journey-stage">
-      <p class="mono journey-step">01 · Entry</p>
-      <h4>Getting in the door</h4>
-      <ul class="journey-frictions">
-        <li>Fewer than a third of new adult members finished the mandatory training</li>
-        <li>Hesitant to visit in person: shyness, or assuming it's only for kids already into tech</li>
-      </ul>
-      <p class="journey-pilot"><span class="mono">Pilots</span>More reminders · Refer-a-Friend</p>
-    </li>
-    <li class="journey-stage">
-      <p class="mono journey-step">02 · Engagement</p>
-      <h4>Staying involved</h4>
-      <ul class="journey-frictions">
-        <li>Jobs and family clash with attendance</li>
-        <li>Members feel it's on them to ask for help when they fall behind</li>
-      </ul>
-      <p class="journey-pilot"><span class="mono">Pilot</span>Check-In</p>
-    </li>
-    <li class="journey-stage">
-      <p class="mono journey-step">03 · Progression</p>
-      <h4>Moving forward</h4>
-      <ul class="journey-frictions">
-        <li>No shared picture of why members join: career, community, fun, volunteer hours</li>
-        <li>"Out of the loop" once a season ends</li>
-      </ul>
-      <p class="journey-pilot"><span class="mono">Pilots</span>Encouraging Understanding · End of Season Push</p>
-    </li>
-  </ol>
-  <figcaption>The journey map, simplified: where members hit friction at each stage, and the pilot designed for it.</figcaption>
-</figure>
 
 <figure class="case-figure case-figure-wide">
   <div class="browser-frame"><img src="/work/digital-nest/site-pathway.webp" width="1600" height="790" loading="lazy" decoding="async" alt="Digital NEST's three program stages as photo cards: Launch, turn your skills into a paycheck; Explore, find what excites you; Build, go deeper and get professional." /></div>

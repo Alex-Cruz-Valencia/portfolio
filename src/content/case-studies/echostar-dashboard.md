@@ -3,7 +3,7 @@ title: "The dashboard that got smaller on purpose"
 date: "May – Aug 2026"
 excerpt: "I spent my EchoStar internship turning manual spreadsheet analysis into a self-serve product dashboard. Almost every decision that shaped it (the platform, the scope, the feature I killed) came from a constraint, not a wishlist."
 tags: ["Prioritization", "Data & Analytics", "Stakeholder Management"]
-readTime: "6 min read"
+readTime: "1 min skim"
 subtitle: "Data product · Prioritization under constraint · Killing my own feature"
 order: 2
 cardImage: "/work/echostar/card-preview.webp"
@@ -17,6 +17,57 @@ tldr:
   - "Picked Streamlit over Looker Studio and Tableau because it was the one tool I could actually get to the data with."
   - "Built an Executive Mode for leadership, then asked leadership. They didn't want it, so I killed it."
   - "Cut eight planned pages down to four, and only showed numbers that already had a paper trail."
+fullStoryTime: "5 min"
+deck: "My EchoStar internship: turning hand-built spreadsheets into a self-serve dashboard, then cutting it down to what leaders actually used."
+hero:
+  kind: drop
+  from: 8
+  to: 4
+  label: "pages planned, and pages shipped. Each one had to have valid data and a leader who'd actually use it."
+story:
+  problem: "Product performance lived in hand-built spreadsheets. Every new question cost someone hours."
+  decision: "Build a self-serve dashboard, and let the constraints decide what made the cut."
+  result: "Shipped 4 pages on live data, covering about 13 launches. Smaller on purpose."
+feature:
+  kind: video
+  src: "/work/echostar/dashboard-walkthrough"
+  poster: "/work/echostar/dashboard-walkthrough-poster.jpg"
+  alt: "Screen recording of a dark dashboard moving through Sales, Launch Ramp, Bring Your Own, Inventory and Customer Sentiment pages, ending on a list of call summaries."
+  frame: dark
+  flag: "Recreation · synthetic data"
+  caption: "The real dashboard ran on internal data I can't share, so I rebuilt its structure with a fictional company and made-up numbers."
+stats:
+  - value: "~13"
+    label: "product launches covered"
+  - value: "100s"
+    label: "data points I checked by hand"
+  - value: "1"
+    label: "feature I built, then killed"
+decisions:
+  - title: "Which tool to build on"
+    problem: "Looker was the obvious pick. Security rules kept it from the data."
+    decision: "Went with Streamlit, the one tool that could actually reach the numbers."
+    result: "I built on live data instead of waiting on access that never came."
+    lesson: "For an intern, access is a design constraint."
+  - title: "Executive Mode"
+    problem: "I assumed leaders wanted a simple, high-level view."
+    decision: "Built an Executive Mode toggle, then asked leadership what they thought."
+    result: "They wanted more depth, not less. I killed it and added drill-downs to real customer calls."
+    lesson: "Ask the actual executives."
+  - title: "Eight pages down to four"
+    problem: "I'd mapped a page for every angle: returns, pricing, financials, and more."
+    decision: "A page stayed only if its data was valid and leadership actually used it."
+    result: "Four made it: Sales, Bring Your Own, Inventory, and Customer Sentiment."
+    lesson: "Constraints are the spec."
+  - title: "Only numbers people trusted"
+    problem: "A manager on another team warned me how easily numbers get misread."
+    decision: "Only showed figures that already existed on older dashboards, and hand-checked hundreds."
+    result: "Leaders got numbers they already trusted, just much easier to use."
+    lesson: "A fast wrong number is worse than a slow right one."
+quote:
+  text: "His process was a masterclass in precision: hand-validating hundreds of data points to ensure long-term stability, all while grounding every decision in a sharp, value-driven business case."
+  by: "Tia Kubicka · Product Leader, Boost Mobile (EchoStar)"
+lesson: "The feature I'm proudest of is the one I deleted."
 ---
 
 ## It all started when...
@@ -25,13 +76,6 @@ The product team I joined at EchoStar as a Product Commercialization Intern was 
 
 My project was to replace that with a living, self-serve dashboard on top of the company's Snowflake data. The brief was open-ended. What actually determined the shape of the thing were three constraints I didn't fully see coming.
 
-<figure class="case-figure case-figure-wide case-figure-dark">
-  <video autoplay muted loop playsinline preload="metadata" poster="/work/echostar/dashboard-walkthrough-poster.jpg" aria-label="Screen recording of a dark dashboard moving through Sales, Launch Ramp, Bring Your Own, Inventory and Customer Sentiment pages, ending on a list of call summaries.">
-    <source src="/work/echostar/dashboard-walkthrough.webm" type="video/webm" />
-    <source src="/work/echostar/dashboard-walkthrough.mp4" type="video/mp4" />
-  </video>
-  <figcaption><span class="figure-flag">Recreation · synthetic data</span> The real dashboard ran on internal data I can't share, so I rebuilt its structure in Streamlit with a fictional company and generated numbers. A 15-second click-through: sales, launch ramp, bring-your-own, inventory, then from a churn chart straight to the customer calls behind it.</figcaption>
-</figure>
 
 ## Constraint one: I couldn't get the tools I wanted
 
