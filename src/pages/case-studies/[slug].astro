@@ -59,14 +59,14 @@ const glance = [
     {d.story && (
       <section class="container story-wrap" aria-label="Problem, decision, result">
         <div class:list={['story-band', { 'has-hero': d.hero }]} data-reveal>
-          {d.hero && (
+          {d.hero && d.hero.kind === 'drop' && (
             <div class="hero-viz">
               <div class="tiles" aria-hidden="true">
-                {Array.from({ length: d.hero.from }).map((_, i) => (
-                  <span class:list={['tile', { keep: i < d.hero!.to }]} style={`--k:${i - d.hero!.to}`}></span>
+                {Array.from({ length: d.hero.from ?? 0 }).map((_, i) => (
+                  <span class:list={['tile', { keep: i < (d.hero!.to ?? 0) }]} style={`--k:${i - (d.hero!.to ?? 0)}`}></span>
                 ))}
               </div>
-              <p class="hero-num" aria-label={`${d.hero.from} to ${d.hero.to}`}>
+              <p class="hero-num" aria-label={d.hero.value ?? `${d.hero.from} to ${d.hero.to}`}>
                 <span class="hero-from">{d.hero.from}</span>
                 <span class="hero-arrow" aria-hidden="true">→</span>
                 <span class="hero-to">{d.hero.to}</span>
@@ -74,6 +74,24 @@ const glance = [
               <p class="hero-label">{d.hero.label}</p>
             </div>
           )}
+          {d.hero && d.hero.kind === 'dots' && (() => {
+            const total = d.hero!.total ?? 0;
+            const filled = d.hero!.filled ?? total;
+            const groups = d.hero!.groups ?? [filled];
+            const groupOf = (i: number) => { let acc = 0; for (let g = 0; g < groups.length; g++) { acc += groups[g]; if (i < acc) return g; } return -1; };
+            const big = total <= 12;
+            return (
+              <div class:list={['hero-viz', 'hero-dots', { 'dots-big': big }]}>
+                <div class="hero-dotgrid" aria-hidden="true" style={`--cols:${big ? total : 9}`}>
+                  {Array.from({ length: total }).map((_, i) => (
+                    <span class:list={['hdot', i < filled && `on g${groupOf(i)}`]} style={`--i:${i}`}></span>
+                  ))}
+                </div>
+                <p class="hero-num"><span class="hero-to">{d.hero!.value}</span></p>
+                <p class="hero-label">{d.hero!.label}</p>
+              </div>
+            );
+          })()}
           <ol class="story-steps">
             {[['Problem', d.story.problem], ['Decision', d.story.decision], ['Result', d.story.result]].map(([label, text], i) => (
               <li class:list={['story-step', { 'story-result': i === 2 }]} style={`--s:${i}`}>
@@ -84,6 +102,31 @@ const glance = [
             ))}
           </ol>
         </div>
+      </section>
+    )}
+
+    {d.story && d.feature && (
+      <section class="content-width feature-wrap" aria-label="Key visual">
+        <figure class:list={['case-figure', { 'case-figure-wide': d.feature.wide, 'case-figure-dark': d.feature.frame === 'dark' }]} data-reveal>
+          {d.feature.kind === 'video' && (
+            <video autoplay muted loop playsinline preload="metadata" poster={d.feature.poster} aria-label={d.feature.alt}>
+              <source src={`${d.feature.src}.webm`} type="video/webm" />
+              <source src={`${d.feature.src}.mp4`} type="video/mp4" />
+            </video>
+          )}
+          {d.feature.kind === 'image' && (
+            d.feature.frame === 'browser'
+              ? <div class="browser-frame"><img src={d.feature.src} alt={d.feature.alt} loading="lazy" decoding="async" /></div>
+              : <img src={d.feature.src} alt={d.feature.alt} loading="lazy" decoding="async" />
+          )}
+          {d.feature.kind === 'html' && <Fragment set:html={d.feature.html} />}
+          {(d.feature.caption || d.feature.flag) && (
+            <figcaption>
+              {d.feature.flag && <span class="figure-flag">{d.feature.flag}</span>}
+              {d.feature.caption && <Fragment set:html={' ' + d.feature.caption} />}
+            </figcaption>
+          )}
+        </figure>
       </section>
     )}
 
@@ -138,6 +181,13 @@ const glance = [
               ))}
             </div>
           </div>
+        )}
+
+        {d.quote && (
+          <blockquote class="skim-quote" data-reveal>
+            <p class="skim-quote-text">“{d.quote.text}”</p>
+            <p class="mono skim-quote-by">{d.quote.by}</p>
+          </blockquote>
         )}
 
         {d.now && (
@@ -432,6 +482,31 @@ const glance = [
   .skim-lesson .mono { color: var(--color-text-muted); margin-bottom: 0.7rem; }
   .skim-lesson-text { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1.15; max-width: 22ch; margin: 0 auto; }
 
+
+  /* Dots version of the hero picture */
+  .hero-dotgrid { display: grid; grid-template-columns: repeat(var(--cols), 14px); gap: 6px; grid-row: span 2; }
+  .hdot { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--color-text) 20%, transparent); }
+  .hdot.on { box-shadow: none; background: var(--color-accent); }
+  .hdot.on.g1 { background: color-mix(in srgb, var(--color-accent) 55%, var(--color-surface)); }
+  .hdot.on.g2 { background: color-mix(in srgb, var(--color-accent) 28%, var(--color-surface)); }
+  .dots-big .hero-dotgrid { grid-template-columns: repeat(var(--cols), 46px); gap: 10px; }
+  .dots-big .hdot { width: 46px; height: 46px; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-text) 16%, transparent); }
+  .dots-big .hdot.on { box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--color-accent) 70%, transparent); }
+  .hero-dots .hero-to { font-size: clamp(2.8rem, 6vw, 4.2rem); white-space: nowrap; }
+  @media (prefers-reduced-motion: no-preference) {
+    .story-band.is-in .hdot { animation: dot-pop 0.5s var(--ease-out) both; animation-delay: calc(300ms + var(--i) * 22ms); }
+    .story-band.is-in .dots-big .hdot { animation-delay: calc(350ms + var(--i) * 220ms); }
+    .story-band.is-in .hero-dots .hero-to { animation: num-in 0.8s var(--ease-out) both; animation-delay: 900ms; }
+  }
+  @keyframes dot-pop { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: none; } }
+
+  .feature-wrap { padding-bottom: 1rem; }
+  .feature-wrap .case-figure { margin-top: 0; }
+
+  .skim-quote { margin: 0; padding: clamp(1.75rem, 4vw, 2.75rem); border-radius: 24px; background: var(--color-surface); }
+  .skim-quote-text { font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 500; letter-spacing: -0.025em; line-height: 1.4; max-width: 46ch; }
+  .skim-quote-by { margin-top: 1rem; color: var(--color-text-muted); }
+
   .full-story { margin-bottom: 3.5rem; }
   .full-story summary {
     list-style: none;
@@ -461,6 +536,10 @@ const glance = [
   @media (max-width: 860px) {
     .story-band.has-hero { grid-template-columns: 1fr; }
     .tiles { grid-template-columns: repeat(4, 34px); gap: 0.4rem; }
+    .hero-dotgrid { grid-template-columns: repeat(var(--cols), 10px); gap: 4px; grid-row: auto; }
+    .hdot { width: 10px; height: 10px; }
+    .dots-big .hero-dotgrid { grid-template-columns: repeat(var(--cols), 36px); gap: 8px; }
+    .dots-big .hdot { width: 36px; height: 36px; }
     .tiles { grid-row: auto; }
     .hero-label { grid-column: 1 / -1; margin-top: 1rem; max-width: none; }
     .stat-row { grid-template-columns: 1fr; }

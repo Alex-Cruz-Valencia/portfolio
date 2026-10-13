@@ -3,7 +3,7 @@ title: "What 41 students told us about where they live"
 date: "Sep 2025 – Mar 2026"
 excerpt: "Co-leading research on Dartmouth's residential communities, I got a directive mid-project to stop interviews and wait for leadership's focus groups. I asked to keep interviewing while we waited, and got a yes. Their focus groups never happened. Our interviews became the whole foundation of the work."
 tags: ["User Research", "Research Leadership", "Stakeholder Management"]
-readTime: "6 min read"
+readTime: "1 min skim"
 subtitle: "User research · 41 student voices · Influencing senior leadership"
 order: 3
 cardImage: "/work/design-corps/report-cover.webp"
@@ -18,6 +18,50 @@ tldr:
   - "41 student voices across 15 of Dartmouth's 17 living learning communities, plus benchmarking at 7 peer schools."
   - "After we ran our own focus group, leadership told us to stop interviewing and wait for focus groups they would organize. I kept interviews running in the meantime. Theirs never happened."
   - "The research is cited in the Working Group's June 2026 report and fed into Dartmouth's roughly $500M residential communities initiative."
+fullStoryTime: "5 min"
+deck: "I co-led research on Dartmouth's living learning communities for a working group under the SVP for Campus Life."
+hero:
+  kind: dots
+  total: 41
+  groups: [23, 10, 8]
+  value: "41"
+  label: "student voices across 15 of Dartmouth's 17 communities: 23 interviews, a group of 10, and a focus group of 8 we ran ourselves."
+story:
+  problem: "Mid-project, leadership told us to stop interviewing and wait for their focus groups."
+  decision: "I asked to keep interviewing while we waited, and got a yes."
+  result: "Their focus groups never happened. Our interviews became the study, and Dartmouth's official report cites them."
+feature:
+  kind: html
+  wide: false
+  html: "<blockquote class=\"doc-quote\"><p class=\"mono doc-source\">Report of the Residential Communities Working Group \u00b7 June 2026 \u00b7 p. 26</p><p>\u2026Program participation that starts strong in the fall tends to drop off for the first year. <mark>According to the Design Corps researcher interviews, UGA support is uneven across communities, meaning a first-year's experience varies significantly depending on where they land.</mark></p></blockquote>"
+  caption: "Dartmouth's official June 2026 report, citing our interviews by name. <a href=\"https://ccl.dartmouth.edu/sites/ccl/files/2026-06/Residential%20Communities%20Working%20Group%20Final%20Report_0.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Read the full report \u2197</a>"
+stats:
+  - value: "23"
+    label: "one-on-one interviews"
+  - value: "7"
+    label: "recommendations to campus leadership"
+  - value: "~$500M"
+    label: "residential initiative the report feeds into"
+decisions:
+  - title: "The directive"
+    problem: "After our own focus group, leadership said: stop interviews, wait for ours."
+    decision: "I asked to keep interviewing in the meantime. Alongside their plan, not instead of it."
+    result: "Their sessions never came together. Our interviews carried the whole project."
+    lesson: "Comply with the directive, protect the work."
+  - title: "Our own focus group"
+    problem: "We wanted to hear students react to each other, not just to us."
+    decision: "Recruited 8 students, wrote the questions, bought the food, and ran it ourselves."
+    result: "It worked, and it showed me how hard focus groups are to pull off on campus."
+  - title: "Which signals were real"
+    problem: "41 voices make a lot of opinions. Only some of them are patterns."
+    decision: "A theme had to repeat before I'd argue for it, to my partner and then to leadership."
+    result: "Seven recommendations, each tied to the finding behind it."
+  - title: "Being honest about impact"
+    problem: "None of the seven had been piloted by our final report."
+    decision: "Said so plainly, and proposed an annual review to close the loop."
+    result: "The findings still landed, cited by name in Dartmouth's June 2026 report."
+    lesson: "Don't dress up a mixed result."
+lesson: "Comply with the directive. Protect the work."
 ---
 
 ## It all started when...

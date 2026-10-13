@@ -50,13 +50,32 @@ const caseStudies = defineCollection({
     // Compact facts under the deck, e.g. ["Product Manager", "Mar 2026 – now"].
     facts: z.array(z.string()).optional(),
     // Animated before/after: `from` tiles, all but `to` fade out.
+    // kind 'drop': `from` tiles, all but `to` empty out (8 → 2).
+    // kind 'dots': `total` dots, `filled` of them lit, `value` shown big. `groups` shades runs of dots.
     hero: z.object({
-      from: z.number(),
-      to: z.number(),
+      kind: z.enum(['drop', 'dots']).default('drop'),
+      from: z.number().optional(),
+      to: z.number().optional(),
+      total: z.number().optional(),
+      filled: z.number().optional(),
+      groups: z.array(z.number()).optional(),
+      value: z.string().optional(),
       label: z.string(),
-      fromLabel: z.string().optional(),
-      toLabel: z.string().optional(),
     }).optional(),
+    // One key visual shown right after the story band (when there's no phone gallery).
+    feature: z.object({
+      kind: z.enum(['image', 'video', 'html']),
+      src: z.string().optional(),
+      poster: z.string().optional(),
+      alt: z.string().optional(),
+      html: z.string().optional(),
+      caption: z.string().optional(),
+      flag: z.string().optional(),
+      frame: z.enum(['plain', 'dark', 'browser']).default('plain'),
+      wide: z.boolean().default(true),
+    }).optional(),
+    // A pull quote from someone else, shown in the skim section.
+    quote: z.object({ text: z.string(), by: z.string() }).optional(),
     // Big-number row.
     stats: z.array(z.object({ value: z.string(), label: z.string() })).optional(),
     // Decision cards: the hard calls, three short lines each.
