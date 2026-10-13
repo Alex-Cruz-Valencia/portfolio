@@ -128,6 +128,7 @@ html { font-size: 17px; }
 :root:root:root:root .glance-tldr li::before { color: var(--color-accent); }
 :root:root:root:root .glance-outcome p:last-child { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.02em; }
 :root:root:root:root .case-header h1 { letter-spacing: -0.05em; font-size: clamp(2.2rem, 5vw, 3.6rem); }
+:root:root:root:root .case-header.is-skim h1 { font-size: clamp(2.1rem, 4.4vw, 3.2rem); }
 :root:root:root:root .case-body h2 { font-size: 1.5rem; }
 :root:root:root:root .case-body blockquote p { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.02em; }
 :root:root:root:root .case-end-cta { background: var(--color-surface); border: none; }

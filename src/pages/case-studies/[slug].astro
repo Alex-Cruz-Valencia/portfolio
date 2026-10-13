@@ -35,7 +35,7 @@ const glance = [
 
   <article>
 
-    <header class="case-header">
+    <header class:list={['case-header', { 'is-skim': d.story }]}>
       <div class="content-width">
         <a href="/#work" class="back-link mono">← All work</a>
         <p class="eyebrow case-kicker">
@@ -46,28 +46,44 @@ const glance = [
           </span>
         </p>
         <h1 transition:name={`title-${study.id}`}>{d.title}</h1>
-        {d.subtitle && <p class="mono case-sub">{d.subtitle}</p>}
-        <p class="case-excerpt">{d.excerpt}</p>
-        {d.story && glance.length > 0 && (
-          <dl class="meta-row">
-            {glance.map(g => (
-              <div><dt class="mono">{g.label}</dt><dd>{g.value}</dd></div>
-            ))}
-          </dl>
+        {!d.story && d.subtitle && <p class="mono case-sub">{d.subtitle}</p>}
+        <p class:list={['case-excerpt', { 'case-deck': d.deck }]}>{d.deck ?? d.excerpt}</p>
+        {d.facts && (
+          <ul class="fact-line mono">
+            {d.facts.map(f => <li>{f}</li>)}
+          </ul>
         )}
       </div>
     </header>
 
     {d.story && (
       <section class="container story-wrap" aria-label="Problem, decision, result">
-        <ol class="story-strip" data-reveal>
-          {[['Problem', d.story.problem], ['Decision', d.story.decision], ['Result', d.story.result]].map(([label, text], i) => (
-            <li class:list={['story-step', { 'story-result': i === 2 }]}>
-              <p class="mono story-label"><span>0{i + 1}</span>{label}</p>
-              <p class="story-text">{text}</p>
-            </li>
-          ))}
-        </ol>
+        <div class:list={['story-band', { 'has-hero': d.hero }]} data-reveal>
+          {d.hero && (
+            <div class="hero-viz">
+              <div class="tiles" aria-hidden="true">
+                {Array.from({ length: d.hero.from }).map((_, i) => (
+                  <span class:list={['tile', { keep: i < d.hero!.to }]} style={`--k:${i - d.hero!.to}`}></span>
+                ))}
+              </div>
+              <p class="hero-num" aria-label={`${d.hero.from} to ${d.hero.to}`}>
+                <span class="hero-from">{d.hero.from}</span>
+                <span class="hero-arrow" aria-hidden="true">→</span>
+                <span class="hero-to">{d.hero.to}</span>
+              </p>
+              <p class="hero-label">{d.hero.label}</p>
+            </div>
+          )}
+          <ol class="story-steps">
+            {[['Problem', d.story.problem], ['Decision', d.story.decision], ['Result', d.story.result]].map(([label, text], i) => (
+              <li class:list={['story-step', { 'story-result': i === 2 }]} style={`--s:${i}`}>
+                <span class="step-dot" aria-hidden="true"></span>
+                <p class="mono story-label">{label}</p>
+                <p class="story-text">{text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
     )}
 
@@ -97,7 +113,7 @@ const glance = [
       <section class="skim container" aria-label="The short version">
 
         {d.stats && (
-          <dl class="stat-row" data-reveal>
+          <dl class="stat-row" data-reveal style={`--n:${d.stats.length}`}>
             {d.stats.map(st => (
               <div class="stat-cell"><dt>{st.label}</dt><dd>{st.value}</dd></div>
             ))}
@@ -285,57 +301,93 @@ const glance = [
 
 
   /* ── Scannable format ── */
-  .meta-row {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, auto));
-    gap: 0.9rem 2rem;
-    margin-top: 1.75rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--color-border);
+  .case-deck { font-size: clamp(1.15rem, 2vw, 1.3rem); color: var(--color-text-secondary); max-width: 46ch; line-height: 1.45; }
+  .case-header.is-skim { padding: 2.25rem 0 2rem; }
+  .case-header.is-skim .back-link { margin-bottom: 1.5rem; }
+  .case-header.is-skim h1 { font-size: clamp(2.1rem, 4.4vw, 3.2rem); margin-bottom: 0.9rem; max-width: 20ch; }
+  .case-header.is-skim .case-kicker { margin-bottom: 0.6rem; }
+  .fact-line {
+    list-style: none; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 1.4rem;
   }
-  .meta-row dt { color: var(--color-text-muted); margin-bottom: 0.2rem; }
-  .meta-row dd { font-size: 0.9rem; line-height: 1.4; }
+  .fact-line li {
+    padding: 0.38rem 0.75rem;
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    font-size: 0.74rem;
+  }
 
   .story-wrap { padding-bottom: 2.5rem; }
   .skim { display: flex; flex-direction: column; gap: clamp(2.5rem, 6vw, 4rem); padding-bottom: 3rem; }
 
-  .story-strip {
-    list-style: none;
-    padding: 0;
+  .story-band {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.75rem;
-  }
-  .story-step {
-    position: relative;
-    padding: 1.6rem 1.5rem 1.7rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: clamp(1.75rem, 4vw, 3rem);
+    border-radius: 24px;
     background: var(--color-surface);
-    border-radius: 18px;
   }
-  .story-step:not(:last-child)::after {
-    content: '→';
-    position: absolute;
-    right: -0.75rem;
-    top: 50%;
-    transform: translate(50%, -50%);
-    width: 1.9rem; height: 1.9rem;
-    display: grid; place-items: center;
-    border-radius: 50%;
+  .story-band.has-hero { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
+
+  /* Before/after tiles */
+  .hero-viz { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: clamp(1.25rem, 3vw, 2.25rem); }
+  .tiles { display: grid; grid-template-columns: repeat(4, 44px); gap: 0.5rem; grid-row: span 2; }
+  .tile { border-radius: 10px; }
+  .tile {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 1.5px dashed color-mix(in srgb, var(--color-text) 18%, transparent);
+    background: transparent;
+  }
+  .tile.keep { border: none; background: var(--color-accent); box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--color-accent) 70%, transparent); }
+  .hero-num { display: flex; align-items: baseline; gap: 0.6rem; font-weight: 500; letter-spacing: -0.05em; line-height: 1; }
+  .hero-from { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--color-text-muted); text-decoration: line-through; text-decoration-thickness: 2px; }
+  .hero-arrow { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--color-text-muted); }
+  .hero-to { font-size: clamp(3.4rem, 7vw, 5rem); color: var(--color-accent); }
+  .hero-label { margin-top: 0.6rem; font-size: 0.95rem; line-height: 1.45; color: var(--color-text-secondary); max-width: 30ch; }
+
+  /* Three steps, connected */
+  .story-steps { list-style: none; padding: 0; display: flex; flex-direction: column; }
+  .story-step { position: relative; padding: 0 0 1.6rem 2rem; }
+  .story-step:last-child { padding-bottom: 0; }
+  .story-step::before {
+    content: ''; position: absolute; left: 5px; top: 1.1rem; bottom: 0.1rem;
+    width: 2px; background: color-mix(in srgb, var(--color-text) 12%, transparent);
+  }
+  .story-step:last-child::before { display: none; }
+  .step-dot {
+    position: absolute; left: 0; top: 0.2rem;
+    width: 12px; height: 12px; border-radius: 50%;
     background: var(--color-paper);
-    box-shadow: 0 0 0 1px var(--color-border);
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    z-index: 1;
+    box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-text) 35%, transparent);
   }
-  .story-label { display: flex; gap: 0.6rem; align-items: baseline; color: var(--color-text-muted); margin-bottom: 0.8rem; }
-  .story-label span { color: var(--color-accent); }
-  .story-text { font-size: 1.08rem; line-height: 1.5; font-weight: 500; letter-spacing: -0.015em; }
-  .story-result { background: var(--color-accent); color: var(--color-on-accent); }
-  .story-result .story-label, .story-result .story-label span { color: rgba(255,255,255,0.75); }
+  .story-result .step-dot { background: var(--color-accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 20%, transparent); }
+  .story-label { color: var(--color-text-muted); margin-bottom: 0.3rem; }
+  .story-result .story-label { color: var(--color-accent); }
+  .story-text { font-size: 1.1rem; line-height: 1.4; font-weight: 500; letter-spacing: -0.02em; }
+
+  /* Motion: tiles start full, then all but the kept ones empty out; steps arrive in order. */
+  @media (prefers-reduced-motion: no-preference) {
+    .story-band.is-in .tile:not(.keep) { animation: tile-drop 0.7s var(--ease-out) both; animation-delay: calc(450ms + var(--k) * 110ms); }
+    .story-band.is-in .tile.keep { animation: tile-keep 0.9s var(--ease-out) both; animation-delay: 1200ms; }
+    .story-band.is-in .hero-to { animation: num-in 0.8s var(--ease-out) both; animation-delay: 1150ms; }
+    .story-band.is-in .story-step { animation: step-in 0.7s var(--ease-out) both; animation-delay: calc(250ms + var(--s) * 260ms); }
+  }
+  @keyframes tile-drop {
+    0%, 15% { background: var(--color-accent); border-color: transparent; transform: scale(1); }
+    60% { transform: scale(0.82); }
+    100% { background: transparent; transform: scale(1); }
+  }
+  @keyframes tile-keep { 0% { transform: scale(1); } 40% { transform: scale(1.08); } 100% { transform: scale(1); } }
+  @keyframes num-in { from { opacity: 0; transform: translateY(0.3em); } to { opacity: 1; transform: none; } }
+  @keyframes step-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
   .stat-row {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
   }
@@ -407,14 +459,15 @@ const glance = [
   .full-story .case-body { padding-top: 2.5rem; padding-bottom: 1rem; }
 
   @media (max-width: 860px) {
-    .story-strip { grid-template-columns: 1fr; }
-    .story-step:not(:last-child)::after { right: 50%; top: auto; bottom: -0.75rem; transform: translate(50%, 50%) rotate(90deg); }
-    .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .stat-row .stat-cell:nth-child(odd) { padding-left: 0; border-left: none; }
-    .stat-row .stat-cell:nth-child(even) { padding-left: 1.25rem; border-left: 1px solid var(--color-border); }
-    .stat-row .stat-cell:nth-child(n+3) { border-top: 1px solid var(--color-border); }
+    .story-band.has-hero { grid-template-columns: 1fr; }
+    .tiles { grid-template-columns: repeat(4, 34px); gap: 0.4rem; }
+    .tiles { grid-row: auto; }
+    .hero-label { grid-column: 1 / -1; margin-top: 1rem; max-width: none; }
+    .stat-row { grid-template-columns: 1fr; }
+    .stat-row .stat-cell { padding: 1.2rem 0; border-left: none; flex-direction: row; align-items: baseline; gap: 1rem; }
+    .stat-row .stat-cell dd { min-width: 6.5ch; }
+    .stat-row .stat-cell + .stat-cell { border-top: 1px solid var(--color-border); }
     .decision-grid, .now-list { grid-template-columns: 1fr; }
-    .meta-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 480px) {
     .decision-lines div { grid-template-columns: 1fr; gap: 0.2rem; }

@@ -45,6 +45,18 @@ const caseStudies = defineCollection({
       decision: z.string(),
       result: z.string(),
     }).optional(),
+    // One short line under the title (the excerpt stays for the home page).
+    deck: z.string().optional(),
+    // Compact facts under the deck, e.g. ["Product Manager", "Mar 2026 – now"].
+    facts: z.array(z.string()).optional(),
+    // Animated before/after: `from` tiles, all but `to` fade out.
+    hero: z.object({
+      from: z.number(),
+      to: z.number(),
+      label: z.string(),
+      fromLabel: z.string().optional(),
+      toLabel: z.string().optional(),
+    }).optional(),
     // Big-number row.
     stats: z.array(z.object({ value: z.string(), label: z.string() })).optional(),
     // Decision cards: the hard calls, three short lines each.
