@@ -1,10 +1,11 @@
 ---
-title: "Leading design on a product students weren't sure they trusted"
+title: "Getting students to trust an AI with their wellness"
 date: "Mar 2026 – present"
-excerpt: "As PM on Evergreen, Dartmouth's student-built AI wellness platform, I led a 6-person design team toward first testing, with no formal authority over the leadership or partners I most needed to move. The recurring problem: winning the argument with evidence instead of position."
-tags: ["Design Leadership", "User Research", "Stakeholder Management", "0-to-1"]
-readTime: "8 min read"
-subtitle: "AI product · Trust & data permissions · Leading designers without authority"
+excerpt: "I'm the PM on Evergreen, Dartmouth's AI wellness app. Students told us an AI asking for their data felt like a lot to trust, so I spent my time making it ask for less, and proving that was the right call."
+tags: ["AI Product", "User Research", "Stakeholder Management", "0-to-1"]
+readTime: "2 min skim"
+fullStoryTime: "5 min"
+subtitle: "AI product · Trust & data permissions · Influence without authority"
 order: 1
 featured: true
 mascot: "/work/evergreen/evie-mascot.webp"
@@ -23,78 +24,80 @@ gallery:
     poster: "/work/evergreen/evie-mood-checkin.jpg"
     alt: "A student tells Evie they are not feeling great, then drags a five-point mood scale from Not great to I'm good"
     caption: "Mood check-in. A 5-point scale you drag, not a form you fill out."
-org: "Evergreen · DALI Lab & Dartmouth Center for Technology and Behavioral Health"
-role: "Product Manager (promoted from Project Assistant). Led the design team in V1; now design and engineering"
-team: "6 designers, with project leadership and faculty/staff partners as stakeholders"
-methods: ["Campus survey", "Student interviews", "50-student preference survey", "A/B test design"]
+org: "Evergreen, at Dartmouth's DALI Lab"
+role: "Product Manager (promoted from Project Assistant)"
+team: "Led 6 designers in V1; now design and engineering"
+methods: ["Campus survey", "Student interviews", "50-student survey", "A/B test design"]
 outcome: "Upfront permissions cut from 8 to 2 and onboarding from 80 questions to 30, once real users backed the case. Promoted to PM for all of Evergreen, now in testing with 200 students."
-tldr:
-  - "Students told us an AI that asks for personal data felt like a lot to trust. I recommended cutting the upfront ask from 8 (six permissions, two integrations) to 2."
-  - "Leadership said no twice. So I stopped arguing and won a commitment to A/B test it. Once real students started onboarding, the evidence finished the argument: 8 became 2."
-  - "Settled an AI-imagery debate with a 50-student survey. 48 picked real photos, and told us they felt more ethical."
-  - "Held scope against partner feature creep through the V1 crunch, and the boundary stuck."
+story:
+  problem: "Students said an AI asking for personal data felt like a lot to trust. Evergreen asked for 8 permissions before they'd even met Evie."
+  decision: "I pushed to ask for 2. Leadership said no twice, so instead of a third argument, I got them to commit to testing it."
+  result: "Once real students started onboarding, the friction showed up right where we said it would. 8 became 2."
+stats:
+  - value: "8 → 2"
+    label: "permissions asked for up front"
+  - value: "80 → 30"
+    label: "onboarding questions, in 4 short modules"
+  - value: "48 of 50"
+    label: "students picked real photos over AI art"
+  - value: "15 → 200"
+    label: "students testing Evergreen, first test to now"
+decisions:
+  - title: "How much to ask for up front"
+    problem: "The design asked for 6 permissions and 2 integrations on day one. Our research said students were already uneasy."
+    decision: "I recommended 2. Leadership wanted full transparency and said no twice. So I proposed shipping V1 as is and committing to an A/B test later."
+    result: "Real users settled it. 8 became 2, and the whole onboarding got rebuilt, from 80 questions to 30."
+    lesson: "Next time I'd bring a plan, not just a disagreement."
+  - title: "AI art or real photos"
+    problem: "We wanted an art style we couldn't draw ourselves, so AI images looked like the answer. Then we saw them, and something felt off."
+    decision: "Nobody trusted their gut, so we asked 50 students to pick between real photos and the AI images."
+    result: "48 picked real photos, and said they felt more ethical, not just better looking. Real photos shipped."
+    lesson: "How you made it can matter to users as much as what you made."
+  - title: "My team's structure"
+    problem: "Week one, I paired experienced designers with newer ones. Speed, quality, mentorship: it checked every box on paper."
+    decision: "The designers told me they'd rather own individual tasks. It was working, and I changed it anyway."
+    result: "The team got the room it asked for, and we shipped the V1 testing build."
+    lesson: "Lead from what people tell you, not your model of them."
+  - title: "Saying no during the crunch"
+    problem: "Partners kept adding requests during the V1 push, including AI event suggestions with a real fairness risk."
+    decision: "I flagged the risks and proposed a rule: new features start when the dev team is ready, not when they hit a list."
+    result: "The boundary held. Partners came back later and accepted the same answer, and a simpler, safer events feature shipped."
+now:
+  - title: "Tool calling for Evie"
+    body: "What Evie can do on a student's behalf, and what it should never do on its own."
+  - title: "How Evie remembers"
+    body: "What it keeps, what it forgets, and how a student can see or delete it. The permissions question, one layer down."
+  - title: "Onboarding friction audit"
+    body: "Onboarding is still where students drop off most. I'm finding exactly where, and why."
+lesson: "When you can't win the decision, win a way to learn it."
 ---
 
 ## It all started when...
 
-Before Evergreen had been tested with a single student, our own research told us students were uneasy about it. [Evergreen](https://evergreen.dartmouth.edu/) is a generative-AI wellness platform built at Dartmouth by hundreds of student builders, grounded in the university's behavioral-health research, with a conversational tool at the center. A campus survey and student interviews kept surfacing the same discomfort: an AI in the wellness space, asking for personal data, felt like a lot to trust.
+Before Evergreen had been tested with a single student, our own research told us students were uneasy about it. [Evergreen](https://evergreen.dartmouth.edu/) is a generative-AI wellness platform built at Dartmouth by hundreds of student builders, grounded in the university's behavioral-health research. A campus survey and student interviews kept saying the same thing: an AI in the wellness space, asking for personal data, felt like a lot to trust.
 
-I was the product manager taking design from that starting point toward a first real testing build with Dartmouth students. I led a 6-person design team. I had no authority at all over the two groups whose decisions mattered most: project leadership and our faculty and staff partners.
+I was the PM taking design from there to a first testing build. I led 6 designers, and had no authority over the two groups whose decisions mattered most: project leadership and our faculty and staff partners. Almost every hard moment came down to changing someone's mind, and "because I think so" was never going to work.
 
-Almost every hard moment that followed came down to the same thing: I needed to change someone's mind, and "because I think so" was never going to be enough.
+## The permissions ask
 
-## Leading the team: my structure wasn't the team's structure
+The design assumed students would grant around six permissions and two integrations up front, so the AI had what it needed from day one. Our research said that would make an uneasy user more uneasy. I recommended cutting the upfront ask to **two** and asking for the rest later, in context.
 
-Week one, I split the 6 designers into three sub-teams: two mixed pairs, each an experienced designer with a newer one, plus an animation pair. On paper it optimized for everything at once: speed on a tight timeline, quality, and real mentorship for the newer designers.
+Leadership said no in the first meeting, and again in the second. Their reason was a good one: full transparency, showing students the whole scope of how their data *could* be used. My team was behind fewer permissions, but we couldn't get there before the V1 deadline.
 
-The designers told me, directly, that they'd rather not work in fixed pairs. They wanted individual design tasks and the room to coach themselves through them.
+So in the third meeting I stopped arguing for the change and argued for a test: ship V1 with the full ask, but **commit to A/B testing the number of permissions** later, so real behavior would make the call instead of either side's conviction. Leadership agreed. Without that, "how many permissions" would have quietly become "however many V1 shipped with."
 
-The structure was "working." I changed it anyway, toward individual assignments. The thing I'd been optimizing, my read of the speed/quality/mentorship tradeoff, turned out to matter less than how the people doing the work actually wanted to work. I should have led from what they told me, not from my own model of what was good for them.
+What I'd do differently: I brought a recommendation and a disagreement. I should have brought a plan that also answered their transparency concern.
 
-## The hardest call: the permissions ask
+## How 8 became 2
 
-Evergreen's design assumed users would grant around six permissions and two integrations up front, so the AI features had what they needed from day one.
+What finally moved it wasn't a better slide. It was real students. Once Evergreen started onboarding the research group, the friction showed up right where we'd said it would, and more and more people on the project came around.
 
-Our research said that was a mistake. Students were already uncomfortable; asking for that much access on the way in would make it worse. I recommended cutting the upfront ask to **two**, and letting the rest come later, in context.
+It turned out to be bigger than permissions. The whole onboarding changed, which is what we'd been pushing for since the start:
 
-Leadership said no in the first meeting, and again in the second. Their position was principled: full transparency, showing users the entire scope of how their data *could* be used, even data that didn't legally require an explicit opt-in. My whole team was aligned behind fewer permissions. I couldn't get leadership there in time for the V1 deadline.
+- **The upfront ask went from 8 to 2**, with the rest asked for later, in context.
+- **Onboarding went from 80 questions to 30**, split into 4 short modules, because a student who quits on question 40 never meets Evie at all.
 
-So in a third meeting I stopped arguing for the design change and argued for a different thing: accept the full permissions ask for the V1 testing build, but **commit to A/B testing the number of permissions** in a later version, so the long-term call would be made on real user behavior instead of either side's conviction. Leadership accepted that.
-
-It wasn't the outcome I wanted. But it kept the question alive. Without that commitment, "how many permissions" would have quietly become "however many V1 shipped with" the moment V1 shipped.
-
-What I'd do differently: I brought leadership a recommendation and a disagreement. I should have brought a plan: either a concrete way to satisfy their transparency concern with fewer upfront asks, or an alternative that solved what they were actually worried about.
-
-## Settling a design fight with data instead of taste
-
-The team wanted to use AI-generated images across the app. We'd found an art style online we liked and didn't have the resources or skill to recreate by hand; AI felt like the way to get there. Once we saw the actual generated results, the team felt uneasy about them, but nobody fully trusted that gut reaction either.
-
-So we tested it. A survey to 50 Dartmouth students: real student photos versus the AI-generated images. **Two** students preferred the AI version. Everyone else strongly preferred real photos, and told us the real photos felt more *ethical*, not just better-looking.
-
-That surprised me. I expected students to weigh in on aesthetics. They cared at least as much about the ethics and the resource cost of generating the images in the first place. We went with real student photos.
-
-The lesson stuck: with a creative tool, "how you made it" can matter to users as much as what you made. That belongs in the process from the start, not just in a test of the output.
-
-## Holding the line on scope
-
-Two more, briefly, both about protecting a crunch:
-
-- **The event-suggestion feature.** Partners wanted Evergreen to recommend campus events to students. Before the team spent time on it, I flagged two risks to leadership: the assumptions the recommendations would rest on, and a fairness problem, since no student org should get systematically less visibility than another. There wasn't time to build it responsibly for V1, so it didn't ship. Leadership later shipped a much simpler version that sidestepped both risks.
-- **Feature creep from partners.** During the V1 push, partners kept adding requests. My team could technically have built them; doing it under that time pressure would have produced weak work and burned people out. I held the line and proposed a rule: new features get picked up when the development team is ready for them, not because they've been added to a list. The boundary held. Partners came back with the same asks later and didn't push when I gave the same answer.
-
-## The outcome
-
-Evergreen went into its first testing phase with a group of about 15 Dartmouth students. The onboarding flow was rebuilt from the partner spec after testing showed polish alone couldn't fix a flow that was too long and hard to move through. The real-photo decision held. The permissions A/B commitment was locked in, which kept the question open. (How it finally got answered is below.)
-
-## Where it stands now
-
-The scope grew. As of this fall I'm the PM for all of Evergreen, design *and* development, and the research group testing it has grown from about 15 students to around 200. Evergreen is backed by $5M in Dartmouth research grant funding, so the decisions here carry real weight.
-
-The work has also moved deeper into the AI itself. Three things are on my plate right now:
-
-- **Tool calling for Evie**, Evergreen's AI. Deciding what Evie can do on a student's behalf, which tools come first, and what it should never be allowed to call on its own in a wellness context.
-- **How Evie remembers.** What it keeps, for how long, what it deliberately forgets, and how a student can see, correct, or delete what it knows about them. This is the permissions question again, one layer down.
-- **An onboarding friction audit.** Onboarding has already been rebuilt once (more on that below), and it's still where students drop off most. I'm finding out exactly where and why before the next round of changes.
+I didn't win this one in a meeting. My job was to keep the question on the table, with the case ready, for when the evidence showed up.
 
 <figure class="case-figure case-figure-wide">
   <video autoplay muted loop playsinline preload="metadata" poster="/work/evergreen/insights.jpg" aria-label="Evergreen Insights screen: a month of moods, sleep, activity, and a weekly steps graph">
@@ -104,23 +107,18 @@ The work has also moved deeper into the AI itself. Three things are on my plate 
   <figcaption>Insights: mood, sleep, and activity in one place. This is what the permissions are <em>for</em>, which is exactly why when and how we ask for them matters.</figcaption>
 </figure>
 
-## How 8 became 2
+## AI art or real photos
 
-What finally moved the permissions question wasn't a better slide. It was real students.
+The team wanted an art style we'd found online and couldn't draw ourselves, so AI-generated images looked like the way to get there. Once we saw the results, people felt uneasy, but nobody trusted that gut reaction either.
 
-Once Evergreen started onboarding the research group, the thing my team had been saying since V1 stopped being an opinion. Students were going through the flow, and the friction showed up where we'd said it would. More and more people on the project came around to what we'd argued from the beginning: this needed real changes, not polish.
+So we surveyed 50 Dartmouth students: real student photos or the AI images. **Two** picked AI. Everyone else strongly preferred real photos, and told us they felt more *ethical*, not just better looking. I expected an opinion on aesthetics. I got one on ethics and the resource cost of generating images at all. We went with real photos.
 
-And it turned out to be bigger than permissions. The whole onboarding changed, which is what we'd been advocating from the start.
+## My team, and saying no
 
-- **The upfront ask went from 8 to 2.** Six permissions and two integrations on the way in became two, with the rest asked for later, in context.
-- **Onboarding went from 80 questions to 30**, split across 4 shorter modules instead of one long wall, because a student who quits on question 40 never meets Evie at all.
+**Team structure.** Week one, I paired experienced designers with newer ones. It optimized for speed, quality, and mentorship at once. The designers told me, directly, that they'd rather own individual tasks. It was "working," and I changed it anyway. I should have led from what they told me, not my model of what was good for them.
 
-I didn't win this one in a meeting. The A/B commitment kept the question open, and real users answered it. My job was to make sure the question was still on the table, and the case was ready, when the evidence showed up.
+**Scope.** Partners wanted Evergreen to recommend campus events. I flagged two risks before anyone built it: shaky assumptions behind the recommendations, and fairness, since no student org should get less visibility than another. It didn't make V1, and a simpler version that avoided both risks shipped later. When partner requests kept piling up during the crunch, I proposed a rule: new features start when the dev team is ready, not when they land on a list. The boundary held.
 
-I'll keep updating this page as the tool-calling and memory work lands.
+## Where it stands now
 
-## What this revealed about how I think
-
-Every real decision here was made without the authority to just make it. What kept the permissions question alive wasn't a better argument, it was a testable compromise, and what settled it was real users. What settled the image debate wasn't seniority, it was 50 survey responses. What fixed my team structure was listening to the people in it.
-
-The pattern I'd take anywhere: when you can't win the decision, win a way to *learn* the decision. And come to the room with a plan, not just a concern.
+As of this fall I'm the PM for all of Evergreen, design *and* development. The research group has grown from about 15 students to around 200, and Evergreen is backed by $5M in Dartmouth research funding. The work has moved deeper into the AI itself: what Evie can do for a student, what it remembers, and why students still drop off in onboarding. I'll keep updating this page as that lands.

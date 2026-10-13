@@ -38,6 +38,29 @@ const caseStudies = defineCollection({
     cardImageAlt: z.string().optional(),
     // 'window' adds an app-window bar (dashboards, websites); 'plain' for documents.
     cardFrame: z.enum(['window', 'plain']).default('window'),
+    // ── Scannable format (optional; when `story` is set the page uses it) ──
+    // Problem → Decision → Result strip, one sentence each.
+    story: z.object({
+      problem: z.string(),
+      decision: z.string(),
+      result: z.string(),
+    }).optional(),
+    // Big-number row.
+    stats: z.array(z.object({ value: z.string(), label: z.string() })).optional(),
+    // Decision cards: the hard calls, three short lines each.
+    decisions: z.array(z.object({
+      title: z.string(),
+      problem: z.string(),
+      decision: z.string(),
+      result: z.string(),
+      lesson: z.string().optional(),
+    })).optional(),
+    // What's happening now (short list).
+    now: z.array(z.object({ title: z.string(), body: z.string() })).optional(),
+    // One-line takeaway shown as a pull quote.
+    lesson: z.string().optional(),
+    // Label for the collapsed full story, e.g. "5 min".
+    fullStoryTime: z.string().optional(),
   }),
 });
 

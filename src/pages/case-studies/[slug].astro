@@ -48,8 +48,28 @@ const glance = [
         <h1 transition:name={`title-${study.id}`}>{d.title}</h1>
         {d.subtitle && <p class="mono case-sub">{d.subtitle}</p>}
         <p class="case-excerpt">{d.excerpt}</p>
+        {d.story && glance.length > 0 && (
+          <dl class="meta-row">
+            {glance.map(g => (
+              <div><dt class="mono">{g.label}</dt><dd>{g.value}</dd></div>
+            ))}
+          </dl>
+        )}
       </div>
     </header>
+
+    {d.story && (
+      <section class="container story-wrap" aria-label="Problem, decision, result">
+        <ol class="story-strip" data-reveal>
+          {[['Problem', d.story.problem], ['Decision', d.story.decision], ['Result', d.story.result]].map(([label, text], i) => (
+            <li class:list={['story-step', { 'story-result': i === 2 }]}>
+              <p class="mono story-label"><span>0{i + 1}</span>{label}</p>
+              <p class="story-text">{text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
 
     {d.gallery && d.gallery.length > 0 && (
       <section class="showcase container" aria-label="Product screens">
@@ -73,7 +93,58 @@ const glance = [
       </section>
     )}
 
-    {(glance.length > 0 || d.tldr) && (
+    {d.story && (
+      <section class="skim container" aria-label="The short version">
+
+        {d.stats && (
+          <dl class="stat-row" data-reveal>
+            {d.stats.map(st => (
+              <div class="stat-cell"><dt>{st.label}</dt><dd>{st.value}</dd></div>
+            ))}
+          </dl>
+        )}
+
+        {d.decisions && (
+          <div class="decisions">
+            <h2 class="skim-heading">The hard calls</h2>
+            <div class="decision-grid">
+              {d.decisions.map((c, i) => (
+                <article class="decision-card" data-reveal>
+                  <p class="mono decision-num">Call {String(i + 1).padStart(2, '0')}</p>
+                  <h3>{c.title}</h3>
+                  <dl class="decision-lines">
+                    <div><dt class="mono">Problem</dt><dd>{c.problem}</dd></div>
+                    <div><dt class="mono">Decision</dt><dd>{c.decision}</dd></div>
+                    <div class="decision-res"><dt class="mono">Result</dt><dd>{c.result}</dd></div>
+                  </dl>
+                  {c.lesson && <p class="decision-lesson">{c.lesson}</p>}
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {d.now && (
+          <div class="now-block" data-reveal>
+            <h2 class="skim-heading">What I'm on now</h2>
+            <ul class="now-list">
+              {d.now.map(n => (
+                <li><strong>{n.title}</strong><span>{n.body}</span></li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {d.lesson && (
+          <blockquote class="skim-lesson" data-reveal>
+            <p class="mono">What I'd take anywhere</p>
+            <p class="skim-lesson-text">{d.lesson}</p>
+          </blockquote>
+        )}
+      </section>
+    )}
+
+    {!d.story && (glance.length > 0 || d.tldr) && (
       <section class="glance content-width" aria-label="At a glance">
         <div class="glance-card">
           {glance.length > 0 && (
@@ -112,9 +183,24 @@ const glance = [
       </section>
     )}
 
-    <div class="case-body content-width">
-      <Content />
-    </div>
+    {d.story ? (
+      <details class="full-story content-width" id="full-story">
+        <summary>
+          <span class="full-story-label">
+            <span class="mono">The full story{d.fullStoryTime && ` · ${d.fullStoryTime}`}</span>
+            <span class="full-story-title">Every decision, in detail</span>
+          </span>
+          <span class="full-story-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="case-body">
+          <Content />
+        </div>
+      </details>
+    ) : (
+      <div class="case-body content-width">
+        <Content />
+      </div>
+    )}
 
     <div class="case-end content-width">
       <div class="case-end-nav">
@@ -195,6 +281,143 @@ const glance = [
     .showcase-panel::-webkit-scrollbar { display: none; }
     .showcase-item { flex: 0 0 62%; scroll-snap-align: center; }
     .showcase-item:nth-child(2) { transform: none; }
+  }
+
+
+  /* ── Scannable format ── */
+  .meta-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, auto));
+    gap: 0.9rem 2rem;
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .meta-row dt { color: var(--color-text-muted); margin-bottom: 0.2rem; }
+  .meta-row dd { font-size: 0.9rem; line-height: 1.4; }
+
+  .story-wrap { padding-bottom: 2.5rem; }
+  .skim { display: flex; flex-direction: column; gap: clamp(2.5rem, 6vw, 4rem); padding-bottom: 3rem; }
+
+  .story-strip {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+  .story-step {
+    position: relative;
+    padding: 1.6rem 1.5rem 1.7rem;
+    background: var(--color-surface);
+    border-radius: 18px;
+  }
+  .story-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -0.75rem;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 1.9rem; height: 1.9rem;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: var(--color-paper);
+    box-shadow: 0 0 0 1px var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    z-index: 1;
+  }
+  .story-label { display: flex; gap: 0.6rem; align-items: baseline; color: var(--color-text-muted); margin-bottom: 0.8rem; }
+  .story-label span { color: var(--color-accent); }
+  .story-text { font-size: 1.08rem; line-height: 1.5; font-weight: 500; letter-spacing: -0.015em; }
+  .story-result { background: var(--color-accent); color: var(--color-on-accent); }
+  .story-result .story-label, .story-result .story-label span { color: rgba(255,255,255,0.75); }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .stat-cell { display: flex; flex-direction: column; gap: 0.45rem; padding: 1.5rem 1.25rem 1.5rem 0; }
+  .stat-cell dd { order: -1; }
+  .stat-cell + .stat-cell { padding-left: 1.25rem; border-left: 1px solid var(--color-border); }
+  .stat-cell dd { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.045em; line-height: 1; white-space: nowrap; }
+  .stat-cell dt { font-size: 0.88rem; line-height: 1.4; color: var(--color-text-secondary); }
+
+  .skim-heading { font-size: 1.5rem; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+
+  .decision-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .decision-card {
+    display: flex; flex-direction: column;
+    padding: 1.6rem 1.6rem 1.4rem;
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    background: var(--color-paper);
+    transition: border-color 0.25s, transform 0.5s var(--ease-out);
+  }
+  .decision-card:hover { border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border)); transform: translateY(-3px); }
+  .decision-num { color: var(--color-accent); margin-bottom: 0.4rem; }
+  .decision-card h3 { font-size: 1.25rem; letter-spacing: -0.025em; margin-bottom: 1.1rem; }
+  .decision-lines { display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
+  .decision-lines div { display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.75rem; align-items: baseline; }
+  .decision-lines dt { color: var(--color-text-muted); }
+  .decision-lines dd { font-size: 0.95rem; line-height: 1.5; color: var(--color-text-secondary); }
+  .decision-res dt { color: var(--color-accent); }
+  .decision-res dd { color: var(--color-text); font-weight: 500; }
+  .decision-lesson {
+    margin-top: 1.2rem; padding-top: 0.9rem;
+    border-top: 1px dashed var(--color-border);
+    font-size: 0.9rem; line-height: 1.45; font-style: italic; color: var(--color-text-secondary);
+  }
+
+  .now-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .now-list li { display: flex; flex-direction: column; gap: 0.4rem; padding-top: 0.9rem; border-top: 2px solid var(--color-text); }
+  .now-list strong { font-weight: 600; letter-spacing: -0.015em; }
+  .now-list span { font-size: 0.93rem; line-height: 1.5; color: var(--color-text-secondary); }
+
+  .skim-lesson { margin: 0; text-align: center; padding: 1rem 0; }
+  .skim-lesson .mono { color: var(--color-text-muted); margin-bottom: 0.7rem; }
+  .skim-lesson-text { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1.15; max-width: 22ch; margin: 0 auto; }
+
+  .full-story { margin-bottom: 3.5rem; }
+  .full-story summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1.4rem 1.6rem;
+    border-radius: 18px;
+    background: var(--color-surface);
+    transition: background 0.2s;
+  }
+  .full-story summary::-webkit-details-marker { display: none; }
+  .full-story summary:hover { background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface)); }
+  .full-story-label { display: flex; flex-direction: column; gap: 0.25rem; }
+  .full-story-label .mono { color: var(--color-accent); }
+  .full-story-title { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.025em; }
+  .full-story-icon {
+    width: 2.2rem; height: 2.2rem; flex-shrink: 0;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: var(--color-text); color: var(--color-paper);
+    font-size: 1.3rem; line-height: 1;
+    transition: transform 0.3s var(--ease-out);
+  }
+  .full-story[open] .full-story-icon { transform: rotate(45deg); }
+  .full-story .case-body { padding-top: 2.5rem; padding-bottom: 1rem; }
+
+  @media (max-width: 860px) {
+    .story-strip { grid-template-columns: 1fr; }
+    .story-step:not(:last-child)::after { right: 50%; top: auto; bottom: -0.75rem; transform: translate(50%, 50%) rotate(90deg); }
+    .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stat-row .stat-cell:nth-child(odd) { padding-left: 0; border-left: none; }
+    .stat-row .stat-cell:nth-child(even) { padding-left: 1.25rem; border-left: 1px solid var(--color-border); }
+    .stat-row .stat-cell:nth-child(n+3) { border-top: 1px solid var(--color-border); }
+    .decision-grid, .now-list { grid-template-columns: 1fr; }
+    .meta-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 480px) {
+    .decision-lines div { grid-template-columns: 1fr; gap: 0.2rem; }
   }
 
   .case-mascot {
