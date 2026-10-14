@@ -313,7 +313,7 @@ html.lenis, html.lenis body { height: auto; }
   :root:root:root:root .will-reveal.is-in { opacity: 1; transform: none; }
 
   /* Hero headline: words rise out of a mask, then "trust" gets underlined */
-  :root:root:root:root .hero-title .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.2em; margin-bottom: -0.2em; }
+  :root:root:root:root .hero-title .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.1em 0.2em; margin: 0 -0.1em -0.2em; }
   :root:root:root:root .hero-title .w > span { display: inline-block; animation: word-up 1.1s var(--ease-butter) both; animation-delay: calc(100ms + var(--w) * 75ms); }
   :root:root:root:root .hero .reveal { animation-delay: calc(350ms + var(--i, 0) * 120ms); }
 }
