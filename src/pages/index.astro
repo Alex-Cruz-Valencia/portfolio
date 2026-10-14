@@ -22,32 +22,32 @@ const projectBodies = Object.fromEntries(
 const minorProjects = projects.filter(p => p.data.minor);
 
 const proof = [
-  { value: '$5M', count: { to: 5, prefix: '$', suffix: 'M' }, label: 'in Dartmouth research funding behind Evergreen, the AI product I PM' },
-  { value: '200', count: { to: 200 }, label: 'students in Evergreen\'s current research group, up from 15 at first test' },
-  { value: '41', count: { to: 41 }, label: 'student voices in research cited in Dartmouth\'s official residential communities report' },
-  { value: '8 → 2', count: { from: 8, to: 2, prefix: '8 → ' }, label: 'upfront permissions on Evergreen. Leadership said no twice. Real users changed their minds.' },
+  { value: '$5M', count: { to: 5, prefix: '$', suffix: 'M' }, label: 'in research funding behind Evergreen' },
+  { value: '200', count: { to: 200 }, label: 'students testing Evergreen, up from 15' },
+  { value: '41', count: { to: 41 }, label: 'student voices, cited in Dartmouth\'s official report' },
+  { value: '8 → 2', count: { from: 8, to: 2, prefix: '8 → ' }, label: 'upfront permissions, once real users weighed in' },
 ];
 
 const now = [
   {
     where: 'Evergreen',
     what: 'Tool calling for Evie',
-    detail: 'Deciding what Evergreen\'s AI can do on a student\'s behalf, which tools come first, and what it should never call on its own.',
+    detail: 'What Evergreen\'s AI can do for a student, and what it should never do alone.',
   },
   {
     where: 'Evergreen',
     what: 'How Evie remembers',
-    detail: 'What it keeps, for how long, what it deliberately forgets, and how a student can see or delete it.',
+    detail: 'What it keeps, what it forgets, and how a student can see or delete it.',
   },
   {
     where: 'Evergreen',
     what: 'Onboarding friction audit',
-    detail: 'Onboarding is where students dropped off. We cut it from 80 questions to 30 across 4 modules, and I\'m still digging into why people leave.',
+    detail: 'Onboarding is still where students drop off. Finding exactly where, and why.',
   },
   {
     where: 'DALI Lab',
     what: 'Mentoring two new PMs',
-    detail: 'Coaching first-time PMs on scoping, prioritization, and research, and teaching PM classes.',
+    detail: 'Coaching first-time PMs on scoping and research, and teaching PM classes.',
   },
 ];
 
@@ -60,17 +60,18 @@ const now = [
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="status-pill reveal" style="--i: 0">Dartmouth '28 · Open to Summer 2027 APM / PM internships</p>
-        <h1 class="hero-title" aria-label="I build products people trust.">
-          {['I', 'build', 'products', 'people'].map((w, i) => (
+        <h1 class="hero-title" aria-label="I make the case. Users make the call.">
+          {['I', 'make', 'the', 'case.'].map((w, i) => (
             <Fragment><span class="w" aria-hidden="true"><span style={`--w:${i}`}>{w}</span></span>{' '}</Fragment>
-          ))}<span class="w" aria-hidden="true"><span style="--w:4"><em>trust</em>.</span></span>
+          ))}<br aria-hidden="true" />{['Users', 'make', 'the'].map((w, i) => (
+            <Fragment><span class="w" aria-hidden="true"><span style={`--w:${i + 4}`}>{w}</span></span>{' '}</Fragment>
+          ))}<span class="w" aria-hidden="true"><span style="--w:7"><em>call</em>.</span></span>
         </h1>
         <p class="hero-sub reveal" style="--i: 2">
-          Right now that's{' '}
+          I'm Alex, the PM on{' '}
           <a href="/case-studies/evergreen-design-leadership">Evergreen</a>, Dartmouth's AI wellness app,
-          in testing with 200 students. As its PM, I lead design and engineering and decide what its AI
-          can do for students and what it remembers about them. Before that: product at EchoStar and
-          Youphoria. I'm Alex, studying CS and Human-Centered Design at Dartmouth.
+          now in testing with 200 students. Before that: product at EchoStar and Youphoria.
+          I study CS and Human-Centered Design at Dartmouth.
         </p>
         <div class="hero-ctas reveal" style="--i: 3">
           <a href="#work" class="btn">Read the case studies</a>
@@ -113,41 +114,28 @@ const now = [
     <div class="container">
       <div class="section-label">
         <h2 id="work-title">Case studies</h2>
-        <span class="mono">{studies.length} case studies · each opens with a 30-second summary</span>
+        <span class="mono">{studies.length} case studies · about a minute each</span>
       </div>
 
       {featured && (
         <a href={`/case-studies/${featured.id}`} class="featured scroll-in">
           <div class="featured-copy">
             <p class="mono card-meta">
-              <span class="card-org">{featured.data.org?.split(' · ')[0]}</span>
+              <span class="card-org">{featured.data.org?.split(/ · |, /)[0]}</span>
               <span>{plain(featured.data.date)}</span>
               {featured.data.readTime && <span>{featured.data.readTime}</span>}
             </p>
             <h3 transition:name={`title-${featured.id}`}>{plain(featured.data.title)}</h3>
-            {featured.data.subtitle && <p class="mono card-sub">{featured.data.subtitle}</p>}
-            <p class="card-excerpt">{plain(featured.data.excerpt)}</p>
+            <p class="card-excerpt card-deck">{plain(featured.data.deck ?? featured.data.excerpt)}</p>
             <span class="card-cta">Read the case study →</span>
           </div>
-          <div class="featured-side">
-            {featured.data.role && (
-              <div>
-                <p class="mono side-label">Role</p>
-                <p>{featured.data.role}</p>
-              </div>
-            )}
-            {featured.data.outcome && (
-              <div>
-                <p class="mono side-label">Outcome</p>
-                <p class="side-outcome">{featured.data.outcome}</p>
-              </div>
-            )}
-            {featured.data.tags && (
-              <div class="card-tags" aria-hidden="true">
-                {featured.data.tags.map(t => <span class="tag">{t}</span>)}
-              </div>
-            )}
-          </div>
+          {featured.data.highlights && (
+            <dl class="featured-side highlight-stack">
+              {featured.data.highlights.map(h => (
+                <div><dd>{h.value}</dd><dt>{h.label}</dt></div>
+              ))}
+            </dl>
+          )}
           {featured.data.cardImage && (
             <div class="featured-visual" aria-hidden="true">
               <img src={featured.data.cardImage} alt="" width="640" height="1333" loading="lazy" decoding="async" />
@@ -160,14 +148,15 @@ const now = [
         {rest.map(study => (
           <a href={`/case-studies/${study.id}`} class:list={['study-card scroll-in', { 'has-visual': study.data.cardImage }]} role="listitem">
             <p class="mono card-meta">
-              <span class="card-org">{study.data.org?.split(' · ')[0]}</span>
+              <span class="card-org">{study.data.org?.split(/ · |, /)[0]}</span>
               <span>{plain(study.data.date)}</span>
             </p>
             <h3 transition:name={`title-${study.id}`}>{plain(study.data.title)}</h3>
-            {study.data.subtitle && <p class="mono card-sub">{study.data.subtitle}</p>}
-            <p class="card-excerpt">{plain(study.data.excerpt)}</p>
-            {study.data.outcome && (
-              <p class="card-outcome"><span class="mono">Outcome</span>{study.data.outcome}</p>
+            <p class="card-excerpt card-deck">{plain(study.data.deck ?? study.data.excerpt)}</p>
+            {study.data.highlights && (
+              <ul class="chip-row" aria-label="Results">
+                {study.data.highlights.map(h => <li><strong>{h.value}</strong> {h.label}</li>)}
+              </ul>
             )}
             <span class="card-cta">Read →</span>
             {study.data.cardImage && (
@@ -487,6 +476,24 @@ const now = [
   }
 
   .study-card .card-cta { margin-top: auto; padding-top: 1.1rem; }
+
+
+  /* Result chips */
+  .card-deck { max-width: 52ch; }
+  .chip-row { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .chip-row li {
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: var(--color-paper);
+    box-shadow: inset 0 0 0 1px var(--color-border);
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+  }
+  .chip-row strong { color: var(--color-accent); font-weight: 600; margin-right: 0.15rem; }
+  .highlight-stack { display: flex; flex-direction: column; gap: 1.1rem; }
+  .highlight-stack div { display: flex; flex-direction: column; gap: 0.1rem; }
+  .highlight-stack dd { font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1; color: var(--color-accent); white-space: nowrap; }
+  .highlight-stack dt { font-size: 0.85rem; color: var(--color-text-secondary); }
 
   /* ── Now ── */
   .now-list {

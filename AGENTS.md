@@ -61,6 +61,10 @@ Shared helpers: `.eyebrow` / `.mono` labels, `.btn` / `.btn-outline`, `.tag`, `.
 
 Case study frontmatter also supports `org`, `role`, `team`, `methods`, `outcome`, `tldr`, `featured`: these drive the home cards and the "At a glance" box.
 
+**Scannable case study format** (all four use it). When `story` is set, `[slug].astro` renders the skim layout instead of the "At a glance" box: `deck` (one line under the title), `hero` (animated picture: `kind: drop` with `from`/`to` tiles, or `kind: dots` with `total`/`filled`/`groups`/`value`), `story` (`problem`/`decision`/`result`, one sentence each), `feature` (one key visual: `image`/`video`/`html`), `stats` (3 numbers), `decisions` (hard-call cards: `title`, `problem`, `decision`, `result`, optional `lesson`), optional `quote`, `now`, `lesson`, and `fullStoryTime`. The markdown body becomes the collapsed "full story". `highlights` (2 to 3 `{value, label}`) drive the result chips on the home page cards. Keep every skim line short (about 15 words max).
+
+Headlines: home is "I make the case. Users make the call." About is "I ask who it's for. Then I go ask them." `public/og.png` shows the home headline; regenerate it if the headline changes.
+
 Optional assets render only when present (see `src/lib/site.ts`): `public/Alex_Cruz-Valencia_Resume.pdf` (nav, hero, footer, contact; `/resume.pdf` redirects via `vercel.json`) and `public/alex.jpg` (hero + About). Testimonials live in `src/data/testimonials.ts`; the section hides while empty.
 
 ## Pages

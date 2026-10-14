@@ -60,6 +60,13 @@ decisions:
     result: "The report stayed focused on what generalized."
     lesson: "Knowing what not to report is part of the job."
 lesson: "Good research finds the number that changes the question."
+highlights:
+  - value: "< 1 in 3"
+    label: "finished training"
+  - value: "5"
+    label: "near-zero-cost pilots"
+  - value: "3 weeks"
+    label: "self-proposed study"
 ---
 
 ## It all started when...

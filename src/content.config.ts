@@ -74,6 +74,8 @@ const caseStudies = defineCollection({
       frame: z.enum(['plain', 'dark', 'browser']).default('plain'),
       wide: z.boolean().default(true),
     }).optional(),
+    // 2–3 short result chips for the home page card.
+    highlights: z.array(z.object({ value: z.string(), label: z.string() })).optional(),
     // A pull quote from someone else, shown in the skim section.
     quote: z.object({ text: z.string(), by: z.string() }).optional(),
     // Big-number row.
