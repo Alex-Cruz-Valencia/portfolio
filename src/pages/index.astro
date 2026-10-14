@@ -60,10 +60,12 @@ const now = [
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="status-pill reveal" style="--i: 0">Dartmouth '28 · Open to Summer 2027 APM / PM internships</p>
-        <h1 class="hero-title" aria-label="I build products people trust.">
-          {['I', 'build', 'products', 'people'].map((w, i) => (
+        <h1 class="hero-title" aria-label="I make the case. Users make the call.">
+          {['I', 'make', 'the', 'case.'].map((w, i) => (
             <Fragment><span class="w" aria-hidden="true"><span style={`--w:${i}`}>{w}</span></span>{' '}</Fragment>
-          ))}<span class="w" aria-hidden="true"><span style="--w:4"><em>trust</em>.</span></span>
+          ))}<br aria-hidden="true" />{['Users', 'make', 'the'].map((w, i) => (
+            <Fragment><span class="w" aria-hidden="true"><span style={`--w:${i + 4}`}>{w}</span></span>{' '}</Fragment>
+          ))}<span class="w" aria-hidden="true"><span style="--w:7"><em>call</em>.</span></span>
         </h1>
         <p class="hero-sub reveal" style="--i: 2">
           I'm Alex, the PM on{' '}
