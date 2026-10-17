@@ -13,17 +13,15 @@ import { orgs } from '../data/orgs';
           : {};
         return (
           <li>
-            <Tag class:list={['org', { 'has-mark': o.logo && o.mark }]} {...linkProps}>
-              {o.logo && (
+            <Tag class="org" {...linkProps}>
+              {o.logo && o.mark && (
                 <span
-                  class:list={['logo-mask', { 'is-mark': o.mark }]}
-                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 3}; --scale: ${o.scale ?? 1};`}
-                  role="img"
-                  aria-label={o.mark ? undefined : o.name}
-                  aria-hidden={o.mark ? 'true' : undefined}
+                  class="logo-mask"
+                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 1}; --scale: ${o.scale ?? 1};`}
+                  aria-hidden="true"
                 />
               )}
-              {(!o.logo || o.mark) && <span class="wordmark">{o.name}</span>}
+              <span class="wordmark">{o.name}</span>
             </Tag>
           </li>
         );
@@ -35,66 +33,46 @@ import { orgs } from '../data/orgs';
 <style>
   .logos { padding: 1.75rem 0 0.5rem; }
 
-  .logos-inner {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
+  .logos-inner { display: flex; align-items: center; gap: 1.5rem; }
 
-  .logos-label {
-    flex-shrink: 0;
-    color: var(--color-text-muted);
-  }
+  .logos-label { flex-shrink: 0; color: var(--color-text-muted); }
 
-  .logo-row {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.9rem 1.85rem;
-  }
+  .logo-row { list-style: none; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
 
+  /* Every org is the same badge: optional small mark + name. */
   .org {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    height: 34px;
-    color: var(--color-text);
-    opacity: 0.55;
-    transition: opacity 0.2s, color 0.2s;
+    gap: 0.45rem;
+    height: 36px;
+    padding: 0 0.95rem;
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    transition: background 0.2s, color 0.2s, transform 0.3s var(--ease-out);
   }
 
   a.org:hover,
   a.org:focus-visible {
-    opacity: 1;
+    background: var(--color-accent-light);
     color: var(--color-accent);
+    transform: translateY(-2px);
   }
 
-  /* One-color silhouette: the logo's shape, painted with currentColor. */
   .logo-mask {
     display: block;
-    height: calc(20px * var(--scale, 1));
+    height: calc(18px * var(--scale, 1));
     aspect-ratio: var(--ratio);
     background-color: currentColor;
     -webkit-mask: var(--logo) center / contain no-repeat;
     mask: var(--logo) center / contain no-repeat;
   }
 
-  .logo-mask.is-mark { height: calc(28px * var(--scale, 1)); }
-
-  .wordmark {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    white-space: nowrap;
-  }
+  .wordmark { font-size: 0.92rem; font-weight: 500; letter-spacing: -0.01em; white-space: nowrap; }
 
   @media (max-width: 760px) {
-    .logos-inner { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
-    .logo-row { gap: 0.7rem 1.6rem; }
-    .wordmark { font-size: 1rem; }
-    .logo-mask { height: calc(17px * var(--scale, 1)); }
-    .logo-mask.is-mark { height: calc(24px * var(--scale, 1)); }
+    .logos-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .org { height: 32px; padding: 0 0.8rem; }
+    .wordmark { font-size: 0.85rem; }
   }
 </style>

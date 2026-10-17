@@ -28,35 +28,13 @@ const proof = [
   { value: '8 → 2', count: { from: 8, to: 2, prefix: '8 → ' }, label: 'upfront permissions, once real users weighed in' },
 ];
 
-const now = [
-  {
-    where: 'Evergreen',
-    what: 'Tool calling for Evie',
-    detail: 'What Evergreen\'s AI can do for a student, and what it should never do alone.',
-  },
-  {
-    where: 'Evergreen',
-    what: 'How Evie remembers',
-    detail: 'What it keeps, what it forgets, and how a student can see or delete it.',
-  },
-  {
-    where: 'Evergreen',
-    what: 'Onboarding friction audit',
-    detail: 'Onboarding is still where students drop off. Finding exactly where, and why.',
-  },
-  {
-    where: 'DALI Lab',
-    what: 'Mentoring two new PMs',
-    detail: 'Coaching first-time PMs on scoping and research, and teaching PM classes.',
-  },
-];
 
 ---
 
 <Layout title="Home">
 
   <!-- Hero -->
-  <section class:list={['hero', { 'has-portrait': portraitSrc }]}>
+  <section class:list={['hero', { 'has-portrait': portraitSrc, 'has-stack': !portraitSrc }]}>
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="status-pill reveal" style="--i: 0">Dartmouth '28 · Open to Summer 2027 APM / PM internships</p>
@@ -80,6 +58,20 @@ const now = [
             : <a href="/contact" class="btn btn-outline">Get in touch</a>}
         </div>
       </div>
+      {!portraitSrc && (
+        <div class="hero-stack" aria-label="A peek at the work">
+          <a href="/case-studies/design-corps-llc-research" class="stack-item stack-doc" style="--d:0.35;--r:-7deg;--n:0" aria-label="Design Corps case study">
+            <img src="/work/design-corps/report-cover.webp" alt="" width="564" height="459" />
+          </a>
+          <a href="/case-studies/echostar-dashboard" class="stack-item stack-dash" style="--d:0.6;--r:4deg;--n:1" aria-label="EchoStar case study">
+            <span class="stack-bar" aria-hidden="true"></span>
+            <img src="/work/echostar/card-preview.webp" alt="" width="1000" height="683" />
+          </a>
+          <a href="/case-studies/evergreen-design-leadership" class="stack-item stack-phone" style="--d:1;--r:-3deg;--n:2" aria-label="Evergreen case study">
+            <img src="/work/evergreen/evie-chat.webp" alt="" width="640" height="1333" />
+          </a>
+        </div>
+      )}
       {portraitSrc && (
         <figure class="hero-portrait reveal" style="--i: 2">
           <img src={portraitSrc} alt="Alex Cruz-Valencia" width="560" height="700" fetchpriority="high" />
@@ -171,45 +163,23 @@ const now = [
 
   <!-- Testimonials (hidden until data/testimonials.ts has entries) -->
   {testimonials.length > 0 && (
-    <section class="voices" aria-labelledby="voices-title">
+    <section class="voices band" aria-labelledby="voices-title">
       <div class="container">
-        <div class="section-label">
-          <h2 id="voices-title">From people I've worked with</h2>
-        </div>
-        <div class="voice-grid">
-          {testimonials.map(t => (
-            <figure class="voice scroll-in">
-              <blockquote>“{t.quote}”</blockquote>
-              <figcaption>
-                <strong>{t.name}</strong>
-                <span>{t.title}</span>
-                {t.relation && <span class="mono">{t.relation}</span>}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <h2 id="voices-title" class="sr-only">From people I've worked with</h2>
+        {testimonials.map(t => (
+          <figure class="pull-quote scroll-in">
+            <span class="pull-mark" aria-hidden="true">“</span>
+            <blockquote>{t.quote}</blockquote>
+            <figcaption>
+              <strong>{t.name}</strong>
+              <span>{t.title}</span>
+              {t.relation && <span class="mono">{t.relation}</span>}
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </section>
   )}
-
-  <!-- Now -->
-  <section class="now" aria-labelledby="now-title">
-    <div class="container">
-      <div class="section-label">
-        <h2 id="now-title">What I'm working on now</h2>
-        <span class="mono">Updated Oct 2026</span>
-      </div>
-      <ul class="now-list" role="list">
-        {now.map(n => (
-          <li class="now-item scroll-in">
-            <p class="mono now-where">{n.where}</p>
-            <h3>{n.what}</h3>
-            <p>{n.detail}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
 
   <!-- More work -->
   {projects.length > 0 && (
@@ -219,30 +189,27 @@ const now = [
           <h2 id="projects-title">More work</h2>
           <span class="mono">Shipped, building, and testing</span>
         </div>
-        <ul class="project-list" role="list">
+        <ul class="proj-grid" role="list">
           {majorProjects.map(p => (
-            <li class="project-item scroll-in" id={`project-${p.id}`}>
-              <div class="project-left">
-                <h3 class="project-title">{p.data.title}</h3>
-                <p class="mono project-role">
-                  {[p.data.role, p.data.timeframe].filter(Boolean).map(plain).join(' · ')}
-                </p>
-                {p.data.status && <span class="project-status mono">{p.data.status}</span>}
+            <li class="proj-card scroll-in" id={`project-${p.id}`}>
+              <div class="proj-top">
+                <span class="proj-mark" aria-hidden="true">{p.data.title.replace(/^(The |Dartmouth )/, '').slice(0, 1)}</span>
+                {p.data.status && <span class="proj-status mono">{p.data.status}</span>}
               </div>
-              <div class="project-right">
-                <p class="project-summary">{p.data.summary ?? p.data.blurb}</p>
-                {(() => { const Body = projectBodies[p.id]; return (
-                  <details class="project-more">
-                    <summary class="mono">Read more</summary>
-                    {Body ? <div class="project-body"><Body /></div> : <p class="project-blurb">{plain(p.data.blurb)}</p>}
-                  </details>
-                ); })()}
-                {p.data.link && (
-                  <a class="project-link" href={p.data.link} target="_blank" rel="noopener noreferrer">
-                    {p.data.linkLabel ?? p.data.link} ↗
-                  </a>
-                )}
-              </div>
+              <h3 class="proj-title">{p.data.title}</h3>
+              <p class="mono proj-role">{[p.data.role, p.data.timeframe].filter(Boolean).map(plain).join(' · ')}</p>
+              <p class="proj-summary">{p.data.summary ?? p.data.blurb}</p>
+              {(() => { const Body = projectBodies[p.id]; return (
+                <details class="project-more">
+                  <summary class="mono">Read more</summary>
+                  {Body ? <div class="project-body"><Body /></div> : <p class="project-blurb">{plain(p.data.blurb)}</p>}
+                </details>
+              ); })()}
+              {p.data.link && (
+                <a class="project-link" href={p.data.link} target="_blank" rel="noopener noreferrer">
+                  {p.data.linkLabel ?? p.data.link} ↗
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -265,6 +232,22 @@ const now = [
   )}
 
 </Layout>
+
+<script>
+  function initStack() {
+    const hero = document.querySelector<HTMLElement>('.has-stack');
+    const stack = document.querySelector<HTMLElement>('.hero-stack');
+    if (!hero || !stack || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    hero.addEventListener('pointermove', e => {
+      const r = hero.getBoundingClientRect();
+      stack.style.setProperty('--mx', String(((e.clientX - r.left) / r.width - 0.5) * 2));
+      stack.style.setProperty('--my', String(((e.clientY - r.top) / r.height - 0.5) * 2));
+    });
+    hero.addEventListener('pointerleave', () => { stack.style.setProperty('--mx', '0'); stack.style.setProperty('--my', '0'); });
+  }
+  initStack();
+  document.addEventListener('astro:page-load', initStack);
+</script>
 
 <style>
   @media (prefers-reduced-motion: no-preference) {
@@ -490,29 +473,6 @@ const now = [
   @media (max-width: 640px) { .highlight-md { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 1rem; } .highlight-md dt { max-width: none; font-size: 0.8rem; } }
   .highlight-md dd { font-size: clamp(1.35rem, 2vw, 1.65rem); }
 
-  /* ── Now ── */
-  .now-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.25rem;
-  }
-
-  .now-item {
-    padding-top: 1rem;
-    border-top: 2px solid var(--color-accent);
-  }
-
-  .now-where { color: var(--color-accent); margin-bottom: 0.35rem; }
-
-  .now-item h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-
-  .now-item p:last-child {
-    font-size: 0.92rem;
-    line-height: 1.55;
-    color: var(--color-text-secondary);
-  }
-
   /* ── Testimonials ── */
   .voice-grid {
     display: grid;
@@ -640,6 +600,77 @@ const now = [
     color: var(--color-accent);
   }
 
+
+  /* ── Hero stack ── */
+  .has-stack .hero-inner { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: center; }
+  .hero-stack { position: relative; height: 470px; --mx: 0; --my: 0; }
+  .stack-item {
+    position: absolute;
+    display: block;
+    transform: translate3d(calc(var(--mx) * var(--d) * 14px), calc(var(--my) * var(--d) * 10px), 0) rotate(var(--r));
+    transition: transform 0.6s var(--ease-out), box-shadow 0.4s;
+  }
+  .stack-item img { display: block; width: 100%; height: auto; }
+  .stack-item:hover { z-index: 5; }
+  .stack-doc {
+    width: 58%; left: 0; top: 6%;
+    background: #fff; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 0 0 1px var(--color-border), 0 24px 48px -28px rgba(10, 14, 30, 0.4);
+  }
+  .stack-dash {
+    width: 82%; left: 4%; bottom: 4%;
+    border-radius: 12px; overflow: hidden; background: #0e1117;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 36px 60px -30px rgba(10, 14, 30, 0.65);
+  }
+  .stack-bar { display: block; height: 22px; background: #1b1e26 radial-gradient(circle at 14px 11px, #ff5f57 4px, transparent 4.5px), radial-gradient(circle at 30px 11px, #febc2e 4px, transparent 4.5px), radial-gradient(circle at 46px 11px, #28c840 4px, transparent 4.5px); background-color: #1b1e26; }
+  .stack-phone { width: 36%; right: 0; top: 0; filter: drop-shadow(0 30px 40px rgba(10, 14, 30, 0.35)); }
+  .stack-item:hover { transform: translate3d(calc(var(--mx) * var(--d) * 14px), calc(var(--my) * var(--d) * 10px - 8px), 0) rotate(calc(var(--r) * 0.5)); }
+  @media (prefers-reduced-motion: no-preference) {
+    .stack-item { animation: stack-in 1s var(--ease-out) both; animation-delay: calc(500ms + var(--n) * 140ms); }
+    @keyframes stack-in { from { opacity: 0; translate: 0 28px; } to { opacity: 1; translate: 0 0; } }
+  }
+  @media (max-width: 960px) {
+    .has-stack .hero-inner { grid-template-columns: minmax(0, 1fr); }
+    .hero-stack { display: none; }
+  }
+
+  /* ── Tinted band (full-bleed without horizontal scroll) ── */
+  .band { background: var(--color-surface); box-shadow: 0 0 0 100vmax var(--color-surface); clip-path: inset(0 -100vmax); }
+
+  /* ── Pull quote ── */
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .pull-quote { max-width: 860px; margin: 0 auto; text-align: center; position: relative; padding-top: 2.5rem; }
+  .pull-mark { position: absolute; top: -0.4rem; left: 50%; transform: translateX(-50%); font-size: 6rem; line-height: 1; color: var(--color-accent); font-weight: 600; }
+  .pull-quote blockquote { font-size: clamp(1.4rem, 2.8vw, 2.1rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.3; }
+  .pull-quote figcaption { margin-top: 1.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.15rem; font-size: 0.92rem; color: var(--color-text-secondary); }
+  .pull-quote figcaption strong { color: var(--color-text); font-weight: 600; }
+  .pull-quote figcaption .mono { color: var(--color-text-muted); margin-top: 0.2rem; }
+
+  /* ── More work grid ── */
+  .proj-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: stretch; }
+  .proj-card {
+    display: flex; flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    background: var(--color-paper);
+    scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+    transition: border-color 0.25s, transform 0.5s var(--ease-out);
+  }
+  .proj-card:hover { border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border)); transform: translateY(-3px); }
+  .proj-card:target { animation: target-flash 2.4s var(--ease-out) both; }
+  .proj-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem; }
+  .proj-mark { width: 2.4rem; height: 2.4rem; border-radius: 10px; display: grid; place-items: center; background: var(--color-accent-light); color: var(--color-accent); font-weight: 600; font-size: 1.1rem; }
+  .proj-status { padding: 0.25em 0.65em; border-radius: 999px; background: var(--color-surface); color: var(--color-text-secondary); font-size: 0.7rem; }
+  .proj-title { font-size: 1.2rem; letter-spacing: -0.025em; margin-bottom: 0.25rem; }
+  .proj-role { color: var(--color-text-muted); margin-bottom: 0.75rem; }
+  .proj-summary { font-size: 0.93rem; line-height: 1.55; color: var(--color-text-secondary); }
+  .proj-card .project-more { margin-top: auto; padding-top: 0.9rem; }
+  .proj-card .project-link { margin-top: 0.5rem; }
+  .proj-card .project-body { margin-top: 0.75rem; }
+  @media (max-width: 960px) { .proj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .proj-grid { grid-template-columns: 1fr; } }
+
   /* ── Responsive ── */
   @media (max-width: 960px) {
     .proof-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -647,7 +678,6 @@ const now = [
     .proof-item:nth-child(even) { border-left: 1px solid var(--color-border); padding-left: 1.5rem; }
     .proof-item:nth-child(n + 3) { border-top: 1px solid var(--color-border); }
     .study-grid { grid-template-columns: 1fr 1fr; }
-    .now-list { grid-template-columns: 1fr 1fr; row-gap: 2rem; }
     .featured { grid-template-columns: 1fr; }
     .featured-side { padding-left: 0; border-left: none; padding-top: 1.5rem; border-top: 1px dashed var(--color-border); }
   }
@@ -659,7 +689,7 @@ const now = [
     .hero-portrait { max-width: 280px; }
     .proof-item, .proof-item + .proof-item { padding: 1.25rem 0.75rem 1.25rem 0; }
     .proof-item:nth-child(even) { padding-left: 0.75rem; }
-    .study-grid, .now-list { grid-template-columns: 1fr; }
+    .study-grid { grid-template-columns: 1fr; }
     .featured { padding: 1.5rem; }
     .project-item { grid-template-columns: 1fr; gap: 0.75rem; }
     .also { grid-template-columns: 1fr; gap: 0.75rem; }
