@@ -20,7 +20,7 @@ const raw: Org[] = [
   { slug: 'dali', name: 'DALI Lab', href: 'https://dali.dartmouth.edu/' },
   { slug: 'echostar', name: 'EchoStar', href: 'https://www.echostar.com/', ratio: 687 / 160 },
   { slug: 'youphoria', name: 'Youphoria', href: 'https://youphoriaapp.com/' },
-  { slug: 'design-corps', name: 'Design Corps', href: 'https://diad.notion.site/', ratio: 1, mark: true, scale: 1.15 },
+  { slug: 'design-corps', name: 'Design Corps', href: 'https://diad.notion.site/', ratio: 1, scale: 1.15 },
   { slug: 'digital-nest', name: 'Digital NEST', href: 'https://digitalnest.org/', ratio: 575 / 160, scale: 1.25 },
 ];
 

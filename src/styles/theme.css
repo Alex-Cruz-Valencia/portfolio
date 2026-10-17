@@ -65,8 +65,8 @@ html { font-size: 17px; }
 :root:root:root:root .proof-item dt { font-size: 0.86rem; color: var(--color-text-muted); max-width: 230px; }
 
 /* Logo strip */
-:root:root:root:root .wordmark { font-family: var(--font-body); font-weight: 600; letter-spacing: -0.03em; }
-:root:root:root:root .org { opacity: 0.45; }
+:root:root:root:root .wordmark { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.01em; }
+:root:root:root:root .org { opacity: 1; }
 
 /* Case studies → numbered list rows */
 :root:root:root:root .featured,
@@ -276,7 +276,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* Logo strip */
-:root:root:root:root .logo-row a { transition: transform 0.45s var(--ease-butter), opacity 0.3s, color 0.3s; }
+:root:root:root:root .logo-row a { transition: transform 0.45s var(--ease-butter), background 0.3s, color 0.3s; }
 :root:root:root:root .logo-row a:hover { transform: translateY(-3px); }
 
 /* Stats don't jitter while counting */
