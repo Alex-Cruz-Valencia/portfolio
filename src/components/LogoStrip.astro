@@ -19,7 +19,7 @@ import { orgs } from '../data/orgs';
               {o.logo && (
                 <span
                   class:list={['logo-mask', { 'is-mark': o.mark }]}
-                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 3}; --scale: ${o.scale ?? 1};`}
+                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 3}; --h: ${o.h ?? 20}px; --dy: ${o.dy ?? 0}px;`}
                   role="img"
                   aria-label={o.mark ? undefined : o.name}
                   aria-hidden={o.mark ? 'true' : undefined}
@@ -43,7 +43,7 @@ import { orgs } from '../data/orgs';
               {o.logo && (
                 <span
                   class:list={['logo-mask', { 'is-mark': o.mark }]}
-                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 3}; --scale: ${o.scale ?? 1};`}
+                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 3}; --h: ${o.h ?? 20}px; --dy: ${o.dy ?? 0}px;`}
                   role="img"
                   aria-label={o.mark ? undefined : o.name}
                   aria-hidden={o.mark ? 'true' : undefined}
@@ -99,14 +99,14 @@ import { orgs } from '../data/orgs';
   /* One-color silhouette: the logo's shape, painted with currentColor. */
   .logo-mask {
     display: block;
-    height: calc(20px * var(--scale, 1));
+    height: calc(var(--h) * var(--k, 1));
+    transform: translateY(calc(var(--dy) * var(--k, 1)));
     aspect-ratio: var(--ratio);
     background-color: currentColor;
     -webkit-mask: var(--logo) center / contain no-repeat;
     mask: var(--logo) center / contain no-repeat;
   }
 
-  .logo-mask.is-mark { height: calc(28px * var(--scale, 1)); }
 
   .wordmark {
     font-family: var(--font-display);
@@ -114,14 +114,18 @@ import { orgs } from '../data/orgs';
     font-weight: 600;
     letter-spacing: -0.01em;
     white-space: nowrap;
+    line-height: 1;
+    /* Trim the text box to its capitals so it centers on the same line as the logos. */
+    text-box: trim-both cap alphabetic;
   }
+
+  .org { height: 40px; gap: 0.55rem; }
 
   @media (max-width: 760px) {
     .logos-inner { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
     .logo-row { gap: 0.7rem 1.6rem; }
     .wordmark { font-size: 1rem; }
-    .logo-mask { height: calc(17px * var(--scale, 1)); }
-    .logo-mask.is-mark { height: calc(24px * var(--scale, 1)); }
+    .org { --k: 0.86; height: 34px; }
   }
 
   /* ── Gentle loop: two copies of the row slide left forever, pause on hover/focus ── */
