@@ -4,7 +4,9 @@ import { orgs } from '../data/orgs';
 
 <section class="logos" aria-labelledby="logos-title">
   <div class="container logos-inner">
-    <p id="logos-title" class="mono logos-label">Where I've built</p>
+    <h2 id="logos-title" class="logos-label">Places I've built with</h2>
+    <div class="logo-viewport">
+      <div class="logo-track">
     <ul class="logo-row" role="list">
       {orgs.map(o => {
         const Tag = o.href ? 'a' : 'span';
@@ -13,66 +15,141 @@ import { orgs } from '../data/orgs';
           : {};
         return (
           <li>
-            <Tag class="org" {...linkProps}>
-              {o.logo && o.mark && (
+            <Tag class:list={['org', { 'has-mark': o.logo && o.mark }]} {...linkProps}>
+              {o.logo && (
                 <span
-                  class="logo-mask"
-                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 1}; --scale: ${o.scale ?? 1};`}
-                  aria-hidden="true"
+                  class:list={['logo-mask', { 'is-mark': o.mark }]}
+                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 3}; --h: ${o.h ?? 20}px; --dy: ${o.dy ?? 0}px;`}
+                  role="img"
+                  aria-label={o.mark ? undefined : o.name}
+                  aria-hidden={o.mark ? 'true' : undefined}
                 />
               )}
-              <span class="wordmark">{o.name}</span>
+              {(!o.logo || o.mark) && <span class="wordmark">{o.name}</span>}
             </Tag>
           </li>
         );
       })}
     </ul>
+    <ul class="logo-row" role="list" aria-hidden="true">
+      {orgs.map(o => {
+        const Tag = o.href ? 'a' : 'span';
+        const linkProps = o.href
+          ? { href: o.href, target: '_blank', rel: 'noopener noreferrer', title: `${o.name} ↗` }
+          : {};
+        return (
+          <li>
+            <Tag class:list={['org', { 'has-mark': o.logo && o.mark }]} {...linkProps} tabindex={o.href ? -1 : undefined}>
+              {o.logo && (
+                <span
+                  class:list={['logo-mask', { 'is-mark': o.mark }]}
+                  style={`--logo: url('${o.logo}'); --ratio: ${o.ratio ?? 3}; --h: ${o.h ?? 20}px; --dy: ${o.dy ?? 0}px;`}
+                  role="img"
+                  aria-label={o.mark ? undefined : o.name}
+                  aria-hidden={o.mark ? 'true' : undefined}
+                />
+              )}
+              {(!o.logo || o.mark) && <span class="wordmark">{o.name}</span>}
+            </Tag>
+          </li>
+        );
+      })}
+    </ul>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
   .logos { padding: 1.75rem 0 0.5rem; }
 
-  .logos-inner { display: flex; align-items: center; gap: 1.5rem; }
+  .logos-inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
 
-  .logos-label { flex-shrink: 0; color: var(--color-text-muted); }
+  /* Kept for screen readers; the strip itself carries the meaning visually. */
+  .logos-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
 
-  .logo-row { list-style: none; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+  .logo-row {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem 1.85rem;
+  }
 
-  /* Every org is the same badge: optional small mark + name. */
   .org {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    height: 36px;
-    padding: 0 0.95rem;
-    border-radius: 999px;
-    background: var(--color-surface);
-    color: var(--color-text-secondary);
-    transition: background 0.2s, color 0.2s, transform 0.3s var(--ease-out);
+    gap: 0.5rem;
+    height: 34px;
+    color: var(--color-text);
+    opacity: 0.55;
+    transition: opacity 0.2s, color 0.2s;
   }
 
   a.org:hover,
   a.org:focus-visible {
-    background: var(--color-accent-light);
+    opacity: 1;
     color: var(--color-accent);
-    transform: translateY(-2px);
   }
 
+  /* One-color silhouette: the logo's shape, painted with currentColor. */
   .logo-mask {
     display: block;
-    height: calc(18px * var(--scale, 1));
+    height: calc(var(--h) * var(--k, 1));
+    transform: translateY(calc(var(--dy) * var(--k, 1)));
     aspect-ratio: var(--ratio);
     background-color: currentColor;
     -webkit-mask: var(--logo) center / contain no-repeat;
     mask: var(--logo) center / contain no-repeat;
   }
 
-  .wordmark { font-size: 0.92rem; font-weight: 500; letter-spacing: -0.01em; white-space: nowrap; }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    line-height: 1;
+    /* Trim the text box to its capitals so it centers on the same line as the logos. */
+    text-box: trim-both cap alphabetic;
+  }
+
+  .org { height: 40px; gap: 0.55rem; }
 
   @media (max-width: 760px) {
-    .logos-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-    .org { height: 32px; padding: 0 0.8rem; }
-    .wordmark { font-size: 0.85rem; }
+    .logos-inner { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+    .logo-row { gap: 0.7rem 1.6rem; }
+    .wordmark { font-size: 1rem; }
+    .org { --k: 0.86; height: 34px; }
   }
+
+  /* ── Gentle loop: two copies of the row slide left forever, pause on hover/focus ── */
+  .logo-viewport {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .logo-track { display: flex; width: max-content; }
+  .logo-track .logo-row { flex-wrap: nowrap; flex-shrink: 0; padding-right: 3rem; gap: 3rem; }
+  .logo-track .logo-row[aria-hidden] { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .logo-track .logo-row[aria-hidden] { display: flex; }
+    .logo-track { animation: logo-loop 45s linear infinite; }
+    .logo-viewport:hover .logo-track,
+    .logo-viewport:focus-within .logo-track { animation-play-state: paused; }
+    @keyframes logo-loop { to { transform: translateX(-50%); } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-viewport { -webkit-mask-image: none; mask-image: none; }
+    .logo-track { width: auto; }
+    .logo-track .logo-row { flex-wrap: wrap; gap: 0.9rem 1.85rem; padding-right: 0; }
+  }
+  @media (max-width: 760px) { .logo-viewport { width: 100%; } }
 </style>

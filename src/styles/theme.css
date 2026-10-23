@@ -65,8 +65,8 @@ html { font-size: 17px; }
 :root:root:root:root .proof-item dt { font-size: 0.86rem; color: var(--color-text-muted); max-width: 230px; }
 
 /* Logo strip */
-:root:root:root:root .wordmark { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.01em; }
-:root:root:root:root .org { opacity: 1; }
+:root:root:root:root .wordmark { font-family: var(--font-body); font-weight: 600; letter-spacing: -0.03em; }
+:root:root:root:root .org { opacity: 0.45; }
 
 /* Case studies → numbered list rows */
 :root:root:root:root .featured,
@@ -276,7 +276,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* Logo strip */
-:root:root:root:root .logo-row a { transition: transform 0.45s var(--ease-butter), background 0.3s, color 0.3s; }
+:root:root:root:root .logo-row a { transition: transform 0.45s var(--ease-butter), opacity 0.3s, color 0.3s; }
 :root:root:root:root .logo-row a:hover { transform: translateY(-3px); }
 
 /* Stats don't jitter while counting */
@@ -496,8 +496,9 @@ html.lenis, html.lenis body { height: auto; }
 /* Scannable home cards: short decks show in full; highlight numbers sit in one row */
 :root:root:root:root .card-excerpt.card-deck { display: block; -webkit-line-clamp: unset; overflow: visible; }
 :root:root:root:root .featured { grid-template-rows: auto auto; align-content: start; }
-:root:root:root:root .featured-side.highlight-row { display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem 2.75rem; padding-top: 1.5rem; align-self: start; }
-@media (max-width: 960px) { :root:root:root:root .featured-side.highlight-row { margin-left: 0; column-gap: 1.75rem; } }
+:root:root:root:root .featured-side.highlight-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 1rem; width: min(100%, 422px); padding-top: 1rem; margin-top: 1.4rem; align-self: start; }
+@media (max-width: 960px) { :root:root:root:root .featured-side.highlight-row { margin-left: 0; } }
+@media (max-width: 640px) { :root:root:root:root .featured-side.highlight-row { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0.9rem; } }
 
 /* Hero shares its row with the work stack on desktop */
 @media (min-width: 961px) { :root:root:root:root .has-stack .hero h1, :root:root:root:root .hero.has-stack h1 { font-size: clamp(2.6rem, 5.2vw, 4.6rem); } }

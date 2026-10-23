@@ -67,8 +67,8 @@ highlights:
     label: "student voices"
   - value: "7"
     label: "recommendations"
-  - value: "Cited"
-    label: "in Dartmouth's official report"
+  - value: "15/17"
+    label: "communities"
 ---
 
 ## It all started when...

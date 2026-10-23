@@ -39,7 +39,7 @@ stats:
   - value: "~1 in 2"
     label: "new members came through word of mouth"
   - value: "5"
-    label: "near-zero-cost pilots"
+    label: "low-cost pilots"
 decisions:
   - title: "Proposing it myself"
     problem: "I'd walked the member journey myself, as a member and then an instructor."
@@ -64,9 +64,9 @@ highlights:
   - value: "< 1 in 3"
     label: "finished training"
   - value: "5"
-    label: "near-zero-cost pilots"
+    label: "low-cost pilots"
   - value: "3 weeks"
-    label: "self-proposed study"
+    label: "of research"
 ---
 
 ## It all started when...

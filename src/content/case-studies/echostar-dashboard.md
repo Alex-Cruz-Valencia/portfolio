@@ -42,7 +42,7 @@ stats:
   - value: "100s"
     label: "data points I checked by hand"
   - value: "1"
-    label: "feature I built, then killed"
+    label: "feature I killed"
 decisions:
   - title: "Which tool to build on"
     problem: "Looker was the obvious pick. Security rules kept it from the data."
@@ -70,11 +70,11 @@ quote:
 lesson: "The feature I'm proudest of is the one I deleted."
 highlights:
   - value: "8 \u2192 4"
-    label: "pages, cut on purpose"
+    label: "dashboard pages"
   - value: "~13"
     label: "launches covered"
   - value: "1"
-    label: "feature I built, then killed"
+    label: "feature I killed"
 ---
 
 ## It all started when...

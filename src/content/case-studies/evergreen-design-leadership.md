@@ -75,9 +75,9 @@ now:
 lesson: "When you can't win the decision, win a way to learn it."
 highlights:
   - value: "8 \u2192 2"
-    label: "upfront permissions"
+    label: "permission asks"
   - value: "80 \u2192 30"
-    label: "onboarding questions"
+    label: "intake questions"
   - value: "200"
     label: "students testing it"
 ---
