@@ -4,7 +4,7 @@ import { orgs } from '../data/orgs';
 
 <section class="logos" aria-labelledby="logos-title">
   <div class="container logos-inner">
-    <p id="logos-title" class="mono logos-label">Where I've built</p>
+    <h2 id="logos-title" class="logos-label">Places I've built with</h2>
     <div class="logo-viewport">
       <div class="logo-track">
     <ul class="logo-row" role="list">
@@ -66,13 +66,11 @@ import { orgs } from '../data/orgs';
   .logos-inner {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    position: relative;
   }
 
-  .logos-label {
-    flex-shrink: 0;
-    color: var(--color-text-muted);
-  }
+  /* Kept for screen readers; the strip itself carries the meaning visually. */
+  .logos-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
 
   .logo-row {
     list-style: none;

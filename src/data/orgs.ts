@@ -17,6 +17,7 @@ interface Org {
 
 const raw: Org[] = [
   { slug: 'evergreen', name: 'Evergreen', href: 'https://evergreen.dartmouth.edu/', ratio: 144 / 160, mark: true },
+  { slug: 'foster-nation', name: 'Foster Nation', href: null, ratio: 400 / 377, mark: true },
   { slug: 'dali', name: 'DALI Lab', href: 'https://dali.dartmouth.edu/' },
   { slug: 'echostar', name: 'EchoStar', href: 'https://www.echostar.com/', ratio: 687 / 160 },
   { slug: 'youphoria', name: 'Youphoria', href: 'https://youphoriaapp.com/' },
