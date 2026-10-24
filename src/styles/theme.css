@@ -55,7 +55,10 @@ html { font-size: 17px; }
 :root:root:root:root .section-label h2 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); }
 
 /* Hero: big, tight, left-aligned */
-:root:root:root:root .hero { padding: 5rem 0 2.5rem; }
+/* Tight top so the nav, hero and the stats row all fit in a laptop's first screen. */
+:root:root:root:root .hero { padding: 2rem 0 1.75rem; }
+@media (min-width: 961px) { :root:root:root:root .hero-stack { height: 430px; } }
+:root:root:root:root .proof-item { padding-top: 1.25rem; padding-bottom: 1.25rem; }
 :root:root:root:root .hero h1 { font-size: clamp(2.6rem, 6.6vw, 5.6rem); line-height: 0.98; letter-spacing: -0.05em; max-width: 13.5ch; font-weight: 600; }
 :root:root:root:root .hero-sub { font-size: 1.2rem; color: var(--color-text-secondary); max-width: 600px; }
 :root:root:root:root .hero-sub a { border-bottom: 1px solid var(--color-border); }
