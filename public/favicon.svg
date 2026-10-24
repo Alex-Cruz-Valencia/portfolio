@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#2448ff"/>
-  <text x="32" y="42" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="-1.5" fill="#fff">AC</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-36.19 -185.86 178.68 178.68" width="64" height="64"><rect x="-36.19" y="-185.86" width="178.68" height="178.68" rx="39.31" fill="#0a0a0a"/><path fill="#ffffff" d="M35.625 -78.85 38.57 -87.685H99.18L96.14 -78.85ZM106.495 -40.37499999999999 118.845 -35.91 117.42 -31.349999999999994H72.295L73.625 -35.91L91.105 -40.184999999999995L81.32000000000001 -147.155H86.735L16.055 -40.184999999999995L29.45 -35.91L28.12 -31.349999999999994H-12.540000000000001L-11.115 -35.91L4.5600000000000005 -40.184999999999995L86.735 -161.69H94.43Z"/></svg>

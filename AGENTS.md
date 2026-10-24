@@ -43,6 +43,8 @@ Adding a `.md` file with valid frontmatter is all that's needed: routing and hom
 
 **Live theme: Minimal**: white, ink, one cobalt accent (`#2448ff`), Inter Tight for everything, Geist Mono for small metadata labels. Case studies render as a numbered list of rows on the home page.
 
+Logo: an italic A (Newsreader 400 italic, outlined to a path, inline in `Nav.astro` with `fill="currentColor"`), a 1px hairline, then the name. Under 420px the hairline drops; under 370px the name is visually hidden but stays as the link's accessible name. The favicon (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png`) is the same A in white on an ink tile.
+
 How it's built: base tokens and components live in `src/layouts/Layout.astro` (`<style is:global>`) and page-scoped styles. The active look is a theme layer in `src/styles/theme.css`, imported by the layout. Its selectors use a `:root:root:root:root` prefix so they beat Astro's scoped `[data-astro-cid]` selectors; keep that prefix when adding rules.
 
 Backup designs (full sites, switchable by merging the branch):

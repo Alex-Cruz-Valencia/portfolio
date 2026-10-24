@@ -34,7 +34,10 @@ html { font-size: 17px; }
 /* Nav: plain text links, résumé as text + arrow */
 :root:root:root:root nav { background: color-mix(in srgb, var(--color-bg) 94%, transparent); border-bottom-color: transparent; }
 :root:root:root:root .nav-mark { display: none; }
-:root:root:root:root .nav-logo { font-family: var(--font-body); font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; }
+:root:root:root:root .nav-logo { font-family: var(--font-body); font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; gap: 14px; }
+/* Logo: italic A (Newsreader, outlined) + hairline + name. Favicon is the same A on an ink tile. */
+:root:root:root:root .nav-a { display: block; flex: none; width: auto; height: 24px; color: var(--color-text); }
+:root:root:root:root .nav-rule { display: block; flex: none; width: 1px; height: 20px; background: #cfcfcf; }
 :root:root:root:root .nav-links a.active::after { bottom: -8px; height: 1.5px; background: var(--color-text); }
 :root:root:root:root .nav-links .nav-resume { border: none; padding: 0; }
 :root:root:root:root .nav-links .nav-resume::after { content: ' ↗'; color: var(--color-accent); }
@@ -180,12 +183,21 @@ html { font-size: 17px; }
 }
 
 @media (max-width: 640px) {
+  :root:root:root:root .nav-logo { gap: 10px; }
+  :root:root:root:root .nav-a { height: 20px; }
+  :root:root:root:root .nav-rule { height: 16px; }
   :root:root:root:root .nav-name { white-space: nowrap; font-size: 0.92rem; }
   :root:root:root:root .nav-links { gap: 0.85rem; }
-  :root:root:root:root .nav-links a { font-size: 0.8rem; }
+  :root:root:root:root .nav-links a { font-size: 0.8rem; white-space: nowrap; }
+}
+@media (max-width: 420px) {
+  :root:root:root:root .nav-rule { display: none; }
+  :root:root:root:root .nav-logo { gap: 8px; }
 }
 @media (max-width: 370px) {
-  :root:root:root:root .nav-name { display: none; }
+  /* Name hides visually but stays as the link's accessible name. */
+  :root:root:root:root .nav-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  :root:root:root:root .nav-rule { display: none; }
 }
 
 /* ════════════════════════════════════════════════
