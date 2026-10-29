@@ -27,7 +27,7 @@ hero:
 story:
   problem: "Product performance lived in hand-built spreadsheets. Every new question cost someone hours."
   decision: "Build a self-serve dashboard, and let the constraints decide what made the cut."
-  result: "Shipped 4 pages on live data, covering about 13 launches. Smaller on purpose."
+  result: "Shipped 4 pages on live data. Data requests that took up to a week became instant."
 feature:
   kind: video
   src: "/work/echostar/dashboard-walkthrough"
@@ -39,8 +39,8 @@ feature:
 stats:
   - value: "~13"
     label: "product launches covered"
-  - value: "100s"
-    label: "data points I checked by hand"
+  - value: "~3 hrs"
+    label: "of manual filtering saved per data request"
   - value: "1"
     label: "feature I killed"
 decisions:
@@ -55,8 +55,8 @@ decisions:
     result: "They wanted more depth, not less. I killed it and added drill-downs to real customer calls."
     lesson: "Ask the actual executives."
   - title: "Eight pages down to four"
-    problem: "I'd mapped a page for every angle: returns, pricing, financials, and more."
-    decision: "A page stayed only if its data was valid and leadership actually used it."
+    problem: "I'd mapped about 8 pages, one for every angle: returns, pricing, financials, and more."
+    decision: "Interviewed 3 product leaders and the whole team. A page stayed only if its data was valid and leaders used it."
     result: "Four made it: Sales, Bring Your Own, Inventory, and Customer Sentiment."
     lesson: "Constraints are the spec."
   - title: "Only numbers people trusted"
@@ -71,8 +71,8 @@ lesson: "The feature I'm proudest of is the one I deleted."
 highlights:
   - value: "8 \u2192 4"
     label: "dashboard pages"
-  - value: "~13"
-    label: "launches covered"
+  - value: "~3 hrs"
+    label: "saved per request"
   - value: "1"
     label: "feature I killed"
 ---
@@ -144,7 +144,9 @@ AI did a lot of the drafting. I wrote SQL and Python with Gemini and other AI co
 >
 > Tia Kubicka, Product Leader, Boost Mobile (EchoStar)
 
-I can't claim adoption metrics, since my internship ended close to the handoff. What I can say is that the version that shipped was smaller, narrower, and more conservative than the one I sketched on day one, and every one of those reductions was the right call.
+Before the dashboard, a question about a launch meant a request to another team. Answers could take up to a week, and each one took about 3 hours of manual filtering (roughly an hour per page of data). Now the 6-person team and our 2 product leaders pull those reports themselves, instantly, filtered however they need.
+
+The version that shipped was smaller, narrower, and more conservative than the one I sketched on day one, and every one of those reductions was the right call.
 
 ## What this revealed about how I think
 

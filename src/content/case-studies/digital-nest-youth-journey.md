@@ -11,7 +11,7 @@ cardImageAlt: "Digital NEST homepage: Your Future, Built Right Here"
 org: "Digital NEST · Salinas, CA"
 role: "UX Researcher (self-proposed)"
 team: "Solo, with Digital NEST leadership as sponsor"
-methods: ["Journey mapping", "5 interviews", "Membership data"]
+methods: ["Journey mapping", "9 interviews", "Membership data"]
 outcome: "Five near-zero-cost pilots. The End of Season Push recommendation lines up with the newsletter and social cadence Digital NEST now runs."
 tldr:
   - "Proposed the study myself, as a former member and instructor who'd walked the journey."
@@ -27,7 +27,7 @@ hero:
   label: "new adult members finished the mandatory training. That one number reframed the whole study."
 story:
   problem: "New members were joining, then stalling before they'd really started."
-  decision: "I proposed a 3-week study myself: a journey map, 5 interviews, and the membership data."
+  decision: "I proposed a 3-week study myself: a journey map, 9 interviews, and the membership data."
   result: "One number reframed the problem, and became 5 pilots a small staff could actually run."
 feature:
   kind: html
@@ -82,7 +82,7 @@ That's why the research was my idea, not an assignment. I proposed investigating
 
 ## The approach
 
-I built a journey map of how members experience joining Digital NEST and progressing through it, then pressure-tested it in five interviews with youth members and staff. Being a former member and instructor made access easy: people I already knew, a journey I'd personally walked.
+I built a journey map of how members experience joining Digital NEST and progressing through it, then pressure-tested it in nine interviews: six with youth members and three with staff. Being a former member and instructor made access easy: people I already knew, a journey I'd personally walked.
 
 <figure class="case-figure case-figure-wide">
   <div class="browser-frame"><img src="/work/digital-nest/site-start-here.webp" width="1600" height="914" loading="lazy" decoding="async" alt="Digital NEST's Start Here section: 1, tell us about yourself; 2, we'll reach out within 48 hours; 3, experience the NEST. A Member Interest Form button sits below." /></div>

@@ -26,7 +26,7 @@ gallery:
     caption: "Mood check-in. A 5-point scale you drag, not a form you fill out."
 org: "Evergreen, at Dartmouth's DALI Lab"
 role: "Product Manager (promoted from Project Assistant)"
-team: "Led 6 designers in V1; now design and engineering"
+team: "Led 6 designers in V1; now a 7-person team (3 developers, 3 designers, 1 design consultant)"
 methods: ["Campus survey", "Student interviews", "50-student survey", "A/B test design"]
 outcome: "Upfront permissions cut from 8 to 2 and onboarding from 80 questions to 30, once real users backed the case. Promoted to PM for all of Evergreen, now in testing with 200 students."
 deck: "I'm the PM on Evergreen, Dartmouth's AI wellness app, now in testing with 200 students."
@@ -39,17 +39,17 @@ story:
   decision: "Leadership said no twice. I won a test instead of an argument."
   result: "Real students proved us right, and the whole onboarding got rebuilt."
 stats:
+  - value: "60% → 90%"
+    label: "onboarding completion, after the redesign shipped"
   - value: "80 → 30"
-    label: "onboarding questions"
-  - value: "48 of 50"
-    label: "students picked real photos over AI art"
+    label: "onboarding questions, in 4 short modules"
   - value: "15 → 200"
     label: "students testing Evergreen"
 decisions:
   - title: "How much to ask for up front"
     problem: "8 asks on day one, for students who were already uneasy."
     decision: "Pushed for 2. After two no's, I pitched an A/B test instead."
-    result: "Real users settled it: 8 became 2, and onboarding went from 80 questions to 30."
+    result: "Real users settled it: 8 became 2, onboarding went from 80 questions to 30, and completion rose from ~60% to 90%."
     lesson: "Bring a plan, not just a disagreement."
   - title: "AI art or real photos"
     problem: "AI images got us the look we wanted. Then something felt off."
@@ -131,4 +131,6 @@ So we surveyed 50 Dartmouth students: real student photos or the AI images. **Tw
 
 ## Where it stands now
 
-As of this fall I'm the PM for all of Evergreen, design *and* development. The research group has grown from about 15 students to around 200, and Evergreen is backed by $5M in Dartmouth research funding. The work has moved deeper into the AI itself: what Evie can do for a student, what it remembers, and why students still drop off in onboarding. I'll keep updating this page as that lands.
+As of this fall I'm the PM for all of Evergreen, design *and* development. The research group has grown from about 15 students to around 200, and Evergreen is backed by $5M in Dartmouth research funding. I lead a 7-person team (3 full-stack developers, 3 designers and a design consultant), and we've shipped 7+ features across 17+ sprints. The rebuilt onboarding is live, and completion went from about 60% to 90%.
+
+The work has moved deeper into the AI itself: what Evie can do for a student, what it remembers, and how it routes students to the right resources. I partner with our engineers on tool calling and on model tests for Evie's memory and risk decisions. Early data says more students now finish their first conversation with Evie, roughly 50% before and 80% now, though that number is still coming in. I'll keep updating this page as it lands.

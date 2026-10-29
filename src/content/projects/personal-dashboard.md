@@ -8,7 +8,7 @@ blurb: "A morning dashboard with my tasks, calendar, email that needs a reply, a
 link: "https://github.com/Alex-Cruz-Valencia/Personal_Dashboard"
 linkLabel: "View on GitHub"
 order: 2
-summary: "Tasks, calendar, email that needs a reply, and the weather on one screen, with an AI daily summary on top. Built end to end with Claude Code, Cursor, and Codex."
+summary: "Tasks, calendar, email that needs a reply, and the weather on one screen, with an AI daily summary on top. I use it every day, and it saves me 30 to 60 minutes. Built end to end with Claude Code, Cursor, and Codex."
 ---
 
 #### Why I built it
