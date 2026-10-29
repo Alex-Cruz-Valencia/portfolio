@@ -196,6 +196,7 @@ html { font-size: 17px; }
 @media (max-width: 420px) {
   :root:root:root:root .nav-rule { display: none; }
   :root:root:root:root .nav-logo { gap: 8px; }
+  :root:root:root:root .nav-links { gap: 0.6rem; }
 }
 @media (max-width: 370px) {
   /* Name hides visually but stays as the link's accessible name. */

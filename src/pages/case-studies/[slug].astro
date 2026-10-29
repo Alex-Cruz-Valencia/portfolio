@@ -81,8 +81,8 @@ const glance = [
             const groupOf = (i: number) => { let acc = 0; for (let g = 0; g < groups.length; g++) { acc += groups[g]; if (i < acc) return g; } return -1; };
             const big = total <= 12;
             return (
-              <div class:list={['hero-viz', 'hero-dots', { 'dots-big': big }]}>
-                <div class="hero-dotgrid" aria-hidden="true" style={`--cols:${big ? total : 9}`}>
+              <div class:list={['hero-viz', 'hero-dots', { 'dots-big': big, 'dots-stack': (d.hero!.value ?? '').length > 6 }]}>
+                <div class="hero-dotgrid" aria-hidden="true" style={`--cols:${d.hero!.cols ?? (big ? total : 9)}`}>
                   {Array.from({ length: total }).map((_, i) => (
                     <span class:list={['hdot', i < filled && `on g${groupOf(i)}`]} style={`--i:${i}`}></span>
                   ))}
@@ -495,6 +495,10 @@ const glance = [
   .dots-big .hdot { width: 46px; height: 46px; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-text) 16%, transparent); }
   .dots-big .hdot.on { box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--color-accent) 70%, transparent); }
   .hero-dots .hero-to { font-size: clamp(2.8rem, 6vw, 4.2rem); white-space: nowrap; }
+  /* Long values ("60% → 90%") sit under the dots instead of beside them. */
+  .dots-stack { grid-template-columns: 1fr; row-gap: 1.1rem; }
+  .dots-stack .hero-dotgrid { grid-row: auto; }
+  .dots-stack .hero-label { margin-top: -0.5rem; }
   @media (prefers-reduced-motion: no-preference) {
     .story-band.is-in .hdot { animation: dot-pop 0.5s var(--ease-out) both; animation-delay: calc(300ms + var(--i) * 22ms); }
     .story-band.is-in .dots-big .hdot { animation-delay: calc(350ms + var(--i) * 220ms); }

@@ -107,3 +107,5 @@ Optional assets render only when present (see `src/lib/site.ts`): `public/Alex_C
 - Use feature branches (`feat/`, `fix/`) for larger changes
 - Always include a `Co-Authored-By:` Claude line in AI-assisted commits
 - Push after every commit: Vercel deploys automatically
+
+Dots heroes (`hero.kind: dots`) take optional `cols` to wrap the grid (Evergreen uses 5 for a 2-row 10-dot grid). Values longer than 6 characters stack under the dots instead of sitting beside them.
