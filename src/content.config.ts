@@ -59,6 +59,7 @@ const caseStudies = defineCollection({
       total: z.number().optional(),
       filled: z.number().optional(),
       groups: z.array(z.number()).optional(),
+      cols: z.number().optional(),
       value: z.string().optional(),
       label: z.string(),
     }).optional(),

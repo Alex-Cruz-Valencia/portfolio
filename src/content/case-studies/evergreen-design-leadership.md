@@ -1,11 +1,11 @@
 ---
 title: "Getting students to trust an AI with their wellness"
 date: "Mar 2026 – present"
-excerpt: "I'm the PM on Evergreen, Dartmouth's AI wellness app. Students told us an AI asking for their data felt like a lot to trust, so I spent my time making it ask for less, and proving that was the right call."
+excerpt: "I'm the PM on Evergreen, Dartmouth's AI wellness app. Students were quitting onboarding before they ever met its AI, so I pushed past the spec to rebuild it. Completion went from about 60% to 90%."
 tags: ["AI Product", "User Research", "Stakeholder Management", "0-to-1"]
 readTime: "1 min skim"
 fullStoryTime: "5 min"
-subtitle: "AI product · Trust & data permissions · Influence without authority"
+subtitle: "AI product · Onboarding · Influence without authority"
 order: 1
 featured: true
 mascot: "/work/evergreen/evie-mascot.webp"
@@ -27,30 +27,34 @@ gallery:
 org: "Evergreen, at Dartmouth's DALI Lab"
 role: "Product Manager (promoted from Project Assistant)"
 team: "Led 6 designers in V1; now a 7-person team (3 developers, 3 designers, 1 design consultant)"
-methods: ["Campus survey", "Student interviews", "50-student survey", "A/B test design"]
-outcome: "Upfront permissions cut from 8 to 2 and onboarding from 80 questions to 30, once real users backed the case. Promoted to PM for all of Evergreen, now in testing with 200 students."
+methods: ["Campus survey", "Student interviews", "50-student survey", "Usability testing"]
+outcome: "Onboarding completion rose from about 60% to 90%, with 80 questions cut to 30. Promoted to PM for all of Evergreen, now in testing with 200 students."
 deck: "I'm the PM on Evergreen, Dartmouth's AI wellness app, now in testing with 200 students."
 hero:
-  from: 8
-  to: 2
-  label: "permissions and integrations Evergreen asks for before a student ever meets its AI."
+  kind: dots
+  total: 10
+  filled: 9
+  groups: [6, 3]
+  cols: 5
+  value: "60% → 90%"
+  label: "of students finish onboarding, before and after the redesign shipped."
 story:
-  problem: "Students didn't trust an AI asking for their data."
-  decision: "Leadership said no twice. I won a test instead of an argument."
-  result: "Real students proved us right, and the whole onboarding got rebuilt."
+  problem: "Students quit a long onboarding before they ever met the AI."
+  decision: "Testing showed polish wouldn't fix it, so I pushed past the spec to rebuild it."
+  result: "Completion went from about 60% to 90% once it shipped."
 stats:
-  - value: "60% → 90%"
-    label: "onboarding completion, after the redesign shipped"
   - value: "80 → 30"
     label: "onboarding questions, in 4 short modules"
   - value: "15 → 200"
     label: "students testing Evergreen"
+  - value: "7+"
+    label: "features shipped across 17+ sprints"
 decisions:
-  - title: "How much to ask for up front"
-    problem: "8 asks on day one, for students who were already uneasy."
-    decision: "Pushed for 2. After two no's, I pitched an A/B test instead."
-    result: "Real users settled it: 8 became 2, onboarding went from 80 questions to 30, and completion rose from ~60% to 90%."
-    lesson: "Bring a plan, not just a disagreement."
+  - title: "Polish it or rebuild it"
+    problem: "Partners asked for a visual refresh. Testing showed the flow itself was losing students."
+    decision: "Pushed past the spec: 80 questions down to 30, in 4 short modules."
+    result: "Shipped to live users. Completion rose from about 60% to 90%."
+    lesson: "Fix what users hit, not what the spec says."
   - title: "AI art or real photos"
     problem: "AI images got us the look we wanted. Then something felt off."
     decision: "Asked 50 students instead of trusting our gut."
@@ -69,13 +73,13 @@ now:
   - title: "Tool calling for Evie"
     body: "What Evie can do on a student's behalf, and what it should never do on its own."
   - title: "How Evie remembers"
-    body: "What it keeps, what it forgets, and how a student can see or delete it. The permissions question, one layer down."
-  - title: "Onboarding friction audit"
-    body: "Onboarding is still where students drop off most. I'm finding exactly where, and why."
-lesson: "When you can't win the decision, win a way to learn it."
+    body: "What it keeps, what it forgets, and how a student can see or delete it. The trust question, one layer down."
+  - title: "First conversations with Evie"
+    body: "Early data says about 80% of students now finish their first conversation, up from roughly 50%. Still coming in."
+lesson: "Don't polish a flow people are quitting."
 highlights:
-  - value: "8 \u2192 2"
-    label: "permission asks"
+  - value: "90%"
+    label: "finish onboarding"
   - value: "80 \u2192 30"
     label: "intake questions"
   - value: "200"
@@ -88,33 +92,23 @@ Before Evergreen had been tested with a single student, our own research told us
 
 I was the PM taking design from there to a first testing build. I led 6 designers, and had no authority over the two groups whose decisions mattered most: project leadership and our faculty and staff partners. Almost every hard moment came down to changing someone's mind, and "because I think so" was never going to work.
 
-## The permissions ask
+## The onboarding
 
-The design assumed students would grant around six permissions and two integrations up front, so the AI had what it needed from day one. Our research said that would make an uneasy user more uneasy. I recommended cutting the upfront ask to **two** and asking for the rest later, in context.
+Our partners asked for a visual refresh of onboarding. Then we put it in front of students, and the problem wasn't how it looked. It was a long, non-skippable flow of about 80 questions, and students were checking out before they ever met Evie, the AI they'd signed up for. Fresh paint wasn't going to fix that.
 
-Leadership said no in the first meeting, and again in the second. Their reason was a good one: full transparency, showing students the whole scope of how their data *could* be used. My team was behind fewer permissions, but we couldn't get there before the V1 deadline.
+So I pushed past the spec. That meant going back to partners who'd asked for something smaller and making the case with what testing showed, not with my opinion of their design:
 
-So in the third meeting I stopped arguing for the change and argued for a test: ship V1 with the full ask, but **commit to A/B testing the number of permissions** later, so real behavior would make the call instead of either side's conviction. Leadership agreed. Without that, "how many permissions" would have quietly become "however many V1 shipped with."
-
-What I'd do differently: I brought a recommendation and a disagreement. I should have brought a plan that also answered their transparency concern.
-
-## How 8 became 2
-
-What finally moved it wasn't a better slide. It was real students. Once Evergreen started onboarding the research group, the friction showed up right where we'd said it would, and more and more people on the project came around.
-
-It turned out to be bigger than permissions. The whole onboarding changed, which is what we'd been pushing for since the start:
-
-- **The upfront ask went from 8 to 2**, with the rest asked for later, in context.
 - **Onboarding went from 80 questions to 30**, split into 4 short modules, because a student who quits on question 40 never meets Evie at all.
+- **It shipped to live users**, and completion went from **about 60% to 90%**.
 
-I didn't win this one in a meeting. My job was to keep the question on the table, with the case ready, for when the evidence showed up.
+What I'd do differently: I brought the problem to partners before I brought a plan. The conversations went better once I showed up with both.
 
 <figure class="case-figure case-figure-wide">
   <video autoplay muted loop playsinline preload="metadata" poster="/work/evergreen/insights.jpg" aria-label="Evergreen Insights screen: a month of moods, sleep, activity, and a weekly steps graph">
     <source src="/work/evergreen/insights.webm" type="video/webm" />
     <source src="/work/evergreen/insights.mp4" type="video/mp4" />
   </video>
-  <figcaption>Insights: mood, sleep, and activity in one place. This is what the permissions are <em>for</em>, which is exactly why when and how we ask for them matters.</figcaption>
+  <figcaption>Insights: mood, sleep, and activity in one place. This is what onboarding is <em>for</em>: every student who quits early never gets here.</figcaption>
 </figure>
 
 ## AI art or real photos

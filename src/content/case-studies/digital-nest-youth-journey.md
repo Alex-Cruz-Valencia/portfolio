@@ -15,15 +15,15 @@ methods: ["Journey mapping", "9 interviews", "Membership data"]
 outcome: "Five near-zero-cost pilots. The End of Season Push recommendation lines up with the newsletter and social cadence Digital NEST now runs."
 tldr:
   - "Proposed the study myself, as a former member and instructor who'd walked the journey."
-  - "Fewer than a third of new adult members finished mandatory onboarding. That one number reframed the whole problem."
+  - "Only 5 of 17 new adult members finished mandatory onboarding. That one number reframed the whole problem."
   - "Scoped every recommendation to what a small nonprofit staff could actually run."
 fullStoryTime: "4 min"
 deck: "I was a member at Digital NEST, then an instructor. So I proposed my own study: where do new members fall through the cracks?"
 hero:
   kind: dots
-  total: 3
-  filled: 1
-  value: "< 1 in 3"
+  total: 17
+  filled: 5
+  value: "5 of 17"
   label: "new adult members finished the mandatory training. That one number reframed the whole study."
 story:
   problem: "New members were joining, then stalling before they'd really started."
@@ -31,12 +31,12 @@ story:
   result: "One number reframed the problem, and became 5 pilots a small staff could actually run."
 feature:
   kind: html
-  html: "<ol class=\"journey-map\"><li class=\"journey-stage\"><p class=\"mono journey-step\">01 \u00b7 Entry</p><h4>Getting in the door</h4><ul class=\"journey-frictions\"><li>Fewer than a third of new adult members finished the mandatory training</li><li>Hesitant to visit in person: shyness, or assuming it's only for kids already into tech</li></ul><p class=\"journey-pilot\"><span class=\"mono\">Pilots</span>More reminders \u00b7 Refer-a-Friend</p></li><li class=\"journey-stage\"><p class=\"mono journey-step\">02 \u00b7 Engagement</p><h4>Staying involved</h4><ul class=\"journey-frictions\"><li>Jobs and family clash with attendance</li><li>Members feel it's on them to ask for help when they fall behind</li></ul><p class=\"journey-pilot\"><span class=\"mono\">Pilot</span>Check-In</p></li><li class=\"journey-stage\"><p class=\"mono journey-step\">03 \u00b7 Progression</p><h4>Moving forward</h4><ul class=\"journey-frictions\"><li>No shared picture of why members join: career, community, fun, volunteer hours</li><li>\"Out of the loop\" once a season ends</li></ul><p class=\"journey-pilot\"><span class=\"mono\">Pilots</span>Encouraging Understanding \u00b7 End of Season Push</p></li></ol>"
+  html: "<ol class=\"journey-map\"><li class=\"journey-stage\"><p class=\"mono journey-step\">01 \u00b7 Entry</p><h4>Getting in the door</h4><ul class=\"journey-frictions\"><li>Only 5 of 17 new adult members finished the mandatory training</li><li>Hesitant to visit in person: shyness, or assuming it's only for kids already into tech</li></ul><p class=\"journey-pilot\"><span class=\"mono\">Pilots</span>More reminders \u00b7 Refer-a-Friend</p></li><li class=\"journey-stage\"><p class=\"mono journey-step\">02 \u00b7 Engagement</p><h4>Staying involved</h4><ul class=\"journey-frictions\"><li>Jobs and family clash with attendance</li><li>Members feel it's on them to ask for help when they fall behind</li></ul><p class=\"journey-pilot\"><span class=\"mono\">Pilot</span>Check-In</p></li><li class=\"journey-stage\"><p class=\"mono journey-step\">03 \u00b7 Progression</p><h4>Moving forward</h4><ul class=\"journey-frictions\"><li>No shared picture of why members join: career, community, fun, volunteer hours</li><li>\"Out of the loop\" once a season ends</li></ul><p class=\"journey-pilot\"><span class=\"mono\">Pilots</span>Encouraging Understanding \u00b7 End of Season Push</p></li></ol>"
   caption: "The journey map, simplified: where members hit friction at each stage, and the pilot designed for it."
 stats:
   - value: "3 weeks"
     label: "of research, self-proposed"
-  - value: "~1 in 2"
+  - value: "47%"
     label: "new members came through word of mouth"
   - value: "5"
     label: "low-cost pilots"
@@ -48,7 +48,7 @@ decisions:
   - title: "Finding the number"
     problem: "Interviews kept pointing at the front door, but feelings aren't evidence."
     decision: "Checked the membership data for who actually finished onboarding."
-    result: "Fewer than 1 in 3. \"Market better\" became \"stop losing people at the door.\""
+    result: "Only 5 of 17. \"Market better\" became \"stop losing people at the door.\""
     lesson: "Find the number that changes the question."
   - title: "Scoping for a small staff"
     problem: "A nonprofit with no spare hours won't adopt anything expensive."
@@ -61,7 +61,7 @@ decisions:
     lesson: "Knowing what not to report is part of the job."
 lesson: "Good research finds the number that changes the question."
 highlights:
-  - value: "< 1 in 3"
+  - value: "5 of 17"
     label: "finished training"
   - value: "5"
     label: "low-cost pilots"
@@ -99,26 +99,26 @@ I organized findings into three stages: **Entry**, **Engagement**, **Progression
 
 ## The number that anchored everything
 
-**Entry.** Over a recent stretch of membership data, fewer than a third of new adult members completed the mandatory onboarding training.
+**Entry.** Over a recent stretch of membership data, only 5 of 17 new adult members completed the mandatory onboarding training.
 
-That wasn't a feeling from an interview. It was a number, and it reframed the entry problem from "how do we market better" to "people are getting in the door and then stalling before they've really started." Around it, the interviews filled in texture: new members hesitated to show up in person at all, either from shyness or an assumption that the NEST had nothing for someone not already into tech. And about half of new members had heard about the NEST through someone they knew. Word of mouth was doing most of the recruiting.
+That wasn't a feeling from an interview. It was a number, and it reframed the entry problem from "how do we market better" to "people are getting in the door and then stalling before they've really started." Around it, the interviews filled in texture: new members hesitated to show up in person at all, either from shyness or an assumption that the NEST had nothing for someone not already into tech. And 47% of new members had heard about the NEST through someone they knew. Word of mouth was doing most of the recruiting.
 
 <figure class="case-figure">
-  <div class="stat-viz" role="img" aria-label="Fewer than a third of new adult members completed the mandatory training. About half of new members heard about Digital NEST from someone they knew.">
+  <div class="stat-viz" role="img" aria-label="5 of 17 new adult members completed the mandatory training. 47% of new members heard about Digital NEST from someone they knew.">
     <div class="stat-viz-row">
-      <div class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:30%"></span></div>
+      <div class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:29.4%"></span></div>
       <div class="stat-viz-legend">
-        <p><strong class="stat-big">&lt; 1<span> in 3</span></strong>new adult members completed the mandatory training</p>
+        <p><strong class="stat-big">5<span> of 17</span></strong>new adult members completed the mandatory training</p>
       </div>
     </div>
     <div class="stat-viz-row">
-      <div class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:50%"></span></div>
+      <div class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:47%"></span></div>
       <div class="stat-viz-legend">
-        <p><strong class="stat-big">~1<span> in 2</span></strong>new members heard about the NEST from someone they knew</p>
+        <p><strong class="stat-big">47<span>%</span></strong>new members heard about the NEST from someone they knew</p>
       </div>
     </div>
   </div>
-  <figcaption>The two numbers the study stood on, rounded to keep Digital NEST's internal data private.</figcaption>
+  <figcaption>The two numbers the study stood on.</figcaption>
 </figure>
 
 
